@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>B. Alay – Kelimelerin Ardında Kalan</title>
+<style>
+    body {
+        font-family: 'Georgia', serif;
+        max-width: 750px;
+        margin: 50px auto;
+        padding: 0 20px;
+        line-height: 1.8;
+        color: #222;
+        background-color: #fafafa;
+    }
+
+    h1 {
+        text-align: center;
+        font-weight: normal;
+        margin-bottom: 40px;
+        font-size: 28px;
+    }
+
+    hr {
+        border: none;
+        border-top: 1px solid #ddd;
+        margin: 40px 0;
+    }
+
+    .quote-block {
+        border-left: 4px solid #f39c12;
+        padding-left: 15px;
+        margin: 30px 0;
+        font-style: italic;
+        color: #444;
+    }
+
+    . SectionTitle {
+        font-size: 18px;
+        margin-top: 30px;
+        color: #222;
+    }
+
+    .mini-quote {
+        border-left: 4px solid #f39c12;
+        padding-left: 12px;
+        margin-top: 25px;
+        font-style: italic;
+        font-size: 15px;
+        color: #333;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🕯️ KELİMELERİN ARDINDA KALAN<br><small>✒️ by B. Alay</small></h1>
+
+<hr>
+
+<p>Bazen düşünüyorum kaptan…<br>
+Acaba insan neden yazar?<br><br>
+Birini anlatmak için mi,<br>
+yoksa kendini duymak için mi?<br><br>
+Belki de yazmak, içindeki sessizliği kelimelere bölüştürmektir.<br>
+Benim için hep öyle oldu.<br>
+Konuşamadığım her şey, bir satıra sığdı sonunda.<br>
+Çünkü bazı kelimeler, dudaktan değil — içten dökülür.</p>
+
+<hr>
+
+<p>Ben <strong>Berkay Alay</strong>.<br>
+Sıradan birinin içinden geçen sıradışı duyguların tanığıyım sadece.<br><br>
+Beni tanımanın yolu,<br>
+kim olduğumu bilmekten değil,<br>
+yazdıklarımda kim olduğumu sezmekten geçer.</p>
+
+<hr>
+
+<p>Bir zamanlar biri vardı.<br>
+Ne adını söyledim, ne hikâyesini tam olarak yazdım.<br>
+Ama her cümlenin arkasında onun bir gölgesi kaldı.<br><br>
+Ben ona hiç “merhaba” diyemedim.<br>
+Ama içimde ona ait binlerce “elveda” yankılandı.<br><br>
+<strong>Turuncu Saçlı Kız</strong> böyle doğdu.<br>
+Bir tanışma değil,<br>
+bir tanıyamama hikâyesi.</p>
+
+<hr>
+
+<p>Zamanla anladım ki,<br>
+bazı insanlar hayatına konuşarak girmez.<br>
+Bir sabah, bir koridorda, bir bakışta yerleşirler içine.<br>
+Ve oradan hiç çıkmazlar.<br><br>
+Ben de onu hiç unutmadım —<br>
+ama unutmamak, acı çekmekten çok daha sessiz bir şeymiş.</p>
+
+<div class="quote-block">
+    “Sevmek bazen sahip olmak değil, sakince kaybetmektir.”
+</div>
+
+<hr>
+
+<p>Belki bir gün birisi yazdıklarımı okuyacak
+ve kendi yarasına dokunacak orada.<br>
+Belki de kimse okumayacak.<br>
+Ama fark etmez.<br><br>
+Çünkü ben zaten “anlaşılmak” için değil,<br>
+anlayan biri olabilmek için yazıyorum.</p>
+
+<hr>
+
+<p>Her satır benim bir yanımdır.<br>
+Bir yanım geçmişte kalmış bir çocuk,<br>
+bir yanım hâlâ o koridorda,<br>
+bir yanım ise hiçbir yere ait değil.<br><br>
+Ama kalemim hep aynı yere döner:<br>
+<strong>sessizliğe.</strong></p>
+
+<hr>
+
+<p>Ben <strong>Berkay Alay</strong>.<br>
+Konuşmayı değil, hissettirmeyi seçtim.<br>
+Yazmak benim için bir cevap değil,<br>
+bir soru sorma biçimi.<br><br>
+Her hikâyede kendimi biraz daha aradım,<br>
+her satırda biraz daha buldum,<br>
+ve her bulduğumda biraz daha kaybettim.</p>
+
+<div class="quote-block">
+    “Kaybolmak da bazen bulunmaktır.”
+</div>
+
+<hr>
+
+<div class="quote-block">
+✒️ “Bazı insanlar konuşmadan da anlaşılır.<br>
+Ve bazı hikâyeler, hiç başlamadan da bitmiştir zaten.”<br>
+— <strong>B. Alay</strong>
+</div>
+
+<p><strong>Bir satırda kalmak,<br>
+bazen bir ömrü anlatmaktır.</strong></p>
+
+<div class="mini-quote">
+    L’art est long, la vie est courte
+</div>
+
+<br><br>
+
+</body>
+</html>
