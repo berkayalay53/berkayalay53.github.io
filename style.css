@@ -329,12 +329,13 @@ a:hover{ text-decoration: underline; }
   .quote--hero p{ font-size: 18px; }
 }
 .authorPhoto {
-  width: 120px;
-  height: 120px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   object-fit: cover;
-  opacity: .85;
-  margin-bottom: 16px;
+  opacity: .9;
+  margin-bottom: 12px;
   filter: grayscale(100%) contrast(.95);
 }
+
 
