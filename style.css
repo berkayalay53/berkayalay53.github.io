@@ -328,14 +328,30 @@ a:hover{ text-decoration: underline; }
   .quote p{ font-size: 17px; }
   .quote--hero p{ font-size: 18px; }
 }
+.authorProfile {
+  text-align: center;
+}
+
 .authorPhoto {
   width: 88px;
   height: 88px;
   border-radius: 50%;
   object-fit: cover;
-  opacity: .9;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   filter: grayscale(100%) contrast(.95);
+  opacity: .9;
+}
+
+.igLink {
+  display: inline-flex;
+  margin: 6px 0 10px;
+  color: rgba(233,230,223,.65);
+}
+
+.igLink:hover {
+  color: rgba(233,230,223,.95);
+}
+
 }
 
 
