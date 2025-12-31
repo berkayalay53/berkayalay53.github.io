@@ -353,5 +353,63 @@ a:hover{ text-decoration: underline; }
 }
 
 }
+/* === AÇILIŞ PERDESİ === */
+#introScreen {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(600px 400px at 30% 30%, rgba(212,163,115,.12), transparent 60%),
+    radial-gradient(600px 400px at 70% 70%, rgba(134,168,162,.10), transparent 60%),
+    #0b0d0f;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.introInner {
+  text-align: center;
+  max-width: 520px;
+  padding: 24px;
+}
+
+.introText {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.6;
+  letter-spacing: .2px;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+
+.introText span {
+  opacity: .9;
+}
+
+#introBtn {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+#introBtn:hover {
+  color: var(--text);
+  border-color: rgba(255,255,255,.3);
+}
+
+/* Mobil */
+@media (max-width: 600px) {
+  .introText {
+    font-size: 22px;
+  }
+}
 
 
