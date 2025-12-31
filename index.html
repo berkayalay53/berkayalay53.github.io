@@ -132,5 +132,20 @@
     </section>
 
   </main>
+  <script>
+  const seen = localStorage.getItem('ba_intro_seen');
+  const intro = document.getElementById('introScreen');
+
+  if (seen) {
+    intro.remove();
+  } else {
+    document.getElementById('introBtn').addEventListener('click', () => {
+      localStorage.setItem('ba_intro_seen', '1');
+      intro.style.opacity = '0';
+      intro.style.transition = 'opacity .6s ease';
+      setTimeout(() => intro.remove(), 600);
+    });
+  }
+</script>
 </body>
 </html>
