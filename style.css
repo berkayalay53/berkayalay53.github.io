@@ -1,19 +1,19 @@
 :root{
-  --bg: #0f1113;
+  --bg:#0f1113;
   --bg2:#14181b;
   --card:#161a1e;
   --text:#e9e6df;
   --muted:#bcb6aa;
-  --line: rgba(255,255,255,.10);
+  --line:rgba(255,255,255,.10);
 
   --accent:#d4a373;
   --accent2:#86a8a2;
 
-  --serif: "Crimson Pro", ui-serif, Georgia, "Times New Roman", serif;
-  --sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --serif:"Crimson Pro", ui-serif, Georgia, "Times New Roman", serif;
+  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
-  --radius: 22px;
-  --shadow: 0 16px 50px rgba(0,0,0,.45);
+  --radius:22px;
+  --shadow:0 16px 50px rgba(0,0,0,.45);
 }
 
 html{
@@ -22,19 +22,19 @@ html{
     radial-gradient(1200px 800px at 20% 10%, rgba(212,163,115,.10), transparent 55%),
     radial-gradient(900px 700px at 80% 30%, rgba(134,168,162,.08), transparent 60%),
     linear-gradient(180deg, var(--bg), var(--bg2));
-  color: var(--text);
+  color:var(--text);
 }
 
-*{ box-sizing:border-box; }
+*{box-sizing:border-box;}
 
 body{
   margin:0;
-  font-family: var(--sans);
-  letter-spacing: .2px;
+  font-family:var(--sans);
+  letter-spacing:.2px;
 }
 
-a{ color: var(--text); text-decoration:none; }
-a:hover{ text-decoration:underline; }
+a{color:var(--text);text-decoration:none;}
+a:hover{text-decoration:underline;}
 
 /* Grain */
 .grain{
@@ -51,7 +51,7 @@ a:hover{ text-decoration:underline; }
   margin-inline:auto;
 }
 
-.hero{ padding:42px 0 18px; }
+.hero{padding:42px 0 18px;}
 
 .hero__inner{
   width:min(1100px, calc(100% - 36px));
@@ -75,9 +75,8 @@ a:hover{ text-decoration:underline; }
   line-height:1.65;
 }
 
-.main{ padding-bottom:60px; }
-
-.section{ padding:26px 0; }
+.main{padding-bottom:60px;}
+.section{padding:26px 0;}
 
 .grid{
   display:grid;
@@ -111,7 +110,7 @@ a:hover{ text-decoration:underline; }
 }
 
 /* Profil */
-.authorProfile{ text-align:center; }
+.authorProfile{text-align:center;}
 
 .authorPhoto{
   width:88px;
@@ -129,11 +128,12 @@ a:hover{ text-decoration:underline; }
   color:rgba(233,230,223,.65);
 }
 
-.igLink:hover{
-  color:rgba(233,230,223,.95);
-}
+.igLink:hover{color:rgba(233,230,223,.95);}
 
+/* ========================= */
 /* === AÇILIŞ PERDESİ === */
+/* ========================= */
+
 #introScreen{
   position:fixed;
   inset:0;
@@ -154,48 +154,74 @@ a:hover{ text-decoration:underline; }
   animation:introAppear 1.2s ease forwards;
 }
 
-@keyframes introAppear{
-  from{opacity:0;transform:translateY(12px);}
-  to{opacity:1;transform:translateY(0);}
-}
-
+/* Yazıya çok hafif canlılık */
 .introText{
   font-family:var(--serif);
   font-size:26px;
   line-height:1.6;
-  margin-bottom:30px;
+  margin-bottom:32px;
+  animation:softBreath 6s ease-in-out infinite;
 }
 
+.introText span{
+  color:var(--accent);
+}
+
+/* Nefes alan animasyon */
+@keyframes softBreath{
+  0%,100%{opacity:.92;}
+  50%{opacity:1;}
+}
+
+@keyframes introAppear{
+  from{opacity:0;transform:translateY(14px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* === ELİT BUTON === */
 #introBtn{
-  font-size:13px;
-  letter-spacing:1.2px;
-  background:none;
-  border:1px solid var(--line);
-  color:var(--muted);
-  padding:10px 18px;
+  font-family:var(--sans);
+  font-size:12px;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(255,255,255,.18);
+  color:rgba(233,230,223,.55);
+  padding:11px 22px;
   border-radius:999px;
   cursor:pointer;
+  transition:
+    color .35s ease,
+    border-color .35s ease,
+    background .35s ease,
+    transform .35s ease;
 }
 
 #introBtn:hover{
   color:var(--text);
-  border-color:rgba(255,255,255,.4);
+  border-color:var(--accent);
+  background:rgba(212,163,115,.08);
+  transform:translateY(-1px);
 }
 
+/* Çözülerek kaybolma */
 #introScreen.hide{
   animation:introDisappear .9s ease forwards;
 }
 
 @keyframes introDisappear{
-  to{opacity:0;filter:blur(6px);}
+  to{
+    opacity:0;
+    filter:blur(8px);
+  }
 }
 
 /* Mobil */
 @media (max-width:900px){
-  .hero__inner{ grid-template-columns:1fr; }
-  .grid{ grid-template-columns:1fr; }
+  .hero__inner{grid-template-columns:1fr;}
+  .grid{grid-template-columns:1fr;}
 }
 
 @media (max-width:600px){
-  .introText{ font-size:22px; }
+  .introText{font-size:22px;}
 }
