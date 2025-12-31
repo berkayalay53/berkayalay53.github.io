@@ -23,7 +23,6 @@
         Seninle yaşadığım şey böyleydi:<br>
         <span>zamansız, mekânsız, ama gerçek.</span>
       </p>
-
       <button id="introBtn" aria-label="Devam et">
         devam etmek için dokun
       </button>
@@ -35,22 +34,17 @@
     <div class="hero__inner" style="grid-template-columns:1fr;">
       <div class="title authorProfile">
 
-        <img
-          src="./profile.jpg"
-          alt="Berkay Alay"
-          class="authorPhoto"
-        >
+        <img src="./profile.jpg" alt="Berkay Alay" class="authorPhoto">
 
         <h1>Berkay Alay</h1>
 
-        <!-- INSTAGRAM -->
         <a class="igLink"
            href="https://www.instagram.com/berkayalay.53/"
            target="_blank"
            rel="noopener"
            aria-label="Instagram">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-            <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.28 3.5 3.5 5.28 3.5 7.75v8.5c0 2.47 1.78 4.25 4.25 4.25h8.5c2.47 0 4.25-1.78 4.25-4.25v-8.5c0-2.47-1.78-4.25-4.25-4.25h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a.88.88 0 110 1.75.88.88 0 010-1.75z"/>
+            <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2z"/>
           </svg>
         </a>
 
@@ -121,7 +115,7 @@
       </div>
     </section>
 
-    <!-- BOOKS2READ -->
+    <!-- FOOTER -->
     <section class="section section--footer">
       <div class="wrap footer">
         <p class="sig__meta">
@@ -133,22 +127,53 @@
       </div>
     </section>
 
+    <!-- 🌿 YAPRAK (TESADÜF) -->
+    <div id="exitTrigger" class="exitTrigger">🍃</div>
+
   </main>
 
-  <!-- INTRO KONTROL -->
-  <script>
-    const intro = document.getElementById('introScreen');
-    const btn = document.getElementById('introBtn');
+  <!-- 🌫 SON DUVAR -->
+  <div id="exitOverlay">
+    <div class="exitInner">
+      <p class="exitText">
+        Tesadüf seni önüme çıkarmasaydı,<br>
+        gene aynı şekilde fakat her şeyden habersiz,<br>
+        yaşayıp gidecektim.<br><br>
+        Sen bana dünyada başka bir hayatın da mevcut olduğunu,<br>
+        benim bir de ruhum bulunduğunu öğrettin.
+      </p>
+      <button id="exitBack">geri dön</button>
+    </div>
+  </div>
 
+  <!-- SCRIPT -->
+  <script>
+    /* GİRİŞ */
+    const intro = document.getElementById('introScreen');
+    const introBtn = document.getElementById('introBtn');
     document.body.style.overflow = 'hidden';
 
-    btn.addEventListener('click', () => {
+    introBtn.addEventListener('click', () => {
       intro.classList.add('hide');
-
       setTimeout(() => {
         intro.remove();
         document.body.style.overflow = '';
       }, 900);
+    });
+
+    /* ÇIKIŞ RİTÜELİ */
+    const exitTrigger = document.getElementById('exitTrigger');
+    const exitOverlay = document.getElementById('exitOverlay');
+    const exitBack = document.getElementById('exitBack');
+
+    exitTrigger.addEventListener('click', () => {
+      exitOverlay.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    });
+
+    exitBack.addEventListener('click', () => {
+      exitOverlay.classList.remove('show');
+      document.body.style.overflow = '';
     });
   </script>
 
