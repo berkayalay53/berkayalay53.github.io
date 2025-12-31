@@ -354,36 +354,47 @@ a:hover{ text-decoration: underline; }
 
 }
 /* === AÇILIŞ PERDESİ === */
+/* === AÇILIŞ PERDESİ (TAM KİLİT) === */
 #introScreen {
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(600px 400px at 30% 30%, rgba(212,163,115,.12), transparent 60%),
-    radial-gradient(600px 400px at 70% 70%, rgba(134,168,162,.10), transparent 60%),
+    radial-gradient(600px 400px at 30% 30%, rgba(212,163,115,.14), transparent 60%),
+    radial-gradient(600px 400px at 70% 70%, rgba(134,168,162,.12), transparent 60%),
     #0b0d0f;
-  z-index: 9999;
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* EN KRİTİK SATIRLAR */
+  pointer-events: all;
 }
 
 .introInner {
   text-align: center;
-  max-width: 520px;
+  max-width: 540px;
   padding: 24px;
+  animation: introAppear 1.2s ease forwards;
+}
+
+@keyframes introAppear {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .introText {
   font-family: var(--serif);
   font-size: 26px;
   line-height: 1.6;
-  letter-spacing: .2px;
   color: var(--text);
-  margin-bottom: 28px;
-}
-
-.introText span {
-  opacity: .9;
+  margin-bottom: 30px;
 }
 
 #introBtn {
@@ -397,19 +408,29 @@ a:hover{ text-decoration: underline; }
   padding: 10px 18px;
   border-radius: 999px;
   cursor: pointer;
-  transition: all .2s ease;
+  transition: all .25s ease;
 }
 
 #introBtn:hover {
   color: var(--text);
-  border-color: rgba(255,255,255,.3);
+  border-color: rgba(255,255,255,.4);
 }
 
-/* Mobil */
+/* ÇÖZÜLEREK KAYBOLMA */
+#introScreen.hide {
+  animation: introDisappear .9s ease forwards;
+}
+
+@keyframes introDisappear {
+  to {
+    opacity: 0;
+    filter: blur(6px);
+  }
+}
+
+/* MOBİL */
 @media (max-width: 600px) {
   .introText {
     font-size: 22px;
   }
 }
-
-
