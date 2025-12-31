@@ -136,25 +136,18 @@
   const intro = document.getElementById('introScreen');
   const btn = document.getElementById('introBtn');
 
-  // SAYFA AÇILIRKEN KİLİT
+  // SAYFA AÇILIRKEN TAM KİLİT
   document.body.style.overflow = 'hidden';
 
-  const seen = localStorage.getItem('ba_intro_seen');
+  // HER GİRİŞTE ÇIKSIN
+  btn.addEventListener('click', () => {
+    intro.classList.add('hide');
 
-  if (seen) {
-    intro.remove();
-    document.body.style.overflow = '';
-  } else {
-    btn.addEventListener('click', () => {
-      localStorage.setItem('ba_intro_seen', '1');
-      intro.classList.add('hide');
-
-      setTimeout(() => {
-        intro.remove();
-        document.body.style.overflow = '';
-      }, 900);
-    });
-  }
+    setTimeout(() => {
+      intro.remove();
+      document.body.style.overflow = '';
+    }, 900);
+  });
 </script>
 </body>
 </html>
