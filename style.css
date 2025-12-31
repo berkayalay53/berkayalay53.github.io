@@ -1,7 +1,13 @@
+/* ===============================
+   BERKAY ALAY — YAZAR SAYFASI
+   ELİT & SERGİ HİSSİ CSS
+   =============================== */
+
 :root{
   --bg:#0f1113;
   --bg2:#14181b;
   --card:#161a1e;
+
   --text:#e9e6df;
   --muted:#bcb6aa;
   --line:rgba(255,255,255,.10);
@@ -9,12 +15,14 @@
   --accent:#d4a373;
   --accent2:#86a8a2;
 
-  --serif:"Crimson Pro", ui-serif, Georgia, "Times New Roman", serif;
+  --serif:"Crimson Pro", Georgia, "Times New Roman", serif;
   --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 
   --radius:22px;
-  --shadow:0 16px 50px rgba(0,0,0,.45);
+  --shadow:0 18px 55px rgba(0,0,0,.45);
 }
+
+/* ===== GENEL ===== */
 
 html{
   scroll-behavior:smooth;
@@ -25,7 +33,7 @@ html{
   color:var(--text);
 }
 
-*{box-sizing:border-box;}
+*{ box-sizing:border-box; }
 
 body{
   margin:0;
@@ -33,84 +41,55 @@ body{
   letter-spacing:.2px;
 }
 
-a{color:var(--text);text-decoration:none;}
-a:hover{text-decoration:underline;}
+a{
+  color:var(--text);
+  text-decoration:none;
+}
+a:hover{ text-decoration:underline; }
 
-/* Grain */
+/* ===== GRAIN ===== */
+
 .grain{
   position:fixed;
   inset:0;
   pointer-events:none;
   opacity:.16;
   mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
+
+/* ===== YAPI ===== */
 
 .wrap{
   width:min(1000px, calc(100% - 36px));
   margin-inline:auto;
 }
 
-.hero{padding:42px 0 18px;}
+.main{
+  padding-bottom:60px;
+}
+
+.section{
+  padding:26px 0;
+}
+
+/* ===== HERO / PROFİL ===== */
+
+.hero{
+  padding:42px 0 18px;
+}
 
 .hero__inner{
   width:min(1100px, calc(100% - 36px));
   margin:auto;
   display:grid;
-  grid-template-columns:340px 1fr;
-  gap:26px;
+  grid-template-columns:1fr;
   align-items:center;
 }
 
-.title h1{
-  margin:0;
-  font-family:var(--serif);
-  font-size:clamp(34px,4vw,52px);
+.authorProfile{
+  text-align:center;
 }
-
-.sub{
-  margin:14px 0 18px;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.65;
-}
-
-.main{padding-bottom:60px;}
-.section{padding:26px 0;}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-
-.quote{
-  border-radius:var(--radius);
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.02);
-  padding:18px;
-  box-shadow:0 10px 40px rgba(0,0,0,.18);
-}
-
-.quote p{
-  margin:0;
-  font-family:var(--serif);
-  font-size:18px;
-  line-height:1.75;
-}
-
-.footer{
-  border-top:1px solid var(--line);
-  padding-top:18px;
-}
-
-.sig__meta{
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* Profil */
-.authorProfile{text-align:center;}
 
 .authorPhoto{
   width:88px;
@@ -122,17 +101,86 @@ a:hover{text-decoration:underline;}
   opacity:.9;
 }
 
+.title h1{
+  margin:0;
+  font-family:var(--serif);
+  font-size:clamp(34px,4vw,52px);
+  letter-spacing:.4px;
+}
+
+.sub{
+  margin:14px auto 18px;
+  max-width:54ch;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.65;
+}
+
 .igLink{
   display:inline-flex;
   margin:6px 0 10px;
   color:rgba(233,230,223,.65);
+  transition:color .3s ease;
+}
+.igLink:hover{
+  color:rgba(233,230,223,.95);
 }
 
-.igLink:hover{color:rgba(233,230,223,.95);}
+/* ===== YAZAR METNİ ===== */
 
-/* ========================= */
-/* === AÇILIŞ PERDESİ === */
-/* ========================= */
+.quote{
+  border-radius:var(--radius);
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.02);
+  padding:20px 22px;
+  box-shadow:0 10px 40px rgba(0,0,0,.18);
+}
+
+.quote p{
+  margin:0 0 14px;
+  font-family:var(--serif);
+  font-size:18px;
+  line-height:1.75;
+}
+.quote p:last-child{ margin-bottom:0; }
+
+/* ===== KİTAPLAR ===== */
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.grid .quote{
+  transition:
+    transform .35s ease,
+    box-shadow .35s ease,
+    border-color .35s ease;
+}
+
+.grid .quote:hover{
+  transform:translateY(-2px);
+  border-color:rgba(212,163,115,.35);
+  box-shadow:0 18px 55px rgba(0,0,0,.35);
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+  border-top:1px solid var(--line);
+  padding-top:18px;
+  text-align:center;
+}
+
+.sig__meta{
+  color:var(--muted);
+  font-size:13px;
+}
+
+/* =========================
+   AÇILIŞ PERDESİ (GİRİŞ)
+   ========================= */
 
 #introScreen{
   position:fixed;
@@ -149,12 +197,11 @@ a:hover{text-decoration:underline;}
 
 .introInner{
   text-align:center;
-  max-width:540px;
-  padding:24px;
+  max-width:560px;
+  padding:28px;
   animation:introAppear 1.2s ease forwards;
 }
 
-/* Yazıya çok hafif canlılık */
 .introText{
   font-family:var(--serif);
   font-size:26px;
@@ -167,18 +214,18 @@ a:hover{text-decoration:underline;}
   color:var(--accent);
 }
 
-/* Nefes alan animasyon */
-@keyframes softBreath{
-  0%,100%{opacity:.92;}
-  50%{opacity:1;}
-}
-
 @keyframes introAppear{
   from{opacity:0;transform:translateY(14px);}
   to{opacity:1;transform:translateY(0);}
 }
 
-/* === ELİT BUTON === */
+@keyframes softBreath{
+  0%,100%{opacity:.92;}
+  50%{opacity:1;}
+}
+
+/* ===== BUTON ===== */
+
 #introBtn{
   font-family:var(--sans);
   font-size:12px;
@@ -187,7 +234,7 @@ a:hover{text-decoration:underline;}
   background:rgba(255,255,255,.02);
   border:1px solid rgba(255,255,255,.18);
   color:rgba(233,230,223,.55);
-  padding:11px 22px;
+  padding:11px 24px;
   border-radius:999px;
   cursor:pointer;
   transition:
@@ -204,7 +251,12 @@ a:hover{text-decoration:underline;}
   transform:translateY(-1px);
 }
 
-/* Çözülerek kaybolma */
+#introBtn:active{
+  transform:scale(.98);
+}
+
+/* ===== KAPANIŞ ANİMASYONU ===== */
+
 #introScreen.hide{
   animation:introDisappear .9s ease forwards;
 }
@@ -216,12 +268,12 @@ a:hover{text-decoration:underline;}
   }
 }
 
-/* Mobil */
+/* ===== MOBİL ===== */
+
 @media (max-width:900px){
-  .hero__inner{grid-template-columns:1fr;}
-  .grid{grid-template-columns:1fr;}
+  .grid{ grid-template-columns:1fr; }
 }
 
 @media (max-width:600px){
-  .introText{font-size:22px;}
+  .introText{ font-size:22px; }
 }
