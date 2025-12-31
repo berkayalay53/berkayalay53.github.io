@@ -13,20 +13,22 @@
 </head>
 
 <body>
-  <div class="grain" aria-hidden="true"></div>
-<!-- AÇILIŞ PERDESİ -->
-<div id="introScreen">
-  <div class="introInner">
-    <p class="introText">
-      Seninle yaşadığım şey böyleydi:<br>
-      <span>zamansız, mekânsız, ama gerçek.</span>
-    </p>
 
-    <button id="introBtn" aria-label="Devam et">
-      devam etmek için dokun
-    </button>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- AÇILIŞ PERDESİ -->
+  <div id="introScreen">
+    <div class="introInner">
+      <p class="introText">
+        Seninle yaşadığım şey böyleydi:<br>
+        <span>zamansız, mekânsız, ama gerçek.</span>
+      </p>
+
+      <button id="introBtn" aria-label="Devam et">
+        devam etmek için dokun
+      </button>
+    </div>
   </div>
-</div>
 
   <!-- HERO / PROFİL -->
   <header class="hero">
@@ -132,22 +134,23 @@
     </section>
 
   </main>
+
+  <!-- INTRO KONTROL -->
   <script>
-  const intro = document.getElementById('introScreen');
-  const btn = document.getElementById('introBtn');
+    const intro = document.getElementById('introScreen');
+    const btn = document.getElementById('introBtn');
 
-  // SAYFA AÇILIRKEN TAM KİLİT
-  document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
 
-  // HER GİRİŞTE ÇIKSIN
-  btn.addEventListener('click', () => {
-    intro.classList.add('hide');
+    btn.addEventListener('click', () => {
+      intro.classList.add('hide');
 
-    setTimeout(() => {
-      intro.remove();
-      document.body.style.overflow = '';
-    }, 900);
-  });
-</script>
+      setTimeout(() => {
+        intro.remove();
+        document.body.style.overflow = '';
+      }, 900);
+    });
+  </script>
+
 </body>
 </html>
