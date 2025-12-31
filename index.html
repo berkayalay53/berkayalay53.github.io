@@ -133,17 +133,26 @@
 
   </main>
   <script>
-  const seen = localStorage.getItem('ba_intro_seen');
   const intro = document.getElementById('introScreen');
+  const btn = document.getElementById('introBtn');
+
+  // SAYFA AÇILIRKEN KİLİT
+  document.body.style.overflow = 'hidden';
+
+  const seen = localStorage.getItem('ba_intro_seen');
 
   if (seen) {
     intro.remove();
+    document.body.style.overflow = '';
   } else {
-    document.getElementById('introBtn').addEventListener('click', () => {
+    btn.addEventListener('click', () => {
       localStorage.setItem('ba_intro_seen', '1');
-      intro.style.opacity = '0';
-      intro.style.transition = 'opacity .6s ease';
-      setTimeout(() => intro.remove(), 600);
+      intro.classList.add('hide');
+
+      setTimeout(() => {
+        intro.remove();
+        document.body.style.overflow = '';
+      }, 900);
     });
   }
 </script>
