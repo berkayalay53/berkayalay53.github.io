@@ -225,3 +225,13 @@ a:hover{text-decoration:underline;}
 @media (max-width:600px){
   .introText{font-size:22px;}
 }
+/* === ÖZEL SEÇİM RENGİ === */
+::selection {
+  background: var(--accent); /* Senin pas rengin */
+  color: var(--bg);          /* Yazı koyu olsun ki okunsun */
+}
+
+::-moz-selection { /* Firefox tarayıcısı için */
+  background: var(--accent);
+  color: var(--bg);
+}
