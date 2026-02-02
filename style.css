@@ -231,7 +231,7 @@ a:hover{text-decoration:underline;}
   color: var(--bg);          /* Yazı koyu olsun ki okunsun */
 }
 
-::-moz-selection { /* Firefox tarayıcısı için */
+::-moz-selection {
   background: var(--accent);
   color: var(--bg);
 }
