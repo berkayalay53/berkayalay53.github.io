@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kayıp Sayfa — Berkay Alay</title>
+  
+  <link rel="icon" href="./profile.jpg" type="image/jpeg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+
+  <style>
+    /* Bu sayfaya özel ortalama ayarı */
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      overflow: hidden; /* Kaydırma çubuğu çıkmasın */
+    }
+    
+    .error-container {
+      position: relative;
+      z-index: 10;
+      padding: 0 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: 6rem;
+      font-weight: 300;
+      margin: 0;
+      opacity: 0.15; /* Çok silik, hayalet gibi */
+      line-height: 1;
+    }
+
+    p {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--text);
+      margin: 20px 0 40px;
+      font-style: italic;
+    }
+
+    /* Buton için stil dosyasındaki sınıfları kullandık ama burada biraz özelleştirdik */
+    .btn-back {
+      font-family: var(--sans);
+      text-decoration: none;
+      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 12px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn-back:hover {
+      color: var(--bg);
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(212, 163, 115, 0.4);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="grain" aria-hidden="true"></div>
+  <div class="spotlight"></div>
+
+  <div class="error-container">
+    <h1>404</h1>
+    <p>
+      Burası haritada yok.<br>
+      Aradığın hikaye henüz yazılmadı.
+    </p>
+    
+    <a href="./index.html" class="btn-back">
+      Sessizliğe Dön
+    </a>
+  </div>
+
+  <script>
+    const spotlight = document.querySelector('.spotlight');
+    document.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
+    });
+  </script>
+
+</body>
+</html>
