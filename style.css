@@ -225,3 +225,26 @@ a:hover{text-decoration:underline;}
 @media (max-width:600px){
   .introText{font-size:22px;}
 }
+/* === ZARİF KAYDIRMA ÇUBUĞU (SCROLLBAR) === */
+
+/* Çubuğun genişliği */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Çubuğun arka yolu (Zemin) */
+::-webkit-scrollbar-track {
+  background: var(--bg); /* Sitenin arka planıyla aynı */
+}
+
+/* Hareket eden çubuk (Tutamak) */
+::-webkit-scrollbar-thumb {
+  background: var(--accent); /* Pas rengi */
+  border-radius: 5px;
+  border: 2px solid var(--bg); /* Etrafında boşluk olsun diye */
+}
+
+/* Fare üzerine gelince */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212,163,115, .8);
+}
