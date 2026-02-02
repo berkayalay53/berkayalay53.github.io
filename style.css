@@ -247,4 +247,19 @@ a:hover{text-decoration:underline;}
 /* Fare üzerine gelince */
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(212,163,115, .8);
+
+}
+/* === KARANLIKTA FENER EFEKTİ === */
+.spotlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none; /* Tıklamaları engellemez, sadece ışıktır */
+  z-index: 9990; /* En üstte durur */
+  background: radial-gradient(
+    circle 250px at var(--x, 50%) var(--y, 50%),
+    rgba(212, 163, 115, 0.08), /* Senin pas rengin, çok hafif */
+    transparent 60%
+  );
+  mix-blend-mode: screen; /* Işığı zemine yedirir */
+  transition: background 0.1s ease; /* Işık yumuşak hareket eder */
 }
