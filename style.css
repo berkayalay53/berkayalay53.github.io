@@ -262,4 +262,15 @@ a:hover{text-decoration:underline;}
   );
   mix-blend-mode: screen; /* Işığı zemine yedirir */
   transition: background 0.1s ease; /* Işık yumuşak hareket eder */
+
+}
+/* === ÖZEL SEÇİM RENGİ (Maviyi Yok Etme) === */
+::selection {
+  background: var(--accent); /* Senin pas rengin */
+  color: var(--bg);          /* Yazı koyu olsun ki okunsun */
+}
+
+::-moz-selection { /* Firefox tarayıcısı için */
+  background: var(--accent);
+  color: var(--bg);
 }
