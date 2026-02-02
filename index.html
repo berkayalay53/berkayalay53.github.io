@@ -29,6 +29,8 @@
 <body>
 
   <div class="grain" aria-hidden="true"></div>
+  
+  <div class="spotlight"></div>
 
   <div id="introScreen">
     <div class="introInner">
@@ -170,6 +172,13 @@
         intro.remove();
         document.body.style.overflow = '';
       }, 900);
+    });
+
+    // FENER EFEKTİ KODU (Yeni Eklenen)
+    const spotlight = document.querySelector('.spotlight');
+    document.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
     });
   </script>
 
