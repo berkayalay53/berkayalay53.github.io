@@ -294,3 +294,65 @@ a:hover{text-decoration:underline;}
 ::-webkit-scrollbar-thumb:hover {
   background: #d4a373; /* Üzerine gelince parlasın (Pas Rengi) */
 }
+/* === YENİ EKLENEN: SAYFA GEÇİŞ EFEKTİ (FADE IN) === */
+body {
+  opacity: 0; /* Başlangıçta görünmez */
+  transition: opacity 1.5s ease-in-out; /* Yavaşça belirme */
+}
+
+body.loaded {
+  opacity: 1; /* Yüklenince görünür */
+}
+
+/* === YENİ EKLENEN: PLAK ÇALAR (MUSIC DISC) === */
+.music-control {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  /* Resmi buraya çağırıyoruz */
+  background-image: url('./kralkaybederse.jpg'); 
+  background-size: cover;
+  background-position: center;
+  border: 2px solid #d4a373; /* Pas rengi çerçeve */
+  cursor: pointer;
+  z-index: 9995; /* Spot ışığının üstünde olsun */
+  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease, filter 0.3s;
+}
+
+/* Plak ortasındaki delik efekti */
+.music-control::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 12px; height: 12px;
+  background: #0f1113; /* Arka plan rengiyle aynı */
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #d4a373;
+}
+
+.music-control:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+/* Müzik Çalarken Dönme Efekti */
+.music-control.playing {
+  animation: spin 5s linear infinite; /* 5 saniyede bir tam tur */
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Mobilde plak çok yer kaplamasın diye biraz küçültelim */
+@media (max-width: 768px) {
+  .music-control {
+    width: 50px; height: 50px;
+    bottom: 20px; right: 20px;
+  }
+}
