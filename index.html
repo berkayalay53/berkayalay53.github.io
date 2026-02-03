@@ -161,7 +161,14 @@
   <audio id="bgMusic" loop>
     <source src="./muzik.mp3" type="audio/mpeg">
   </audio>
-
+// === MELANKOLİK SEKME BAŞLIĞI ===
+    let docTitle = document.title;
+    window.addEventListener("blur", () => {
+      document.title = "Sessizlik..."; /* Başka sekmeye geçince yazar */
+    });
+    window.addEventListener("focus", () => {
+      document.title = docTitle; /* Geri dönünce düzelir */
+    });
   <script>
     // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
     window.addEventListener('load', () => {
