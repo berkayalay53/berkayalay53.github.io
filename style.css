@@ -274,3 +274,27 @@ a:hover{text-decoration:underline;}
   background: var(--accent);
   color: var(--bg);
 }
+.signature {
+  font-family: 'Mrs Saint Delafield', cursive;
+  font-size: 3rem;
+  color: #d4a373;
+  text-align: right; /* Sağa yaslı imza */
+  margin-top: 20px;
+  opacity: 0.8;
+  transform: rotate(-5deg); /* Hafif eğik, el yazısı gibi */
+}
+/* === ZARİF KAYDIRMA ÇUBUĞU === */
+::-webkit-scrollbar {
+  width: 8px; /* Çok ince */
+}
+::-webkit-scrollbar-track {
+  background: #080808; /* Arka planla aynı renk */
+}
+::-webkit-scrollbar-thumb {
+  background: #444; /* İlk başta sönük */
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4a373; /* Üzerine gelince parlasın (Pas Rengi) */
+}
