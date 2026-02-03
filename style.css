@@ -281,13 +281,13 @@ a:hover{text-decoration:underline;}
 }
 
 .signature {
-  font-family: 'Mrs Saint Delafield', cursive;
-  font-size: 3rem;
-  color: #d4a373;
-  text-align: right; /* Sağa yaslı imza */
-  margin-top: 20px;
-  opacity: 0.8;
-  transform: rotate(-5deg); /* Hafif eğik, el yazısı gibi */
+  /* ...mevcut kodların kalsın... */
+  opacity: 0; /* Başlangıçta görünmez */
+  animation: signFadeIn 2s ease forwards 1s; /* 1 saniye bekle, 2 saniyede belir */
+}
+
+@keyframes signFadeIn {
+  to { opacity: 0.8; transform: rotate(-5deg) translateY(0); }
 }
 /* === ZARİF KAYDIRMA ÇUBUĞU === */
 ::-webkit-scrollbar {
@@ -364,5 +364,14 @@ body.loaded {
   .music-control {
     width: 50px; height: 50px;
     bottom: 20px; right: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .music-control {
+    width: 45px; height: 45px; /* Daha küçük */
+    bottom: 15px; right: 15px; /* Daha köşede */
+  }
+  .quote {
+    margin-bottom: 20px; /* Mobilde kartlar birbirine yapışmasın */
   }
 }
