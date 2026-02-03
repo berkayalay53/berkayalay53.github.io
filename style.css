@@ -219,7 +219,7 @@ a:hover{text-decoration:underline;}
   transform:translateY(-1px);
 }
 
-/* Çözülerek kaybolma */
+
 #introScreen.hide{
   animation:introDisappear .9s ease forwards;
 }
@@ -231,7 +231,7 @@ a:hover{text-decoration:underline;}
   }
 }
 
-/* Mobil */
+
 @media (max-width:900px){
   .hero__inner{grid-template-columns:1fr;}
   .grid{grid-template-columns:1fr;}
@@ -240,56 +240,56 @@ a:hover{text-decoration:underline;}
 @media (max-width:600px){
   .introText{font-size:22px;}
 }
-/* === ZARİF KAYDIRMA ÇUBUĞU (SCROLLBAR) === */
 
-/* Çubuğun genişliği */
+
+
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Çubuğun arka yolu (Zemin) */
+
 ::-webkit-scrollbar-track {
-  background: var(--bg); /* Sitenin arka planıyla aynı */
+  background: var(--bg); 
 }
 
-/* Hareket eden çubuk (Tutamak) */
+
 ::-webkit-scrollbar-thumb {
-  background: var(--accent); /* Pas rengi */
+  background: var(--accent); 
   border-radius: 5px;
-  border: 2px solid var(--bg); /* Etrafında boşluk olsun diye */
+  border: 2px solid var(--bg); 
 }
 
-/* Fare üzerine gelince */
+
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(212,163,115, .8);
 
 }
-/* === KARANLIKTA FENER EFEKTİ === */
+
 .spotlight {
   position: fixed;
   inset: 0;
-  pointer-events: none; /* Tıklamaları engellemez, sadece ışıktır */
-  z-index: 9990; /* En üstte durur */
+  pointer-events: none; 
+  z-index: 9990; 
   background: radial-gradient(
     circle 250px at var(--x, 50%) var(--y, 50%),
-    rgba(212, 163, 115, 0.08), /* Senin pas rengin, çok hafif */
+    rgba(212, 163, 115, 0.08),
     transparent 60%
   );
-  mix-blend-mode: screen; /* Işığı zemine yedirir */
-  transition: background 0.1s ease; /* Işık yumuşak hareket eder */
+  mix-blend-mode: screen; 
+  transition: background 0.1s ease; 
 
 }
 
-/* === İMZA AYARLARI (DÜZELTİLMİŞ) === */
+
 .signature {
-  font-family: 'Mrs Saint Delafield', cursive; /* El yazısı fontu */
-  font-size: 3rem;       /* Yazı boyutu */
-  color: #d4a373;        /* Pas rengi */
-  text-align: right;     /* Sağa yasla */
+  font-family: 'Mrs Saint Delafield', cursive; 
+  font-size: 3rem;       
+  color: #d4a373;        
+  text-align: right;    
   margin-top: 20px;
-  transform: rotate(-5deg); /* Hafif eğiklik */
+  transform: rotate(-5deg); 
   
-  /* Animasyon */
+  
   opacity: 0; 
   animation: signFadeIn 2s ease forwards 1s; 
 }
@@ -298,7 +298,7 @@ a:hover{text-decoration:underline;}
   to { opacity: 0.8; transform: rotate(-5deg) translateY(0); }
 }
 
-/* === İZLER KARTI İÇİN NABIZ EFEKTİ === */
+
 @keyframes pulse-glow {
   0% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); border-color: rgba(212, 163, 115, 0.4); }
   50% { box-shadow: 0 0 25px rgba(212, 163, 115, 0.5); border-color: rgba(212, 163, 115, 1); }
@@ -308,17 +308,17 @@ a:hover{text-decoration:underline;}
 .special-card {
   animation: pulse-glow 3s infinite ease-in-out;
 }
-/* === YENİ EKLENEN: SAYFA GEÇİŞ EFEKTİ (FADE IN) === */
+
 body {
-  opacity: 0; /* Başlangıçta görünmez */
-  transition: opacity 1.5s ease-in-out; /* Yavaşça belirme */
+  opacity: 0; 
+  transition: opacity 1.5s ease-in-out; 
 }
 
 body.loaded {
-  opacity: 1; /* Yüklenince görünür */
+  opacity: 1; 
 }
 
-/* === YENİ EKLENEN: PLAK ÇALAR (MUSIC DISC) === */
+
 .music-control {
   position: fixed;
   bottom: 30px;
@@ -326,24 +326,24 @@ body.loaded {
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  /* Resmi buraya çağırıyoruz */
+  
   background-image: url('./kralkaybederse.jpg'); 
   background-size: cover;
   background-position: center;
-  border: 2px solid #d4a373; /* Pas rengi çerçeve */
+  border: 2px solid #d4a373; 
   cursor: pointer;
-  z-index: 9995; /* Spot ışığının üstünde olsun */
+  z-index: 9995; 
   box-shadow: 0 0 20px rgba(0,0,0,0.6);
   transition: transform 0.3s ease, filter 0.3s;
 }
 
-/* Plak ortasındaki delik efekti */
+
 .music-control::after {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
   width: 12px; height: 12px;
-  background: #0f1113; /* Arka plan rengiyle aynı */
+  background: #0f1113; 
   border-radius: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #d4a373;
@@ -354,16 +354,16 @@ body.loaded {
   filter: brightness(1.2);
 }
 
-/* Müzik Çalarken Dönme Efekti */
+
 .music-control.playing {
-  animation: spin 5s linear infinite; /* 5 saniyede bir tam tur */
+  animation: spin 5s linear infinite; 
 }
 
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
 
-/* Mobilde plak çok yer kaplamasın diye biraz küçültelim */
+
 @media (max-width: 768px) {
   .music-control {
     width: 50px; height: 50px;
@@ -372,14 +372,14 @@ body.loaded {
 }
 @media (max-width: 600px) {
   .music-control {
-    width: 45px; height: 45px; /* Daha küçük */
-    bottom: 15px; right: 15px; /* Daha köşede */
+    width: 45px; height: 45px; 
+    bottom: 15px; right: 15px; 
   }
   .quote {
-    margin-bottom: 20px; /* Mobilde kartlar birbirine yapışmasın */
+    margin-bottom: 20px; 
   }
 }
-/* === ÖZEL KART İÇİN NABIZ EFEKTİ === */
+
 @keyframes pulse-glow {
   0% { 
     box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); 
@@ -387,7 +387,7 @@ body.loaded {
   }
   50% { 
     box-shadow: 0 0 25px rgba(212, 163, 115, 0.5); 
-    border-color: rgba(212, 163, 115, 1); /* Tam pas rengi */
+    border-color: rgba(212, 163, 115, 1); 
   }
   100% { 
     box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); 
@@ -395,7 +395,6 @@ body.loaded {
   }
 }
 
-/* Bu sınıfı HTML'de karta vereceğiz */
+
 .special-card {
-  animation: pulse-glow 3s infinite ease-in-out; /* 3 saniyede bir nefes alır */
-}
+  animation: pulse-glow 3s infinite ease-in-out; 
