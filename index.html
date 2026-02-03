@@ -15,11 +15,6 @@
   <meta property="og:url" content="https://berkayalay53.github.io/">
   <meta property="og:type" content="website">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Berkay Alay — Yazar">
-  <meta name="twitter:description" content="Sessizliğin etrafında yazılmış metinler.">
-  <meta name="twitter:image" content="https://berkayalay53.github.io/profile.jpg">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -29,7 +24,6 @@
 <body>
 
   <div class="grain" aria-hidden="true"></div>
-  
   <div class="spotlight"></div>
 
   <div id="introScreen">
@@ -92,18 +86,23 @@
             Yazar, okuru hızlı anlamlara çağırmaz; satır aralarında durmayı, satır aralarında nefes almayı ister.
             Çünkü bazı duygular açıklanmaz — ancak hissedildiğinde anlaşılır.
           </p>
-          <p>
-            Sessizlik, onun için bir eksiklik değil; anlatının kendisidir.
-            Berkay Alay yazarken yanıt vermez.
-            Sadece doğru soruları bırakır.
-            Ve okur, bu sorularla kalmayı kabul ederse, metin gerçekten başlar.
-          </p>
         </blockquote>
       </div>
     </section>
 
     <section class="section section--grid">
       <div class="wrap grid">
+
+        <a class="quote" href="https://berkayalay53.github.io/eniyialintilar.github.io/" target="_blank" style="border-color: #d4a373; position: relative; box-shadow: 0 0 15px rgba(212, 163, 115, 0.15);">
+          <span style="position: absolute; top: 12px; right: 12px; font-size: 10px; background: #d4a373; color: #0f1113; padding: 2px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px;">ÖZEL</span>
+          
+          <p>
+            <strong>İzler</strong><br>
+            <span style="font-size: 0.9em; opacity: 0.85; font-style: italic;">
+              "Hikayelerden kopup gelen, tek başına yaşayan en iyi cümleler."
+            </span>
+          </p>
+        </a>
 
         <a class="quote" href="https://berkayalay53.github.io/turuncusaclikiz.github.io/" target="_blank">
           <p><strong>Turuncu Saçlı Kız</strong><br>Bir bakışın yıllarca sürmesi.</p>
@@ -133,6 +132,15 @@
           <p><strong>Bir Defterin İçinde Kalanlar</strong><br>Yazılmaktan vazgeçilen anlar.</p>
         </a>
 
+        <a class="quote" href="https://berkayalay53.github.io/serininatlasi.github.io/" target="_blank" style="opacity: 0.8;">
+          <p>
+            <strong>Serinin Atlası</strong> 
+            <span style="font-size: 14px; opacity: 0.7;">(Playlist)</span>
+            <br>
+            Tüm bu hikâyelerin sesi.
+          </p>
+        </a>
+
       </div>
     </section>
 
@@ -158,6 +166,7 @@
     const btn = document.getElementById('introBtn');
     const music = document.getElementById('bgMusic');
 
+    // Sayfa açıldığında kaydırmayı kilitle
     document.body.style.overflow = 'hidden';
 
     btn.addEventListener('click', () => {
@@ -170,11 +179,11 @@
 
       setTimeout(() => {
         intro.remove();
-        document.body.style.overflow = '';
+        document.body.style.overflow = ''; // Kaydırmayı aç
       }, 900);
     });
 
-    // FENER EFEKTİ KODU (Yeni Eklenen)
+    // FENER EFEKTİ
     const spotlight = document.querySelector('.spotlight');
     document.addEventListener('mousemove', (e) => {
       spotlight.style.setProperty('--x', e.clientX + 'px');
