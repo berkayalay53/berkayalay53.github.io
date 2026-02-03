@@ -96,7 +96,17 @@ a:hover{text-decoration:underline;}
   padding:18px;
   box-shadow:0 10px 40px rgba(0,0,0,.18);
 }
+/* Kartın üzerine gelince hafifçe yükselmesi */
+.quote {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Yumuşak geçiş */
+}
 
+.quote:hover {
+  transform: translateY(-5px); /* 5 piksel yukarı kalkar */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* Gölgesi derinleşir */
+  border-color: var(--accent); /* Çerçevesi senin pas rengine döner */
+  background: rgba(255,255,255,0.04); /* Çok hafif aydınlanır */
+}
 .quote p{
   margin:0;
   font-family:var(--serif);
