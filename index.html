@@ -25,7 +25,7 @@
 
   <div class="grain" aria-hidden="true"></div>
   <div class="spotlight"></div>
-
+<div id="musicDisc" class="music-control" title="Müziği Durdur/Başlat"></div>
   <div id="introScreen">
     <div class="introInner">
       <p class="introText">
@@ -163,17 +163,38 @@
   </audio>
 
   <script>
+    // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
     const intro = document.getElementById('introScreen');
     const btn = document.getElementById('introBtn');
     const music = document.getElementById('bgMusic');
+    const disc = document.getElementById('musicDisc'); // Plak elementi
 
     // Sayfa açıldığında kaydırmayı kilitle
     document.body.style.overflow = 'hidden';
 
+    // Müzik Durumu Fonksiyonu
+    function toggleMusic() {
+      if (music.paused) {
+        music.play();
+        disc.classList.add('playing'); // Dönmeye başla
+      } else {
+        music.pause();
+        disc.classList.remove('playing'); // Dur
+      }
+    }
+
+    // Giriş butonuna basınca
     btn.addEventListener('click', () => {
-      // Müzik Başlasın
-      music.play().catch(error => console.log("Müzik hatası:", error));
-      music.volume = 0.3; 
+      // Müziği ve Plağı başlat
+      music.play().then(() => {
+        disc.classList.add('playing');
+      }).catch(e => console.log("Otomatik oynatma engellendi", e));
+      
+      music.volume = 0.4; 
 
       // Perde Kapansın
       intro.classList.add('hide');
@@ -183,6 +204,9 @@
         document.body.style.overflow = ''; // Kaydırmayı aç
       }, 900);
     });
+
+    // Plağa tıklayınca müziği aç/kapat
+    disc.addEventListener('click', toggleMusic);
 
     // FENER EFEKTİ
     const spotlight = document.querySelector('.spotlight');
