@@ -458,3 +458,191 @@ a:hover {
   50% { opacity: 1; }
   100% { opacity: 0; transform: rotate(45deg) translate(0px, 0px); }
 }
+/* === SONSUZ GECE VE PERA ATMOSFERİ === */
+:root {
+  --bg: #080808;
+  --text: #e0e0e0;
+  --accent: #d4a373; /* Pas Rengi */
+  --serif: 'Playfair Display', serif;
+  --sans: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  line-height: 1.9;
+  overflow-x: hidden; /* Intro varken taşmayı engeller */
+}
+
+/* === YENİ EKLENEN: GİRİŞ EKRANI (INTRO) === */
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #080808; /* Simsiyah kapak */
+  z-index: 10000;      /* En üstte */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s;
+}
+
+#intro-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  padding: 2rem;
+  max-width: 700px;
+  animation: introFadeIn 1.5s ease;
+}
+
+.intro-title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 10vw, 6rem);
+  color: #fff;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 30px rgba(212, 163, 115, 0.2);
+}
+
+.intro-quote {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: #bbb;
+  font-style: italic;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+/* Buton Tasarımı */
+#start-btn {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 15px 40px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+#start-btn:hover {
+  background: var(--accent);
+  color: #080808;
+  box-shadow: 0 0 20px rgba(212, 163, 115, 0.4);
+  transform: translateY(-2px);
+}
+
+@keyframes introFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === MEVCUT STİLLERİN === */
+
+/* ARKA PLAN RESMİ */
+.fixed-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url('./cover.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px) brightness(0.2); 
+  z-index: -1;
+  transform: scale(1.1);
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+  z-index: 999;
+}
+
+/* Hero Spacer (Eski Hero'nun yerini tutan boşluk) */
+.hero-spacer {
+  height: 15vh; /* Intro sonrası üstten biraz boşluk */
+}
+
+/* PAGE & QUOTES */
+.page {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 1.5rem 10rem;
+}
+
+.quote {
+  max-width: 520px;
+  margin: 10rem 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  background: rgba(0,0,0,0.25); 
+  padding: 30px;
+  border-radius: 4px;
+  backdrop-filter: blur(2px);
+}
+
+.quote.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quote p {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 1.7rem);
+  color: #f0f0f0;
+}
+
+.quote span {
+  display: block;
+  margin-top: 1.2rem;
+  font-size: .75rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.q-left { margin-right: auto; text-align: left; border-left: 1px solid var(--accent); }
+.q-right { margin-left: auto; text-align: right; border-right: 1px solid var(--accent); }
+.q-center { margin-left: auto; margin-right: auto; text-align: center; border-bottom: 1px solid var(--accent); }
+
+.divider {
+  text-align: center;
+  margin: 8rem 0;
+  color: rgba(212, 163, 115, 0.25);
+  font-size: 1.8rem;
+}
+
+.end-mark { text-align: center; margin-top: 8rem; }
+.home-link {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  padding: 12px 35px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  transition: 0.4s;
+}
+.home-link:hover { background: var(--accent); color: #000; }
+
+@media (max-width: 768px) {
+  .quote { max-width: 100%; margin: 6rem 0; }
+  .intro-title { font-size: 3.5rem; }
+}
