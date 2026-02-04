@@ -3,208 +3,235 @@
   color: #000; /* Yazı siyah */
   text-shadow: none;
 }
-:root{
-  --bg:#0f1113;
-  --bg2:#14181b;
-  --card:#161a1e;
-  --text:#e9e6df;
-  --muted:#bcb6aa;
-  --line:rgba(255,255,255,.10);
 
-  --accent:#d4a373;
-  --accent2:#86a8a2;
+:root {
+  --bg: #0f1113;
+  --bg2: #14181b;
+  --card: #161a1e;
+  --text: #e9e6df;
+  --muted: #bcb6aa;
+  --line: rgba(255, 255, 255, .10);
 
-  --serif:"Crimson Pro", ui-serif, Georgia, "Times New Roman", serif;
-  --sans:"Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --accent: #d4a373;
+  --accent2: #86a8a2;
 
-  --radius:22px;
-  --shadow:0 16px 50px rgba(0,0,0,.45);
+  --serif: "Crimson Pro", ui-serif, Georgia, "Times New Roman", serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  --radius: 22px;
+  --shadow: 0 16px 50px rgba(0, 0, 0, .45);
 }
 
-html{
-  scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
   background:
-    radial-gradient(1200px 800px at 20% 10%, rgba(212,163,115,.10), transparent 55%),
-    radial-gradient(900px 700px at 80% 30%, rgba(134,168,162,.08), transparent 60%),
+    radial-gradient(1200px 800px at 20% 10%, rgba(212, 163, 115, .10), transparent 55%),
+    radial-gradient(900px 700px at 80% 30%, rgba(134, 168, 162, .08), transparent 60%),
     linear-gradient(180deg, var(--bg), var(--bg2));
-  color:var(--text);
+  color: var(--text);
 }
 
-*{box-sizing:border-box;}
-
-body{
-  margin:0;
-  font-family:var(--sans);
-  letter-spacing:.2px;
+* {
+  box-sizing: border-box;
 }
 
-a{color:var(--text);text-decoration:none;}
-a:hover{text-decoration:underline;}
-
-/* Grain */
-.grain{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  opacity:.16;
-  mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+body {
+  margin: 0;
+  font-family: var(--sans);
+  letter-spacing: .2px;
+  opacity: 0;
+  /* Sayfa açılış efekti */
+  transition: opacity 1.5s ease-in-out;
 }
 
-.wrap{
-  width:min(1000px, calc(100% - 36px));
-  margin-inline:auto;
+body.loaded {
+  opacity: 1;
 }
 
-.hero{padding:42px 0 18px;}
-
-.hero__inner{
-  width:min(1100px, calc(100% - 36px));
-  margin:auto;
-  display:grid;
-  grid-template-columns:340px 1fr;
-  gap:26px;
-  align-items:center;
+a {
+  color: var(--text);
+  text-decoration: none;
 }
 
-.title h1{
-  margin:0;
-  font-family:var(--serif);
-  font-size:clamp(34px,4vw,52px);
+a:hover {
+  text-decoration: underline;
 }
 
-.sub{
-  margin:14px 0 18px;
-  color:var(--muted);
-  font-size:15px;
-  line-height:1.65;
+/* Grain Efekti */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
 }
 
-.main{padding-bottom:60px;}
-.section{padding:26px 0;}
-
-.grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
+.wrap {
+  width: min(1000px, calc(100% - 36px));
+  margin-inline: auto;
 }
 
-.quote{
-  border-radius:var(--radius);
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.02);
-  padding:18px;
-  box-shadow:0 10px 40px rgba(0,0,0,.18);
+.hero {
+  padding: 42px 0 18px;
 }
-/* Kartın üzerine gelince hafifçe yükselmesi */
+
+.hero__inner {
+  width: min(1100px, calc(100% - 36px));
+  margin: auto;
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 26px;
+  align-items: center;
+}
+
+.title h1 {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(34px, 4vw, 52px);
+}
+
+.sub {
+  margin: 14px 0 18px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.main {
+  padding-bottom: 60px;
+}
+
+.section {
+  padding: 26px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* KART TASARIMLARI */
 .quote {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Yumuşak geçiş */
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, .02);
+  padding: 18px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .quote:hover {
-  transform: translateY(-5px); /* 5 piksel yukarı kalkar */
-  box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* Gölgesi derinleşir */
-  border-color: var(--accent); /* Çerçevesi senin pas rengine döner */
-  background: rgba(255,255,255,0.04); /* Çok hafif aydınlanır */
-}
-.quote p{
-  margin:0;
-  font-family:var(--serif);
-  font-size:18px;
-  line-height:1.75;
+  transform: translateY(-5px);
+  /* 5 piksel yukarı kalkar */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
 }
 
-.footer{
-  border-top:1px solid var(--line);
-  padding-top:18px;
+.quote p {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.75;
 }
 
-.sig__meta{
-  color:var(--muted);
-  font-size:13px;
+.footer {
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+}
+
+.sig__meta {
+  color: var(--muted);
+  font-size: 13px;
 }
 
 /* Profil */
-.authorProfile{text-align:center;}
-
-.authorPhoto{
-  width:88px;
-  height:88px;
-  border-radius:50%;
-  object-fit:cover;
-  margin-bottom:14px;
-  filter:grayscale(100%) contrast(.95);
-  opacity:.9;
+.authorProfile {
+  text-align: center;
 }
 
-.igLink{
-  display:inline-flex;
-  margin:6px 0 10px;
-  color:rgba(233,230,223,.65);
+.authorPhoto {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 14px;
+  filter: grayscale(100%) contrast(.95);
+  opacity: .9;
 }
 
-.igLink:hover{color:rgba(233,230,223,.95);}
+.igLink {
+  display: inline-flex;
+  margin: 6px 0 10px;
+  color: rgba(233, 230, 223, .65);
+}
+
+.igLink:hover {
+  color: rgba(233, 230, 223, .95);
+}
 
 /* ========================= */
 /* === AÇILIŞ PERDESİ === */
 /* ========================= */
 
-#introScreen{
-  position:fixed;
-  inset:0;
+#introScreen {
+  position: fixed;
+  inset: 0;
   background:
-    radial-gradient(600px 400px at 30% 30%, rgba(212,163,115,.14), transparent 60%),
-    radial-gradient(600px 400px at 70% 70%, rgba(134,168,162,.12), transparent 60%),
+    radial-gradient(600px 400px at 30% 30%, rgba(212, 163, 115, .14), transparent 60%),
+    radial-gradient(600px 400px at 70% 70%, rgba(134, 168, 162, .12), transparent 60%),
     #0b0d0f;
-  z-index:10000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.introInner{
-  text-align:center;
-  max-width:540px;
-  padding:24px;
-  animation:introAppear 1.2s ease forwards;
+.introInner {
+  text-align: center;
+  max-width: 540px;
+  padding: 24px;
+  animation: introAppear 1.2s ease forwards;
 }
 
 /* Yazıya çok hafif canlılık */
-.introText{
-  font-family:var(--serif);
-  font-size:26px;
-  line-height:1.6;
-  margin-bottom:32px;
-  animation:softBreath 6s ease-in-out infinite;
+.introText {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.6;
+  margin-bottom: 32px;
+  animation: softBreath 6s ease-in-out infinite;
 }
 
-.introText span{
-  color:var(--accent);
+.introText span {
+  color: var(--accent);
 }
 
 /* Nefes alan animasyon */
-@keyframes softBreath{
-  0%,100%{opacity:.92;}
-  50%{opacity:1;}
+@keyframes softBreath {
+  0%, 100% { opacity: .92; }
+  50% { opacity: 1; }
 }
 
-@keyframes introAppear{
-  from{opacity:0;transform:translateY(14px);}
-  to{opacity:1;transform:translateY(0);}
+@keyframes introAppear {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 /* === ELİT BUTON === */
-#introBtn{
-  font-family:var(--sans);
-  font-size:12px;
-  letter-spacing:1.4px;
-  text-transform:uppercase;
-  background:rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.18);
-  color:rgba(233,230,223,.55);
-  padding:11px 22px;
-  border-radius:999px;
-  cursor:pointer;
+#introBtn {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, .02);
+  border: 1px solid rgba(255, 255, 255, .18);
+  color: rgba(233, 230, 223, .55);
+  padding: 11px 22px;
+  border-radius: 999px;
+  cursor: pointer;
   transition:
     color .35s ease,
     border-color .35s ease,
@@ -212,113 +239,94 @@ a:hover{text-decoration:underline;}
     transform .35s ease;
 }
 
-#introBtn:hover{
-  color:var(--text);
-  border-color:var(--accent);
-  background:rgba(212,163,115,.08);
-  transform:translateY(-1px);
+#introBtn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(212, 163, 115, .08);
+  transform: translateY(-1px);
 }
 
-
-#introScreen.hide{
-  animation:introDisappear .9s ease forwards;
+#introScreen.hide {
+  animation: introDisappear .9s ease forwards;
 }
 
-@keyframes introDisappear{
-  to{
-    opacity:0;
-    filter:blur(8px);
+@keyframes introDisappear {
+  to {
+    opacity: 0;
+    filter: blur(8px);
   }
 }
 
-
-@media (max-width:900px){
-  .hero__inner{grid-template-columns:1fr;}
-  .grid{grid-template-columns:1fr;}
+/* Medya Sorguları */
+@media (max-width: 900px) {
+  .hero__inner { grid-template-columns: 1fr; }
+  .grid { grid-template-columns: 1fr; }
 }
 
-@media (max-width:600px){
-  .introText{font-size:22px;}
+@media (max-width: 600px) {
+  .introText { font-size: 22px; }
+  
+  /* Mobilde plak küçülsün */
+  .music-control {
+    width: 45px; height: 45px;
+    bottom: 15px; right: 15px;
+  }
+  .quote {
+    margin-bottom: 20px;
+  }
 }
 
-
-
+/* === KAYDIRMA ÇUBUĞU (SCROLLBAR) === */
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-
 ::-webkit-scrollbar-track {
-  background: var(--bg); 
+  background: var(--bg);
 }
-
 
 ::-webkit-scrollbar-thumb {
-  background: var(--accent); 
+  background: var(--accent);
   border-radius: 5px;
-  border: 2px solid var(--bg); 
+  border: 2px solid var(--bg);
 }
-
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212,163,115, .8);
-
+  background: rgba(212, 163, 115, .8);
 }
 
+/* === FENER EFEKTİ (SPOTLIGHT) === */
 .spotlight {
   position: fixed;
   inset: 0;
-  pointer-events: none; 
-  z-index: 9990; 
+  pointer-events: none;
+  z-index: 9990;
   background: radial-gradient(
     circle 250px at var(--x, 50%) var(--y, 50%),
     rgba(212, 163, 115, 0.08),
     transparent 60%
   );
-  mix-blend-mode: screen; 
-  transition: background 0.1s ease; 
-
+  mix-blend-mode: screen;
+  transition: background 0.1s ease;
 }
 
-
+/* === İMZA === */
 .signature {
-  font-family: 'Mrs Saint Delafield', cursive; 
-  font-size: 3rem;       
-  color: #d4a373;        
-  text-align: right;    
+  font-family: 'Mrs Saint Delafield', cursive;
+  font-size: 3rem;
+  color: #d4a373;
+  text-align: right;
   margin-top: 20px;
-  transform: rotate(-5deg); 
-  
-  
-  opacity: 0; 
-  animation: signFadeIn 2s ease forwards 1s; 
+  transform: rotate(-5deg);
+  opacity: 0;
+  animation: signFadeIn 2s ease forwards 1s;
 }
 
 @keyframes signFadeIn {
   to { opacity: 0.8; transform: rotate(-5deg) translateY(0); }
 }
 
-
-@keyframes pulse-glow {
-  0% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); border-color: rgba(212, 163, 115, 0.4); }
-  50% { box-shadow: 0 0 25px rgba(212, 163, 115, 0.5); border-color: rgba(212, 163, 115, 1); }
-  100% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); border-color: rgba(212, 163, 115, 0.4); }
-}
-
-.special-card {
-  animation: pulse-glow 3s infinite ease-in-out;
-}
-
-body {
-  opacity: 0; 
-  transition: opacity 1.5s ease-in-out; 
-}
-
-body.loaded {
-  opacity: 1; 
-}
-
-
+/* === PLAK ÇALAR === */
 .music-control {
   position: fixed;
   bottom: 30px;
@@ -326,24 +334,22 @@ body.loaded {
   width: 65px;
   height: 65px;
   border-radius: 50%;
-  
-  background-image: url('./kralkaybederse.jpg'); 
+  background-image: url('./kralkaybederse.jpg');
   background-size: cover;
   background-position: center;
-  border: 2px solid #d4a373; 
+  border: 2px solid #d4a373;
   cursor: pointer;
-  z-index: 9995; 
-  box-shadow: 0 0 20px rgba(0,0,0,0.6);
+  z-index: 9995;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
   transition: transform 0.3s ease, filter 0.3s;
 }
-
 
 .music-control::after {
   content: '';
   position: absolute;
   top: 50%; left: 50%;
   width: 12px; height: 12px;
-  background: #0f1113; 
+  background: #0f1113;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   border: 1px solid #d4a373;
@@ -354,47 +360,21 @@ body.loaded {
   filter: brightness(1.2);
 }
 
-
 .music-control.playing {
-  animation: spin 5s linear infinite; 
+  animation: spin 5s linear infinite;
 }
 
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
 
-
-@media (max-width: 768px) {
-  .music-control {
-    width: 50px; height: 50px;
-    bottom: 20px; right: 20px;
-  }
-}
-@media (max-width: 600px) {
-  .music-control {
-    width: 45px; height: 45px; 
-    bottom: 15px; right: 15px; 
-  }
-  .quote {
-    margin-bottom: 20px; 
-  }
-}
-
+/* === İZLER KARTI NABIZ EFEKTİ === */
 @keyframes pulse-glow {
-  0% { 
-    box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); 
-    border-color: rgba(212, 163, 115, 0.4);
-  }
-  50% { 
-    box-shadow: 0 0 25px rgba(212, 163, 115, 0.5); 
-    border-color: rgba(212, 163, 115, 1); 
-  }
-  100% { 
-    box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); 
-    border-color: rgba(212, 163, 115, 0.4);
-  }
+  0% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); border-color: rgba(212, 163, 115, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(212, 163, 115, 0.5); border-color: rgba(212, 163, 115, 1); }
+  100% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); border-color: rgba(212, 163, 115, 0.4); }
 }
-
 
 .special-card {
-  animation: pulse-glow 3s infinite ease-in-out; 
+  animation: pulse-glow 3s infinite ease-in-out;
+}
