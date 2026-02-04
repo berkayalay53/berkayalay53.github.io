@@ -170,6 +170,7 @@
         </div>
       </div>
     </section>
+
     <section class="section section--footer">
       <div class="wrap footer">
         <p class="sig__meta">
@@ -267,13 +268,16 @@
       }, { duration: 500, fill: "forwards" });
     });
     
-    // === KADERİN CÜMLESİ MEKANİZMASI ===
+    // === KADERİN CÜMLESİ MEKANİZMASI (AKILLI SEÇİM) ===
     
-    // 1. Alıntı Bankası (Senin Kitaplarından)
     const quotes = [
       { 
         text: "Sana hiç dokunmadan, seni hiç durdurmadan... sadece uzaktan bir şarkı gibi sevdim seni.", 
         book: "Turuncu Saçlı Kız" 
+      },
+      { 
+        text: "Sen bana dünyada başka bir hayatın da mevcut olduğunu... öğrettin.", 
+        book: "Kürk Mantolu Madonna" 
       },
       { 
         text: "Burada ses yok. Ama gürültü çok.", 
@@ -292,8 +296,20 @@
         book: "Kayıp Duyular Atlası" 
       },
       { 
+        text: "Konuşmazsak kalır sanıyoruz. Oysa en çok susarak kaybediyoruz her şeyi.", 
+        book: "Turuncu Saçlı Kız" 
+      },
+      { 
         text: "Bazı insanlar birini özlemiyor — bir boşluğu seviyor.", 
         book: "Kayıp Duyular Atlası" 
+      },
+      { 
+        text: "Fark etmemenin içinde öylesine bir adalet vardı ki... buna bile razı oldum.", 
+        book: "Turuncu Saçlı Kız" 
+      },
+      { 
+        text: "Güzelliğin sadece dışına değil, içindeki dağınıklığa da aitti.", 
+        book: "Turuncu Saçlı Kız" 
       },
       { 
         text: "Kitap biter. Ama ses… devam eder.", 
@@ -302,6 +318,22 @@
       { 
         text: "Bu defter sessiz değil, sağır edici bir gürültüyle dolu.", 
         book: "Kaybolan Sesin Defteri" 
+      },
+      { 
+        text: "Biliyor musun, ben seni hiç ‘sahiplenmedim’. Çünkü sahip olduklarımı hep kaybettim. O yüzden sana hiç ‘benimsin’ diyemedim. Sadece içimden, ‘sensin’ dedim.", 
+        book: "Geçmişteki Sessizlik" 
+      },
+       { 
+        text: "Elimde kahve vardı. Ama ilk kez... kahvenin tadını merak etmedim. Sadece o buharı izledim. Yavaşça yükseliyor, ve kayboluyordu. Tıpkı bazı cümleler gibi. Söyleniyor... ama karşıya varmadan yok oluyordu.", 
+        book: "Beynin Sessiz Fırtınaları" 
+      },
+       { 
+        text: "Belki başka bir zaman, başka bir şehirde, bir parkta otururken tanımadan göz göze geleceğiz. Belki sen beni tanımayacaksın. Ama ben... seni her zaman tanıyacağım... Çünkü o günden sonra ne zaman gökyüzü turuncuya dönse... seni hatırladım.", 
+        book: "Turuncu Saçlı Kız" 
+      },
+       { 
+        text: "Bazı insanlar, hayata bir cümle gibi girer. Sonra virgül olur. Sonra üç nokta... Ve sonra, sessizlik.", 
+        book: "Turuncu Saçlı Kız" 
       },
       { 
         text: "Sanki konuşmaktan çok… anlatılmayan şeyleri dinliyorduk.", 
@@ -314,12 +346,22 @@
     const quoteText = document.getElementById('quote-text');
     const bookName = document.getElementById('book-name');
 
+    // HAFIZA SİSTEMİ: Son seçilen indeksi tutmak için
+    let lastIndex = -1;
+
     fateBtn.addEventListener('click', () => {
-      // Rastgele bir sayı seç
-      const randomIndex = Math.floor(Math.random() * quotes.length);
+      let randomIndex;
+
+      // Eğer seçilen sayı, son seçilenle aynıysa TEKRAR seç (Döngü)
+      do {
+        randomIndex = Math.floor(Math.random() * quotes.length);
+      } while (randomIndex === lastIndex);
+
+      // Yeni sayıyı hafızaya kaydet
+      lastIndex = randomIndex;
       const selectedQuote = quotes[randomIndex];
 
-      // Önce kutuyu gizle (animasyon tekrarı için)
+      // Önce kutuyu gizle (Yumuşak geçiş için)
       fateResult.classList.remove('show');
 
       // Kısa bir bekleme sonrası içeriği değiştirip göster
