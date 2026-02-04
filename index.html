@@ -251,6 +251,68 @@
         top: `${posY}px`
       }, { duration: 500, fill: "forwards" });
     });
+    // === KADERİN CÜMLESİ MEKANİZMASI ===
+    
+    // 1. Alıntı Bankası (Senin Kitaplarından)
+    const quotes = [
+      { 
+        text: "Sana hiç dokunmadan, seni hiç durdurmadan... sadece uzaktan bir şarkı gibi sevdim seni.", 
+        book: "Turuncu Saçlı Kız" 
+      },
+      { 
+        text: "Burada ses yok. Ama gürültü çok.", 
+        book: "Beynin Sessiz Fırtınaları" 
+      },
+      { 
+        text: "Herkes duymak istediğini duyar, ama kimse sessizliği duymaz.", 
+        book: "Beynin Sessiz Fırtınaları" 
+      },
+      { 
+        text: "Geriye dönsem de seni değil, sadece kendi yokluğumu bulacağımı biliyorum.", 
+        book: "Mazide Kalan" 
+      },
+      { 
+        text: "İnsan, hayal ettiğini severmiş; gerçeği ise sadece tolere edermiş.", 
+        book: "Kayıp Duyular Atlası" 
+      },
+      { 
+        text: "Bazı insanlar birini özlemiyor — bir boşluğu seviyor.", 
+        book: "Kayıp Duyular Atlası" 
+      },
+      { 
+        text: "Kitap biter. Ama ses… devam eder.", 
+        book: "Kaybolan Sesin Defteri" 
+      },
+      { 
+        text: "Bu defter sessiz değil, sağır edici bir gürültüyle dolu.", 
+        book: "Kaybolan Sesin Defteri" 
+      },
+      { 
+        text: "Sanki konuşmaktan çok… anlatılmayan şeyleri dinliyorduk.", 
+        book: "Bir Defterin İçinde Kalanlar" 
+      }
+    ];
+
+    const fateBtn = document.getElementById('fate-btn');
+    const fateResult = document.getElementById('fate-result');
+    const quoteText = document.getElementById('quote-text');
+    const bookName = document.getElementById('book-name');
+
+    fateBtn.addEventListener('click', () => {
+      // Rastgele bir sayı seç
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const selectedQuote = quotes[randomIndex];
+
+      // Önce kutuyu gizle (animasyon tekrarı için)
+      fateResult.classList.remove('show');
+
+      // Kısa bir bekleme sonrası içeriği değiştirip göster
+      setTimeout(() => {
+        quoteText.textContent = `“${selectedQuote.text}”`;
+        bookName.textContent = selectedQuote.book;
+        fateResult.classList.add('show');
+      }, 300); // 300ms geçiş süresi
+    });
   </script>
 
 </body>
