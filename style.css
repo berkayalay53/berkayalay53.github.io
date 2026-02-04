@@ -788,3 +788,22 @@ a:hover {
   filter: blur(12px);
   transition: all 1s ease;
 }
+/* === İKONLARI HİZALAMA AYARI === */
+.social-row {
+  display: flex;
+  align-items: center;      /* Dikeyde tam ortala */
+  justify-content: center;  /* Yatayda tam ortala */
+  gap: 20px;                /* İki ikon arasındaki boşluk */
+  margin: 10px 0 16px;      /* Üstten ve alttan boşluk */
+}
+
+/* Eski marginleri sıfırlayalım ki hizayı bozmasın */
+.social-row .igLink, 
+.social-row .secret-btn {
+  margin: 0 !important;
+}
+
+/* Tüy kalem ikonunun çizgisini biraz inceltip zarifleştirelim */
+.secret-btn svg {
+  stroke-width: 1.5; /* Daha narin dursun */
+}
