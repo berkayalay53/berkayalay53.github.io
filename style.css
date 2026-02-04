@@ -378,13 +378,23 @@ a:hover {
   100% { transform: rotate(360deg); }
 }
 
-/* === İZLER KARTI NABIZ EFEKTİ === */
-@keyframes pulse-glow {
-  0% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); border-color: rgba(212, 163, 115, 0.4); }
-  50% { box-shadow: 0 0 25px rgba(212, 163, 115, 0.5); border-color: rgba(212, 163, 115, 1); }
-  100% { box-shadow: 0 0 15px rgba(212, 163, 115, 0.15); border-color: rgba(212, 163, 115, 0.4); }
+/* === ISLAK İMZA EFEKTİ === */
+.signature {
+  font-family: 'Mrs Saint Delafield', cursive;
+  font-size: 3rem;       /* Kutu içinde çok büyük durmasın diye 3rem ideal */
+  color: #d4a373;
+  display: block;
+  width: fit-content;
+  margin-left: auto;     /* Sağa yaslar */
+  margin-top: 20px;      /* Yazıdan uzaklaştırır */
+  margin-right: 10px;    /* Kutunun kenarından biraz boşluk */
+  transform: rotate(-5deg);
+  
+  /* Animasyon */
+  clip-path: inset(0 100% 0 0);
+  animation: writeSignature 3s cubic-bezier(0.5, 0, 0.5, 1) forwards 0.5s; 
 }
 
-.special-card {
-  animation: pulse-glow 3s infinite ease-in-out;
+@keyframes writeSignature {
+  to { clip-path: inset(0 0 0 0); }
 }
