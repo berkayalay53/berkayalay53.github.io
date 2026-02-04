@@ -398,3 +398,32 @@ a:hover {
 @keyframes writeSignature {
   to { clip-path: inset(0 0 0 0); }
 }
+/* === HAYALET İMLEÇ === */
+.cursor-dot,
+.cursor-outline {
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 9999;
+  pointer-events: none;
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background-color: var(--accent);
+}
+
+.cursor-outline {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(212, 163, 115, 0.5);
+  transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+/* Mobilde imleç gizlensin (Dokunmatik ekran) */
+@media (max-width: 900px) {
+  .cursor-dot, .cursor-outline { display: none; }
+}
