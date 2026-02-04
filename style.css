@@ -42,7 +42,11 @@ body {
   opacity: 0;
   /* Sayfa açılış efekti */
   transition: opacity 1.5s ease-in-out;
+  overflow-x: hidden; /* İşte kilidi vuran kod bu */
+  position: relative;
+  width: 100%;
 }
+
 
 body.loaded {
   opacity: 1;
@@ -678,13 +682,15 @@ a:hover {
 }
 
 .secret-content {
-  width: 90%;
+  width: 85%; /* Telefondan taşmasın diye biraz küçülttük */
   max-width: 500px;
   text-align: center;
   position: relative;
   transform: scale(0.95);
   transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+  margin: 0 auto; /* Tam ortalaması için */
 }
+
 
 .secret-modal.active .secret-content {
   transform: scale(1);
