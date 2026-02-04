@@ -585,3 +585,61 @@ a:hover {
     margin-bottom: 1rem;
   }
 }
+/* === PAYLAŞIM BUTONLARI === */
+.share-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  opacity: 0; /* Başlangıçta gizli */
+  transform: translateY(10px);
+  transition: all 0.5s ease 0.2s; /* Alıntıdan biraz sonra gelsin */
+}
+
+/* Alıntı görününce bunlar da görünsün */
+.fate-result.show .share-actions {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.share-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* Link alt çizgisini kaldır */
+}
+
+.share-btn:hover {
+  background: var(--accent);
+  color: #0f1113; /* İkon rengi koyu olsun */
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 163, 115, 0.3);
+}
+
+/* Kopyalandı Mesajı */
+.copy-feedback {
+  position: absolute;
+  right: -80px; /* Kutunun sağına alalım */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+.copy-feedback.visible {
+  opacity: 1;
+}
