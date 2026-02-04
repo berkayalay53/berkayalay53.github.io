@@ -1,256 +1,162 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Berkay Alay — Yazar</title>
-  <meta name="description" content="Berkay Alay. Sessizliğin etrafında yazılmış metinler." />
-  
-  <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
-  <link rel="icon" href="./profile.jpg" type="image/jpeg">
-  <link rel="apple-touch-icon" href="./profile.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İzler — Berkay Alay</title>
 
-  <meta property="og:title" content="Berkay Alay — Yazar">
-  <meta property="og:description" content="Sessizliğin etrafında yazılmış metinler.">
-  <meta property="og:image" content="https://berkayalay53.github.io/profile.jpg">
-  <meta property="og:url" content="https://berkayalay53.github.io/">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="İzler — Berkay Alay">
+  <meta property="og:image" content="https://berkayalay53.github.io/eniyialintilar.github.io/cover.jpg">
 
+  <link rel="icon" href="./cover.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
 </head>
-
 <body>
-<div class="cursor-dot" data-cursor-dot></div>
-  <div class="cursor-outline" data-cursor-outline></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="spotlight"></div>
-  
-  <div id="musicDisc" class="music-control" title="Müziği Durdur/Başlat"></div>
-  
-  <div id="introScreen">
-    <div class="introInner">
-      <p class="introText">
-        Seninle yaşadığım şey böyleydi:<br>
-        <span>zamansız, mekânsız, ama gerçek.</span>
-      </p>
 
-      <button id="introBtn" aria-label="Devam et">
-        devam etmek için dokun
-      </button>
+  <div id="intro-screen">
+    <div class="intro-content">
+      <h1 class="intro-title">İzler</h1>
+      <p class="intro-quote">"Bazı cümleler yazıldığı yerde kalmaz.<br>Okuyanın içinde yer değiştirir."</p>
+      <button id="start-btn">İzleri Takip Et</button>
     </div>
   </div>
 
-  <header class="hero">
-    <div class="hero__inner" style="grid-template-columns:1fr;">
-      <div class="title authorProfile">
+  <div class="fixed-bg"></div>
+  <div class="grain"></div>
 
-        <img
-          src="./profile.jpg"
-          alt="Berkay Alay"
-          class="authorPhoto"
-        >
+  <main class="page">
+    
+    <header class="hero-spacer">
+      </header>
 
-        <h1>Berkay Alay</h1>
+    <div class="scene">
+      <section class="quote q-left">
+        <p>“Ben seni bir bakışta tanıdım. Ama sen beni hiçbir zaman fark etmedin. Ve fark etmemenin içinde öylesine bir adalet vardı ki... buna bile razı oldum. Sadece seni uzaktan görebilmek, bana uzun bir kış boyu yetecek kadar sıcaklık verdi.”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
 
-        <a class="igLink"
-           href="https://www.instagram.com/berkayalay.53/"
-           target="_blank"
-           rel="noopener"
-           aria-label="Instagram">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-            <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.28 3.5 3.5 5.28 3.5 7.75v8.5c0 2.47 1.78 4.25 4.25 4.25h8.5c2.47 0 4.25-1.78 4.25-4.25v-8.5c0-2.47-1.78-4.25-4.25-4.25h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a.88.88 0 110 1.75.88.88 0 010-1.75z"/>
-          </svg>
-        </a>
+      <div class="divider">~</div>
 
-        <p class="sub">
-          Yazmak, anlatmak için değil.<br>
-          Bazı şeyleri yerinde tutmak için.
-        </p>
-
-        </div>
+      <section class="quote q-right">
+        <p>“Tesadüf seni önüme çıkarmasaydı, gene aynı şekilde fakat her şeyden habersiz, yaşayıp gidecektim. Sen bana dünyada başka bir hayatın da mevcut olduğunu, benim bir de ruhum bulunduğunu öğrettin.”</p>
+        <span>Kürk Mantolu Madonna</span>
+      </section>
     </div>
-    <div class="scroll-indicator">
-      <span></span>
-      <span></span>
-      <span></span>
+
+    <div class="scene">
+      <section class="quote q-left">
+        <p>“Seninle ilgili olan hiçbir şeyin tanımı yok. Seni ilk gördüğümde ne hissettiğimi anlatamam. Çünkü kelimeler, seni daraltır. Oysa sen, anlamı taşan bir varlıktın. Bu yüzden seni tarif etmekten vazgeçtim. Sadece hissettim. Ve hissettikçe sustum. Çünkü bazen anlatmak, eksiltmektir.”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
+
+      <div class="divider">~</div>
+
+      <section class="quote q-right">
+        <p>“Sessizlik bir eksiklik değil, bazen hayatta kalma biçimidir. Dışarıdan bakınca boşluk sanılan şey, içeride verilen bir savaşın sessiz cephesidir. Anlatmak anlaşılmayı garantilemez, ama susmak seni korur.”</p>
+        <span>Beynin Sessiz Fırtınaları</span>
+      </section>
     </div>
-  </header>
 
-  <main class="main">
+    <div class="scene">
+      <section class="quote q-left">
+        <p>“Bir gün seninle aynı yağmurda yürüdüm. Sen farkında bile olmadan yanımdan geçtin. Üstün ıslanmasın diye başını biraz daha eğmiş, hızlı adımlarla köşeye yönelmiştin. Ben ise... seni geçip giden bir insanı değil, kendimi yıllar sonra orada ilk kez yakalamıştım. Sen o an, kim olduğunu bilmeden kim olduğumu hatırlattın bana.”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
 
-    <section class="section">
-      <div class="wrap">
-        <blockquote class="quote">
-          <p>
-            Berkay Alay, yazıyı bir şeyleri anlatmak için değil, bazı şeyleri yerinde tutmak için yazar.
-            Onun metinlerinde olaylar değil, olaylardan geriye kalan sessizlik konuşur.
-            Alay’ın dünyasında karakterler genellikle bir yere varmaz; durur, bekler, hatırlar.
-            Çünkü ona göre insanı şekillendiren şey yaşadıkları değil, yaşayamayıp içinde taşıdıklarıdır.
-          </p>
-          <p>
-            Bu yüzden metinlerinde aşk bir sonuç değil, bir ihtimaldir; kayıp bir bitiş değil, kalıcı bir izdir.
-            Yazar, okuru hızlı anlamlara çağırmaz; satır aralarında durmayı, satır aralarında nefes almayı ister.
-            Çünkü bazı duygular açıklanmaz — ancak hissedildiğinde anlaşılır.
-          </p>
-          
-          <div class="signature">Berkay Alay</div>
-          
-        </blockquote>
-      </div>
+      <div class="divider">~</div>
+
+      <section class="quote q-right">
+        <p>“Yürüdüğün sokakları hatırlıyorum. Senin olmadığın ama seni düşündüğüm sokakları... Orada sana hiç rastlamadım. Ama her köşe başında seni aradım. Belki adımlarımız aynı kaldırım taşına değmiştir. Ama bil ki... senin geçtiğin hiçbir yer, benden sonra bir daha aynı kalmadı.”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
+    </div>
+
+    <section class="quote q-center">
+      <p>“Sana hiç dokunmadan, seni hiç durdurmadan... sadece uzaktan bir şarkı gibi sevdim seni.”</p>
+      <span>Turuncu Saçlı Kız</span>
     </section>
 
-    <section class="section section--grid">
-      <div class="wrap grid">
+    <div class="scene">
+      <section class="quote q-left">
+        <p>“Seninle hiç konuşmadan bir dil kurdum. Ve o dilde her kelime... sendin. Mesela gülüşünü değil, gülmediğin anları ezberledim. Kaşlarını çatmadan önceki saniyeyi. Kitaba baktığında gerçekten okuyup okumadığını. Dalgınlığını değil, neden dalıp gittiğini. Anlıyor musun?”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
 
-       <a class="quote special-card" href="https://berkayalay53.github.io/eniyialintilar.github.io/" target="_blank" style="position: relative;">
-          <span style="position: absolute; top: 12px; right: 12px; font-size: 10px; background: #d4a373; color: #0f1113; padding: 2px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px;">ÖZEL</span>
-          <p>
-            <strong>İzler</strong><br>
-            <span style="font-size: 0.9em; opacity: 0.85; font-style: italic;">
-              "Hikayelerden kopup gelen, tek başına yaşayan en iyi cümleler."
-            </span>
-          </p>
-        </a>
+      <div class="divider">~</div>
 
-        <a class="quote" href="https://berkayalay53.github.io/turuncusaclikiz.github.io/" target="_blank">
-          <p><strong>Turuncu Saçlı Kız</strong><br>Bir bakışın yıllarca sürmesi.</p>
-        </a>
+      <section class="quote q-right">
+        <p>“Konuşmak, bazen anlaşılmanın en zor yoludur. İnsanlar kelimelerine takılır, sesinin tonuna, hatta duraksamalarına... Seni yanlış kelimelerle kaybetmektense, dürüst bir sessizlikle saklamayı seçtim. Çünkü yazılmayan mektuplar, asla reddedilmez.”</p>
+        <span>Beynin Sessiz Fırtınaları</span>
+      </section>
+    </div>
 
-        <a class="quote" href="https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" target="_blank">
-          <p><strong>Beynin Sessiz Fırtınaları</strong><br>Düşüncenin içindeki gürültü.</p>
-        </a>
+    <div class="scene">
+      <section class="quote q-left">
+        <p>“Birini beklemek... bazen bir durağın kenarında, bazen bir cümlede, bazen bir kitabın içinde olur. Ama en zoru, birini içinde beklemektir. Çünkü orada saat yoktur. Takvim İşlemez. Ve ne zaman vazgeçeceğini bilmezsin.”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
 
-        <a class="quote" href="https://berkayalay53.github.io/gecmistekisessizlik.github.io/" target="_blank">
-          <p><strong>Geçmişteki Sessizlik</strong><br>Hatırlamanın ağır hali.</p>
-        </a>
+      <div class="divider">~</div>
 
-        <a class="quote" href="https://berkayalay53.github.io/kayipduyularatlasi.github.io/" target="_blank">
-          <p><strong>Kayıp Duyular Atlası</strong><br>Yokluğun haritası.</p>
-        </a>
+      <section class="quote q-right">
+        <p>“Beklemenin garip tarafı şu ki; insan neden beklediğini bilmediği halde beklemeye devam ediyor. Bu bir bakış, belki bir ses, belki sadece geçerken omzunun bana dokunmasıydı aradığım. Ama olmadı.”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
+    </div>
 
-        <a class="quote" href="https://berkayalay53.github.io/mazidekalan.github.io/" target="_blank">
-          <p><strong>Mazide Kalan</strong><br>Geri dönülmeyen zamanlar.</p>
-        </a>
+    <div class="scene">
+      <section class="quote q-left">
+        <p>“Kırılmalar, bağırarak olmaz. En sert çöküşler sessiz yaşanır. Ve ben bir kez daha anladım: Bazı insanlar sadece yaşar. Bazılarıysa... şahit olur. Ben o gün sadece şahit oldum. Çünkü herkes duymak istediğini duyar, ama kimse sessizliği duymaz.”</p>
+        <span>Beynin Sessiz Fırtınaları</span>
+      </section>
 
-        <a class="quote" href="https://berkayalay53.github.io/kaybolansesindefteri.github.io/" target="_blank">
-          <p><strong>Kaybolan Sesin Defteri</strong><br>Yazıyla konuşan sessizlik.</p>
-        </a>
+      <div class="divider">~</div>
 
-        <a class="quote" href="https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/" target="_blank">
-          <p><strong>Bir Defterin İçinde Kalanlar</strong><br>Yazılmaktan vazgeçilen anlar.</p>
-        </a>
+      <section class="quote q-right">
+        <p>“İnsan bazı şeyleri söylemese de gözleri konuşur. Göz göze gelmek cesarettir; gözünü kaçırmamaksa, vedadır. Veda eden insan, son kez gördüğü manzarayı ezberlemek ister gibi bakar. O bakışta öfke yoktur, sitem yoktur. Sadece derin bir kabulleniş vardır.”</p>
+        <span>Beynin Sessiz Fırtınaları</span>
+      </section>
+    </div>
 
-        <a class="quote" href="https://berkayalay53.github.io/serininatlasi.github.io/" target="_blank" style="opacity: 0.8;">
-          <p>
-            <strong>Serinin Atlası</strong> 
-            <span style="font-size: 14px; opacity: 0.7;">(Playlist)</span>
-            <br>
-            Tüm bu hikâyelerin sesi.
-          </p>
-        </a>
+    <div class="scene">
+      <section class="quote q-center">
+        <p>“Eğer bir gün bu kitabı okurken kalbinin bir yeri sızlarsa, bil ki ben de aynı sayfada durmuş, seni bekliyordum.”</p>
+        <span>Turuncu Saçlı Kız</span>
+      </section>
+    </div>
 
-      </div>
-    </section>
-
-    <section class="section section--footer">
-      <div class="wrap footer">
-        <p class="sig__meta">
-          Tüm platformlardaki sürümler için
-          <a href="https://books2read.com/berkayalay" target="_blank" rel="noopener">
-            yazar sayfası
-          </a>
-        </p>
-      </div>
-    </section>
+    <div class="end-mark">
+      <a href="https://berkayalay53.github.io/" class="home-link">← ANA SAYFAYA DÖN</a>
+    </div>
 
   </main>
 
-  <audio id="bgMusic" loop>
-    <source src="./muzik.mp3" type="audio/mpeg">
-  </audio>
-
   <script>
-    // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
+    // INTRO LOGIC
+    const introScreen = document.getElementById('intro-screen');
+    const startBtn = document.getElementById('start-btn');
 
-    // === MELANKOLİK SEKME BAŞLIĞI ===
-    let docTitle = document.title;
-    window.addEventListener("blur", () => {
-      document.title = "Sessizlik..."; /* Başka sekmeye geçince yazar */
-    });
-    window.addEventListener("focus", () => {
-      document.title = docTitle; /* Geri dönünce düzelir */
-    });
-
-    const intro = document.getElementById('introScreen');
-    const btn = document.getElementById('introBtn');
-    const music = document.getElementById('bgMusic');
-    const disc = document.getElementById('musicDisc');
-
-    // Sayfa açıldığında kaydırmayı kilitle
+    // Başlangıçta kaydırmayı kilitle
     document.body.style.overflow = 'hidden';
 
-    // Müzik Durumu Fonksiyonu
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-        disc.classList.add('playing'); // Dönmeye başla
-      } else {
-        music.pause();
-        disc.classList.remove('playing'); // Dur
-      }
-    }
-
-    // Giriş butonuna basınca
-    btn.addEventListener('click', () => {
-      // Müziği ve Plağı başlat
-      music.play().then(() => {
-        disc.classList.add('playing');
-      }).catch(e => console.log("Otomatik oynatma engellendi", e));
-      
-      music.volume = 0.4; 
-
-      // Perde Kapansın
-      intro.classList.add('hide');
-
-      setTimeout(() => {
-        intro.remove();
-        document.body.style.overflow = ''; // Kaydırmayı aç
-      }, 900);
+    startBtn.addEventListener('click', () => {
+      introScreen.classList.add('fade-out');
+      document.body.style.overflow = 'auto'; // Kaydırmayı aç
     });
 
-    // Plağa tıklayınca müziği aç/kapat
-    disc.addEventListener('click', toggleMusic);
-
-    // FENER EFEKTİ
-    const spotlight = document.querySelector('.spotlight');
-    document.addEventListener('mousemove', (e) => {
-      spotlight.style.setProperty('--x', e.clientX + 'px');
-      spotlight.style.setProperty('--y', e.clientY + 'px');
-    });
-    // === HAYALET İMLEÇ TAKİBİ ===
-    const cursorDot = document.querySelector('[data-cursor-dot]');
-    const cursorOutline = document.querySelector('[data-cursor-outline]');
-
-    window.addEventListener("mousemove", function (e) {
-      const posX = e.clientX;
-      const posY = e.clientY;
-
-      // Nokta anında gitsin
-      cursorDot.style.left = `${posX}px`;
-      cursorDot.style.top = `${posY}px`;
-
-      // Halka biraz geriden ve yumuşak gelsin
-      cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-      }, { duration: 500, fill: "forwards" });
-    });
+    // SCROLL ANIMATION
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.quote').forEach(quote => observer.observe(quote));
   </script>
 
 </body>
