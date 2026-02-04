@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Berkay Alay — Yazar</title>
   <meta name="description" content="Berkay Alay. Sessizliğin etrafında yazılmış metinler." />
-<link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
   <link rel="icon" href="./profile.jpg" type="image/jpeg">
   <link rel="apple-touch-icon" href="./profile.jpg">
 
@@ -25,7 +26,9 @@
 
   <div class="grain" aria-hidden="true"></div>
   <div class="spotlight"></div>
-<div id="musicDisc" class="music-control" title="Müziği Durdur/Başlat"></div>
+  
+  <div id="musicDisc" class="music-control" title="Müziği Durdur/Başlat"></div>
+  
   <div id="introScreen">
     <div class="introInner">
       <p class="introText">
@@ -50,6 +53,8 @@
         >
 
         <h1>Berkay Alay</h1>
+        
+        <div class="signature">Berkay Alay</div>
 
         <a class="igLink"
            href="https://www.instagram.com/berkayalay.53/"
@@ -87,7 +92,6 @@
             Çünkü bazı duygular açıklanmaz — ancak hissedildiğinde anlaşılır.
           </p>
         </blockquote>
-        <div class="signature">Berkay Alay</div>
       </div>
     </section>
 
@@ -96,9 +100,8 @@
 
        <a class="quote special-card" href="https://berkayalay53.github.io/eniyialintilar.github.io/" target="_blank" style="position: relative;">
           <span style="position: absolute; top: 12px; right: 12px; font-size: 10px; background: #d4a373; color: #0f1113; padding: 2px 8px; border-radius: 4px; font-weight: 600; letter-spacing: 0.5px;">ÖZEL</span>
-          
           <p>
-            <a class="quote special-card" href="https://berkayalay53.github.io/eniyialintilar.github.io/" target="_blank" style="border-color: #d4a373; position: relative; box-shadow: 0 0 15px rgba(212, 163, 115, 0.15);">
+            <strong>İzler</strong><br>
             <span style="font-size: 0.9em; opacity: 0.85; font-style: italic;">
               "Hikayelerden kopup gelen, tek başına yaşayan en iyi cümleler."
             </span>
@@ -161,18 +164,20 @@
   <audio id="bgMusic" loop>
     <source src="./muzik.mp3" type="audio/mpeg">
   </audio>
-// === MELANKOLİK SEKME BAŞLIĞI ===
+
+  <script>
+    // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // === MELANKOLİK SEKME BAŞLIĞI (Script içine alındı) ===
     let docTitle = document.title;
     window.addEventListener("blur", () => {
       document.title = "Sessizlik..."; /* Başka sekmeye geçince yazar */
     });
     window.addEventListener("focus", () => {
       document.title = docTitle; /* Geri dönünce düzelir */
-    });
-  <script>
-    // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
     });
 
     const intro = document.getElementById('introScreen');
