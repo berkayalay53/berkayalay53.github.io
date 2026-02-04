@@ -53,8 +53,6 @@
         >
 
         <h1>Berkay Alay</h1>
-        
-        <div class="signature">Berkay Alay</div>
 
         <a class="igLink"
            href="https://www.instagram.com/berkayalay.53/"
@@ -71,9 +69,7 @@
           Bazı şeyleri yerinde tutmak için.
         </p>
 
-        <div class="signature">Berkay Alay</div>
-
-      </div>
+        </div>
     </div>
   </header>
 
@@ -93,6 +89,9 @@
             Yazar, okuru hızlı anlamlara çağırmaz; satır aralarında durmayı, satır aralarında nefes almayı ister.
             Çünkü bazı duygular açıklanmaz — ancak hissedildiğinde anlaşılır.
           </p>
+          
+          <div class="signature">Berkay Alay</div>
+          
         </blockquote>
       </div>
     </section>
@@ -173,7 +172,7 @@
       document.body.classList.add('loaded');
     });
 
-    // === MELANKOLİK SEKME BAŞLIĞI (Script içine alındı) ===
+    // === MELANKOLİK SEKME BAŞLIĞI ===
     let docTitle = document.title;
     window.addEventListener("blur", () => {
       document.title = "Sessizlik..."; /* Başka sekmeye geçince yazar */
@@ -185,7 +184,7 @@
     const intro = document.getElementById('introScreen');
     const btn = document.getElementById('introBtn');
     const music = document.getElementById('bgMusic');
-    const disc = document.getElementById('musicDisc'); // Plak elementi
+    const disc = document.getElementById('musicDisc');
 
     // Sayfa açıldığında kaydırmayı kilitle
     document.body.style.overflow = 'hidden';
