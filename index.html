@@ -64,7 +64,15 @@
             <path d="M7.75 2h8.5C19.55 2 22 4.45 22 7.75v8.5C22 19.55 19.55 22 16.25 22h-8.5C4.45 22 2 19.55 2 16.25v-8.5C2 4.45 4.45 2 7.75 2zm0 1.5C5.28 3.5 3.5 5.28 3.5 7.75v8.5c0 2.47 1.78 4.25 4.25 4.25h8.5c2.47 0 4.25-1.78 4.25-4.25v-8.5c0-2.47-1.78-4.25-4.25-4.25h-8.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7zm5.25-.88a.88.88 0 110 1.75.88.88 0 010-1.75z"/>
           </svg>
         </a>
+<a class="igLink" href="https://www.instagram.com/berkayalay.53/" ...> </a>
 
+        <button id="secret-trigger" class="igLink secret-btn" aria-label="İçini Dök" title="Sessizliğe bırak...">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+            <line x1="16" y1="8" x2="2" y2="22"></line>
+            <line x1="17.5" y1="15" x2="9" y2="15"></line>
+          </svg>
+        </button>
         <p class="sub">
           Yazmak, anlatmak için değil.<br>
           Bazı şeyleri yerinde tutmak için.
@@ -199,7 +207,18 @@
     </section>
 
   </main>
-
+<div id="secret-modal" class="secret-modal">
+    <div class="secret-content">
+      <span class="close-secret">&times;</span>
+      <h2 class="secret-title">Sessizliğe Bırak</h2>
+      <p class="secret-desc">Buraya yazılanlar asla kaydedilmez. Sadece sen, ben ve boşluk arasında kalır. Yaz ve yükünü bırak.</p>
+      
+      <textarea id="secret-text" placeholder="İçinden ne geliyorsa..."></textarea>
+      
+      <button id="burn-btn">Yak ve Gönder</button>
+    </div>
+    <div id="smoke-msg" class="smoke-msg">Sessizliğe karıştı...</div>
+  </div>
   <audio id="bgMusic" loop>
     <source src="./muzik.mp3" type="audio/mpeg">
   </audio>
