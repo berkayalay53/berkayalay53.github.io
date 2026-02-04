@@ -458,3 +458,90 @@ a:hover {
   50% { opacity: 1; }
   100% { opacity: 0; transform: rotate(45deg) translate(0px, 0px); }
 }
+/* ========================================= */
+/* === KADERİN CÜMLESİ (RASTGELE ALINTI) === */
+/* ========================================= */
+
+.fate-section {
+  padding: 6rem 0;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+
+.fate-box {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.fate-header {
+  font-family: var(--serif);
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-weight: 400;
+}
+
+.fate-sub {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+/* Özel Buton Tasarımı */
+.btn-fate {
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 12px 35px;
+  border-radius: 50px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-fate:hover {
+  background: var(--accent);
+  color: #000;
+  box-shadow: 0 0 20px rgba(212, 163, 115, 0.3);
+}
+
+/* Alıntı Sonuç Alanı */
+.fate-result {
+  margin-top: 3rem;
+  opacity: 0; /* Başlangıçta görünmez */
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.fate-result.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#quote-text {
+  font-family: var(--serif);
+  font-size: 1.4rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+#book-name {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
