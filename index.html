@@ -439,6 +439,62 @@
         fateResult.classList.add('show');
       }, 300);
     });
+    // === GİZLİ BÖLME (HAYALET MEKTUP) MEKANİZMASI ===
+    const secretTrigger = document.getElementById('secret-trigger');
+    const secretModal = document.getElementById('secret-modal');
+    const closeSecret = document.querySelector('.close-secret');
+    const burnBtn = document.getElementById('burn-btn');
+    const secretContent = document.querySelector('.secret-content');
+    const smokeMsg = document.getElementById('smoke-msg');
+    const secretText = document.getElementById('secret-text');
+
+    // Pencereyi Aç
+    secretTrigger.addEventListener('click', () => {
+      secretModal.classList.add('active');
+      // Eski animasyonları temizle
+      secretContent.classList.remove('burning');
+      smokeMsg.classList.remove('show');
+      secretText.value = ""; // İçeriği temizle
+      
+      // Hafif bir gecikmeyle odaklan (mobil klavye için)
+      setTimeout(() => secretText.focus(), 100);
+    });
+
+    // Pencereyi Kapat (Çarpı ile)
+    closeSecret.addEventListener('click', () => {
+      secretModal.classList.remove('active');
+    });
+    
+    // Pencereyi Kapat (Arka plana tıklayarak)
+    secretModal.addEventListener('click', (e) => {
+      if (e.target === secretModal) {
+        secretModal.classList.remove('active');
+      }
+    });
+
+    // YAK VE GÖNDER EFEKTİ
+    burnBtn.addEventListener('click', () => {
+      if(secretText.value.trim() === "") return; // Boşsa işlem yapma
+
+      // 1. Kağıdı yak (Yok olma efekti)
+      secretContent.classList.add('burning');
+
+      // 2. "Sessizliğe karıştı..." mesajını göster
+      setTimeout(() => {
+        smokeMsg.classList.add('show');
+      }, 400);
+
+      // 3. Odayı kapat ve temizle
+      setTimeout(() => {
+        secretModal.classList.remove('active');
+        
+        // Sınıfları temizle ki tekrar açılabilsin
+        setTimeout(() => {
+           secretContent.classList.remove('burning');
+           smokeMsg.classList.remove('show');
+        }, 500);
+      }, 2800); // 2.8 saniye sonra kapanır
+    });
   </script>
 
 </body>
