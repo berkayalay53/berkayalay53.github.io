@@ -22,8 +22,18 @@
   --shadow: 0 16px 50px rgba(0, 0, 0, .45);
 }
 
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important; /* ÇİFT KİLİT: Asla sağa taşmasın */
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
 html {
   scroll-behavior: smooth;
+  /* Arka plan renkleri */
   background:
     radial-gradient(1200px 800px at 20% 10%, rgba(212, 163, 115, .10), transparent 55%),
     radial-gradient(900px 700px at 80% 30%, rgba(134, 168, 162, .08), transparent 60%),
@@ -31,20 +41,12 @@ html {
   color: var(--text);
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
   font-family: var(--sans);
   letter-spacing: .2px;
   opacity: 0;
   /* Sayfa açılış efekti */
   transition: opacity 1.5s ease-in-out;
-  overflow-x: hidden; /* İşte kilidi vuran kod bu */
-  position: relative;
-  width: 100%;
 }
 
 
