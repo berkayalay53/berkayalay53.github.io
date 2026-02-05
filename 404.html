@@ -93,6 +93,12 @@
   </div>
 
   <script>
+    // === EKLENEN KISIM: SAYFAYI GÖRÜNÜR YAP ===
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // FENER EFEKTİ
     const spotlight = document.querySelector('.spotlight');
     document.addEventListener('mousemove', (e) => {
       spotlight.style.setProperty('--x', e.clientX + 'px');
