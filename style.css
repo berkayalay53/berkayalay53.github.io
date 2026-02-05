@@ -820,12 +820,4 @@ a:hover {
 .secret-btn svg {
   stroke-width: 1.5; /* Daha narin dursun */
 }
-// === GİZLİ KONSOL MESAJI ===
-    console.log(
-      "%c Buralarda ne arıyorsun?",
-      "color: #d4a373; font-family: serif; font-size: 20px; font-weight: bold;"
-    );
-    console.log(
-      "%c Kodların arasında hikaye aranmaz.\nHikaye, satır aralarındaki boşluktadır.",
-      "color: #bcb6aa; font-family: sans-serif; font-size: 14px; font-style: italic;"
-    );
+
