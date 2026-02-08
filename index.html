@@ -278,7 +278,25 @@
         document.body.style.overflow = ''; // Kaydırmayı aç
       }, 900);
     });
+// ... (Üstteki kodlar aynen kalacak) ...
 
+    // === SESSİZLİK SENSÖRÜ (EKLENECEK KOD) ===
+    // Kullanıcı başka sekmeye geçerse veya uygulamayı alta alırsa müzik dursun.
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        // Sayfa gizlendiğinde (Başka sekmeye/uygulamaya geçildi)
+        music.pause();
+        disc.classList.remove('playing'); // Plağı durdur
+        document.title = "Sessizlik...";  // Sekme adını değiştir
+      } else {
+        // Sayfaya geri dönüldüğünde
+        // İstersen otomatik başlatabilirsin ama sessiz kalması daha asildir.
+        // Kullanıcı isterse kendi başlatır.
+        document.title = "Berkay Alay — Yazar"; // Başlığı düzelt
+      }
+    });
+
+    // ... (Kaderin cümlesi vb. kodlar devam edebilir) ...
     // Plağa tıklayınca müziği aç/kapat
     disc.addEventListener('click', toggleMusic);
 
