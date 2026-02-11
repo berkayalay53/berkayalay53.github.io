@@ -327,85 +327,103 @@
     
   // === KADERİN CÜMLESİ MEKANİZMASI (AKILLI SEÇİM) ===
     
-    const quotes = [
+   const quotes = [
       { 
         text: "Sana hiç dokunmadan, seni hiç durdurmadan... sadece uzaktan bir şarkı gibi sevdim seni.", 
-        book: "Turuncu Saçlı Kız" 
+        book: "Turuncu Saçlı Kız",
+        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
       },
       { 
         text: "Eğer bir gün yine yalnız yazarsam... seni değil, seni bekleyen hâlimi özlerim.", 
-        book: "Geçmişteki Sessizlik" 
+        book: "Geçmişteki Sessizlik",
+        url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/"
       },
       { 
         text: "Bazı insanlar hayatımıza dokunmaz... sadece gözlerimizin içine bakıp kim olduğumuzu hatırlatırlar.", 
-        book: "Geçmişteki Sessizlik" 
+        book: "Geçmişteki Sessizlik",
+        url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/"
       },
       { 
         text: "Geriye dönsem de seni değil, sadece kendi yokluğumu bulacağımı biliyorum.", 
-        book: "Mazide Kalan" 
+        book: "Mazide Kalan",
+        url: "https://berkayalay53.github.io/mazidekalan.github.io/"
       },
       { 
         text: "Sarsılmadan duranlar... gürültüsüz çökenlerdir.", 
-        book: "Beynin Sessiz Fırtınaları" 
+        book: "Beynin Sessiz Fırtınaları",
+        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
       },
       { 
         text: "İnsan bazı şeyleri söylemese de gözleri konuşur... Göz göze gelmek cesarettir; gözünü kaçırmamaksa, vedadır.", 
-        book: "Beynin Sessiz Fırtınaları" 
+        book: "Beynin Sessiz Fırtınaları",
+        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
       },
       { 
         text: "Bazı insanlar konuşmaz. Ama gözleriyle bir ömürlük cümle kurarlar.", 
-        book: "Beynin Sessiz Fırtınaları" 
+        book: "Beynin Sessiz Fırtınaları",
+        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
       },
       { 
         text: "Bazı özlemler... geçmişten değil, hiç yaşanmamış ihtimallerden doğar.", 
-        book: "Beynin Sessiz Fırtınaları" 
+        book: "Beynin Sessiz Fırtınaları",
+        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
       },
       { 
         text: "İnsan bazen görünmek istemez. Ama fark edilmek ister... Ben, fark edilmekle görünmemek arasında asılı kalmış bir kelimeydim.", 
-        book: "Beynin Sessiz Fırtınaları" 
+        book: "Beynin Sessiz Fırtınaları",
+        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
       },
       { 
         text: "İnsan bazen geçmişini anlatırken... olanı değil, olmasını istediğini hatırlar.", 
-        book: "Beynin Sessiz Fırtınaları" 
+        book: "Beynin Sessiz Fırtınaları",
+        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
       },
       { 
         text: "İnsan, hayal ettiğini severmiş; gerçeği ise sadece tolere edermiş.", 
-        book: "Kayıp Duyular Atlası" 
+        book: "Kayıp Duyular Atlası",
+        url: "https://berkayalay53.github.io/kayipduyularatlasi.github.io/"
       },
       { 
         text: "Konuşmazsak kalır sanıyoruz. Oysa en çok susarak kaybediyoruz her şeyi.", 
-        book: "Turuncu Saçlı Kız" 
+        book: "Turuncu Saçlı Kız",
+        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
       },
       { 
         text: "Bazı insanlar birini özlemiyor — bir boşluğu seviyor.", 
-        book: "Kayıp Duyular Atlası" 
+        book: "Kayıp Duyular Atlası",
+        url: "https://berkayalay53.github.io/kayipduyularatlasi.github.io/"
       },
       { 
         text: "Fark etmemenin içinde öylesine bir adalet vardı ki... buna bile razı oldum.", 
-        book: "Turuncu Saçlı Kız" 
+        book: "Turuncu Saçlı Kız",
+        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
       },
       { 
         text: "Kitap biter. Ama ses… devam eder.", 
-        book: "Kaybolan Sesin Defteri" 
+        book: "Kaybolan Sesin Defteri",
+        url: "https://berkayalay53.github.io/kaybolansesindefteri.github.io/"
       },
       { 
         text: "Bu defter sessiz değil, sağır edici bir gürültüyle dolu.", 
-        book: "Kaybolan Sesin Defteri" 
+        book: "Kaybolan Sesin Defteri",
+        url: "https://berkayalay53.github.io/kaybolansesindefteri.github.io/"
       },
       { 
         text: "Biliyor musun, ben seni hiç ‘sahiplenmedim’. Çünkü sahip olduklarımı hep kaybettim.", 
-        book: "Geçmişteki Sessizlik" 
+        book: "Geçmişteki Sessizlik",
+        url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/"
       },
       { 
         text: "Bazı insanlar, hayata bir cümle gibi girer. Sonra virgül olur. Sonra üç nokta... Ve sonra, sessizlik.", 
-        book: "Turuncu Saçlı Kız" 
+        book: "Turuncu Saçlı Kız",
+        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
       },
       { 
         text: "Sanki konuşmaktan çok… anlatılmayan şeyleri dinliyorduk.", 
-        book: "Bir Defterin İçinde Kalanlar" 
+        book: "Bir Defterin İçinde Kalanlar",
+        url: "https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/"
       }
     ];
-
     // ... const quotes = [...] bittikten sonra ...
 
     const fateBtn = document.getElementById('fate-btn');
@@ -422,6 +440,11 @@
     let lastIndex = -1;
 
     fateBtn.addEventListener('click', () => {
+      // 1. GİZEM: Butona basınca biraz bekletelim (Arama efekti)
+      fateBtn.textContent = "Hissediliyor..."; 
+      fateBtn.style.pointerEvents = "none"; // Tekrar basamasın
+      fateResult.classList.remove('show');  // Önce gizle
+
       let randomIndex;
       do {
         randomIndex = Math.floor(Math.random() * quotes.length);
@@ -430,36 +453,34 @@
       lastIndex = randomIndex;
       const selectedQuote = quotes[randomIndex];
 
-      // Önce kutuyu gizle
-      fateResult.classList.remove('show');
-
+      // 600ms gecikme (Sanki kader düşünüyormuş gibi)
       setTimeout(() => {
         // Metni güncelle
         quoteText.textContent = `“${selectedQuote.text}”`;
-        bookName.textContent = selectedQuote.book;
+        
+        // --- 2. KÖPRÜ: Kitap ismini TIKLANABİLİR yapıyoruz ---
+        // Kitabın adı artık bir Link (<a>) olacak
+        bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">${selectedQuote.book} &rarr;</a>`;
         
         // --- PAYLAŞIM LİNKLERİNİ GÜNCELLE ---
         const fullText = `"${selectedQuote.text}" — ${selectedQuote.book}\n\nBerkay Alay`;
         const encodedText = encodeURIComponent(fullText);
 
-        // Twitter (X) Linki
         shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
-
-        // WhatsApp Linki
         shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
         
-        // Kopyalama Butonu İşlevi (Önce temizle, sonra ekle)
         shareCopy.onclick = () => {
           navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
-          
-          // "Kopyalandı" mesajını göster
           copyMsg.classList.add('visible');
           setTimeout(() => copyMsg.classList.remove('visible'), 2000);
         };
 
-        // Kutuyu göster
+        // Kutuyu göster ve butonu düzelt
         fateResult.classList.add('show');
-      }, 300);
+        fateBtn.textContent = "Başka Bir His Ver";
+        fateBtn.style.pointerEvents = "auto";
+        
+      }, 600); // 0.6 saniye bekletiyoruz
     });
     // === GİZLİ BÖLME (HAYALET MEKTUP) MEKANİZMASI ===
     const secretTrigger = document.getElementById('secret-trigger');
