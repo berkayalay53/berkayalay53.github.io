@@ -16,7 +16,7 @@
   <style>
     /* HEM HTML HEM BODY KİLİTLENSİN */
     html, body {
-      overflow: hidden !important; /* !important ile kesin emir veriyoruz */
+      overflow: hidden; /* !important ile kesin emir veriyoruz */
       height: 100%; /* Sayfa boyunu ekrana sabitler */
     }
 
@@ -374,8 +374,10 @@
         document.documentElement.style.height = 'auto'; // HTML yüksekliğini serbest bırak
         // -----------------------
 
-        content.classList.add('visible'); // Kitapları görünür yap (Fade-in)
+       content.classList.add('visible'); // Kitapları görünür yap (Fade-in)
       }, 900);
+    }); // <--- İŞTE BU EKSİKTİ! BURAYI KAPATMAZSAK KOD ÇALIŞMAZ.
+
     // === MÜZİK KONTROLÜ (TIKLAYINCA) ===
     disc.addEventListener('click', () => {
       if (music.paused) {
