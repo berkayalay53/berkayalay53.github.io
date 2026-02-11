@@ -299,7 +299,7 @@
     setTimeout(() => {
         intro.remove();
         
-        // --- KİLİDİ AÇAN KODLAR (TAM BURAYA EKLE) ---
+        // --- KİLİDİ AÇAN KODLAR ---
         document.body.style.overflow = 'auto'; 
         document.documentElement.style.overflow = 'auto';
         document.body.style.height = 'auto';
@@ -308,7 +308,7 @@
       }, 900);
     });
 
-    // === SESSİZLİK SENSÖRÜ (EKLENECEK KOD) ===
+    // === SESSİZLİK SENSÖRÜ ===
     // Kullanıcı başka sekmeye geçerse veya uygulamayı alta alırsa müzik dursun.
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
