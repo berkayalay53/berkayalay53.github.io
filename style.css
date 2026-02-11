@@ -872,21 +872,43 @@ body.night-mode .spotlight {
   100% { transform: scale(0.5) translateY(-150px) rotate(360deg); opacity: 0; }
 }
 
-/* === SCROLL TETİKLİ İMZA === */
+/* === İMZANIN ZAMAN AYARI (PC ve MOBİL EŞİTLEME) === */
+
+/* İmzanın genel çerçevesi */
 .signature-svg {
   width: 250px;
   height: auto;
+  overflow: visible; /* İmza taşarsa kesilmesin */
+}
+
+/* 1. ÇİZGİ (O kıvrımlı yol) */
+.signature-svg path {
   stroke: var(--accent);
   stroke-width: 2;
   fill: none;
   stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
+  stroke-dashoffset: 1000; /* Çizgiyi sakla */
   
-  /* Hız Ayarı: 3s yerine 6s yaptık. 
-     Sondaki 0.5s ise gecikme süresidir (kağıt belirdikten sonra yarım saniye bekler). */
-  transition: stroke-dashoffset 6s ease-in-out 0.5s;
+  /* PC'ye Kesin Emir: Bunu 6 saniyeden önce bitirme! */
+  transition: stroke-dashoffset 6s ease-in-out; 
 }
 
-.signature-svg.draw {
-  stroke-dashoffset: 0;
+/* 2. İSİM (Berkay Alay yazısı) */
+.signature-svg text {
+  opacity: 0; /* Başta görünmez */
+  fill: var(--accent);
+  stroke: none; /* Yazının kenar çizgisi olmasın, içi dolu olsun */
+  
+  /* Yazı da 5 saniyede, yavaşça belirsin. 
+     Sondaki '1s' gecikme süresidir; çizgi başladıktan 1 saniye sonra yazı başlar. */
+  transition: opacity 5s ease-in-out 1s;
+}
+
+/* --- Tetiklenme Anı (JavaScript 'draw' sınıfını ekleyince) --- */
+.signature-svg.draw path {
+  stroke-dashoffset: 0; /* Çizgiyi serbest bırak */
+}
+
+.signature-svg.draw text {
+  opacity: 1; /* Yazıyı aydınlat */
 }
