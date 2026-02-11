@@ -4,52 +4,136 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Külliyat — Berkay Alay</title>
+  <meta name="description" content="Sessizliğin arşivi.">
   
   <link rel="icon" href="./profile.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    /* === KÜTÜPHANEYE ÖZEL IZGARA STİLLERİ === */
-    /* Bu kısımlar style.css'te olmadığı için buraya ekliyoruz */
-    
+    /* ========================================= */
+    /* === GİRİŞ EKRANI (İzler Sayfası Tipi) === */
+    /* ========================================= */
+    #intro-screen {
+      position: fixed;
+      inset: 0;
+      background-color: #0f1113;
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.5s ease, visibility 1.5s;
+    }
+
+    #intro-screen.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .intro-content {
+      text-align: center;
+      padding: 20px;
+      animation: introFloat 3s ease-in-out infinite alternate;
+    }
+
+    .intro-title {
+      font-family: var(--serif);
+      font-size: 4rem;
+      margin: 0 0 20px;
+      color: var(--text);
+      letter-spacing: -1px;
+    }
+
+    .intro-sub {
+      font-family: var(--sans);
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    /* Buton Tasarımı */
+    #start-btn {
+      background: transparent;
+      border: 1px solid rgba(212, 163, 115, 0.3);
+      color: var(--text);
+      padding: 15px 40px;
+      border-radius: 50px;
+      font-family: var(--sans);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+
+    #start-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      box-shadow: 0 0 30px rgba(212, 163, 115, 0.2);
+      transform: translateY(-2px);
+    }
+
+    @keyframes introFloat {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    /* ========================================= */
+    /* === ANA İÇERİK (Başlangıçta Gizli) === */
+    /* ========================================= */
+    #mainPage {
+      opacity: 0;
+      transition: opacity 2s ease;
+      padding-bottom: 120px; /* Plak için boşluk */
+    }
+
+    #mainPage.content-visible {
+      opacity: 1;
+    }
+
+    /* Başlık Alanı */
     .library-header {
       text-align: center;
-      margin-bottom: 60px;
+      padding: 100px 20px 60px;
     }
     
     .library-title {
       font-family: var(--serif);
       font-size: 3.5rem;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       color: var(--text);
     }
     
-    .library-sub {
+    .library-desc {
       color: var(--muted);
-      font-size: 1.1rem;
       font-style: italic;
-      opacity: 0.8;
+      font-size: 1.1rem;
     }
 
-    /* KİTAP IZGARASI */
+    /* Kitap Izgarası */
     .books-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 40px;
-      margin-top: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
     }
 
-    /* KART TASARIMI */
+    /* Kart Yapısı */
     .archive-card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 8px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
       padding: 20px;
-      transition: all 0.4s ease;
+      transition: 0.4s ease;
       display: flex;
       flex-direction: column;
     }
@@ -57,32 +141,42 @@
     .archive-card:hover {
       transform: translateY(-5px);
       border-color: var(--accent);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     }
 
-    .archive-cover {
+    .card-visual {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-radius: 6px;
+      height: 220px; /* Sabit yükseklik */
+      border-radius: 8px;
+      overflow: hidden;
       margin-bottom: 20px;
-      filter: grayscale(80%);
-      transition: 0.5s ease;
-    }
-
-    .archive-card:hover .archive-cover {
-      filter: grayscale(0%);
-    }
-
-    /* Resim yoksa gösterilecek stil */
-    .special-visual {
-      background: linear-gradient(45deg, #111, #222);
+      background: #111;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.8;
+      transition: 0.5s;
+      filter: grayscale(100%);
+    }
+
+    .archive-card:hover .card-visual img {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+
+    /* Resim Yüklenmezse (Yedek Stil) */
+    .special-visual {
+      background: linear-gradient(45deg, #1a1a1a, #252525);
       font-family: var(--serif);
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: var(--accent);
     }
 
@@ -94,11 +188,11 @@
     }
 
     .archive-desc {
-      font-size: 0.9rem; 
-      color: #aaa;
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
       margin-bottom: 20px;
-      line-height: 1.5;
-      flex-grow: 1; 
+      flex-grow: 1; /* Butonu alta iter */
     }
 
     .archive-btn {
@@ -106,15 +200,14 @@
       width: 100%;
       text-align: center;
       padding: 12px 0;
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #ddd;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ccc;
       text-decoration: none;
       border-radius: 50px;
-      transition: 0.3s;
       font-size: 0.8rem;
-      letter-spacing: 1px;
       text-transform: uppercase;
-      margin-top: auto;
+      letter-spacing: 1px;
+      transition: 0.3s;
     }
 
     .archive-btn:hover {
@@ -126,17 +219,44 @@
 
     /* Geri Dön Butonu */
     .back-home {
-      display: inline-block;
-      margin-top: 60px;
-      color: #888;
-      text-decoration: none;
+      display: block;
+      text-align: center;
+      margin: 60px 0;
+      color: var(--muted);
       font-size: 0.9rem;
       transition: 0.3s;
-      border-bottom: 1px solid transparent;
     }
-    .back-home:hover { 
-      color: var(--accent); 
-      border-bottom-color: var(--accent);
+    .back-home:hover { color: var(--accent); }
+
+    /* ========================================= */
+    /* === PLAK OYNATICI (Düzeltilmiş) === */
+    /* ========================================= */
+    .disc {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden; /* Resmi daireye hapseder */
+    }
+    
+    .disc img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Resmi sündürmeden sığdırır */
+      display: block;
+    }
+
+    /* Plağın Ortasındaki Delik */
+    .disc::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px; height: 12px;
+      background: #0f1113;
+      border: 1px solid rgba(212, 163, 115, 0.5);
+      border-radius: 50%;
+      z-index: 2;
     }
 
   </style>
@@ -144,11 +264,9 @@
 <body>
 
   <div id="intro-screen">
-    <div class="intro-bg" style="background-image: url('./profile.jpg');"></div>
-    
     <div class="intro-content">
       <h1 class="intro-title">Külliyat</h1>
-      <p class="intro-quote">"Yazılmış, yazılmakta olan ve sessizliğe karışmış tüm satırlar."</p>
+      <p class="intro-sub">"Sessizliğin dökümü."</p>
       <button id="start-btn">Arşivi Aç</button>
     </div>
   </div>
@@ -156,19 +274,19 @@
   <div class="grain"></div>
   <div class="spotlight"></div>
 
-  <main class="page" id="mainPage">
+  <main id="mainPage">
     
-    <header class="hero-spacer"></header>
-
-    <div class="library-header">
-      <h2 class="library-title">Külliyat</h2>
-      <p class="library-sub">Sessizliğin dökümü.</p>
-    </div>
+    <header class="library-header">
+      <h1 class="library-title">Külliyat</h1>
+      <p class="library-desc">"Yazılmış, yazılmakta olan ve sessizliğe karışmış tüm satırlar."</p>
+    </header>
 
     <div class="books-grid">
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/eniyialintilar.github.io/cover.jpg" class="archive-cover" alt="İzler" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='❝❞'">
+        <div class="card-visual">
+          <img src="https://berkayalay53.github.io/eniyialintilar.github.io/cover.jpg" alt="İzler" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='❝❞'">
+        </div>
         <div class="archive-info">
           <h3>İzler</h3>
           <p class="archive-desc">Hikayelerden kopup gelen, tek başına yaşayan en iyi cümleler.</p>
@@ -177,7 +295,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/turuncusaclikiz.github.io/cover.jpg" class="archive-cover" alt="Turuncu Saçlı Kız" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='T'">
+        <div class="card-visual">
+          <img src="https://berkayalay53.github.io/turuncusaclikiz.github.io/cover.jpg" alt="Turuncu Saçlı Kız" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='T'">
+        </div>
         <div class="archive-info">
           <h3>Turuncu Saçlı Kız</h3>
           <p class="archive-desc">Bir bakışın yıllarca sürmesi.</p>
@@ -186,7 +306,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/gecmistekisessizlik.github.io/cover.jpg" class="archive-cover" alt="Geçmişteki Sessizlik" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='G'">
+        <div class="card-visual">
+          <img src="https://berkayalay53.github.io/gecmistekisessizlik.github.io/cover.jpg" alt="Geçmişteki Sessizlik" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='G'">
+        </div>
         <div class="archive-info">
           <h3>Geçmişteki Sessizlik</h3>
           <p class="archive-desc">Hatırlamanın ağır hali.</p>
@@ -195,7 +317,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/cover.jpg" class="archive-cover" alt="Beynin Sessiz Fırtınaları" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='B'">
+        <div class="card-visual">
+          <img src="https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/cover.jpg" alt="Beynin Sessiz Fırtınaları" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='B'">
+        </div>
         <div class="archive-info">
           <h3>Beynin Sessiz Fırtınaları</h3>
           <p class="archive-desc">Düşüncenin içindeki gürültü.</p>
@@ -204,7 +328,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/kayipduyularatlasi.github.io/cover.jpg" class="archive-cover" alt="Kayıp Duyular Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='K'">
+        <div class="card-visual">
+          <img src="https://berkayalay53.github.io/kayipduyularatlasi.github.io/cover.jpg" alt="Kayıp Duyular Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='K'">
+        </div>
         <div class="archive-info">
           <h3>Kayıp Duyular Atlası</h3>
           <p class="archive-desc">Yokluğun haritası.</p>
@@ -213,7 +339,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/mazidekalan.github.io/cover.jpg" class="archive-cover" alt="Mazide Kalan" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='M'">
+        <div class="card-visual">
+           <img src="https://berkayalay53.github.io/mazidekalan.github.io/cover.jpg" alt="Mazide Kalan" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='M'">
+        </div>
         <div class="archive-info">
           <h3>Mazide Kalan</h3>
           <p class="archive-desc">Geri dönülmeyen zamanlar.</p>
@@ -222,7 +350,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/kaybolansesindefteri.github.io/cover.jpg" class="archive-cover" alt="Kaybolan Sesin Defteri" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='S'">
+        <div class="card-visual">
+           <img src="https://berkayalay53.github.io/kaybolansesindefteri.github.io/cover.jpg" alt="Kaybolan Sesin Defteri" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='S'">
+        </div>
         <div class="archive-info">
           <h3>Kaybolan Sesin Defteri</h3>
           <p class="archive-desc">Yazıyla konuşan sessizlik.</p>
@@ -231,7 +361,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/cover.jpg" class="archive-cover" alt="Bir Defterin İçinde Kalanlar" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='D'">
+        <div class="card-visual">
+           <img src="https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/cover.jpg" alt="Bir Defterin İçinde Kalanlar" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='D'">
+        </div>
         <div class="archive-info">
           <h3>Bir Defterin İçinde Kalanlar</h3>
           <p class="archive-desc">Yazılmaktan vazgeçilen anlar.</p>
@@ -240,7 +372,9 @@
       </div>
 
       <div class="archive-card">
-        <img src="https://berkayalay53.github.io/serininatlasi.github.io/serininatlasi.jpg" class="archive-cover" alt="Serinin Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='♫'">
+        <div class="card-visual">
+          <img src="https://berkayalay53.github.io/serininatlasi.github.io/serininatlasi.jpg" alt="Serinin Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='♫'">
+        </div>
         <div class="archive-info">
           <h3>Serinin Atlası</h3>
           <p class="archive-desc">Tüm bu hikâyelerin sesi (Playlist).</p>
@@ -250,16 +384,14 @@
 
     </div>
 
-    <div style="text-align: center;">
-      <a href="./index.html" class="back-home">← Ana Sayfaya Dön</a>
-    </div>
+    <a href="./index.html" class="back-home">← Ana Sayfaya Dön</a>
 
   </main>
 
   <div class="music-control" id="music-trigger">
     <div class="disc-wrapper">
       <div class="disc" id="disc">
-        <img src="./kralkaybederse.jpg" alt="Müzik Plağı" draggable="false">
+        <img src="./kralkaybederse.jpg" alt="Plak">
       </div>
     </div>
     <span class="music-hint">Melodiyi dinle...</span>
@@ -270,9 +402,7 @@
   </audio>
 
   <script>
-    // ==========================================
-    // SCRIPTS (İZLER SAYFASIYLA AYNI MANTIK)
-    // ==========================================
+    // === DEĞİŞKENLER ===
     const introScreen = document.getElementById('intro-screen');
     const startBtn = document.getElementById('start-btn');
     const mainPage = document.getElementById('mainPage');
@@ -282,35 +412,33 @@
     const disc = document.getElementById('disc');
     const hint = document.querySelector('.music-hint');
 
-    // Başlangıçta kaydırmayı kilitle
-    document.body.style.overflow = 'hidden';
+    // === SAYFA YÜKLENİNCE (Perdeyi Aç) ===
+    window.addEventListener('load', () => {
+      // Body'ye loaded class'ı veriyoruz ki arka planın siyahlığı gitsin
+      document.body.classList.add('loaded');
+    });
 
-    // 1. BAŞLAT BUTONU
+    // === GİRİŞ BUTONUNA TIKLANINCA ===
     startBtn.addEventListener('click', () => {
-      // Intro'yu söndür
+      // 1. Giriş ekranını sönükleştir ve kaldır
       introScreen.classList.add('fade-out');
       
-      // İçeriği göster (style.css'teki .content-visible class'ı)
+      // 2. Ana içeriği görünür yap
       mainPage.classList.add('content-visible');
-      
-      // Kaydırmayı aç
-      document.body.style.overflow = 'auto';
+      document.body.style.overflow = 'auto'; // Kaydırmayı aç
 
-      // Müziği başlat
+      // 3. Müziği başlat
       music.volume = 0.5;
       music.play().then(() => {
         disc.classList.add('playing');
         hint.textContent = "Çalıyor...";
         hint.style.opacity = "0.7";
-      }).catch(e => console.log("Otomatik oynatma tarayıcı tarafından engellendi"));
-
-      // Intro divini tamamen kaldır
-      setTimeout(() => {
-        introScreen.style.display = 'none';
-      }, 1500);
+      }).catch(err => {
+        console.log("Otomatik oynatma engellendi, manuel basılması gerekebilir.");
+      });
     });
 
-    // 2. MÜZİK KONTROLÜ (TIKLAYINCA)
+    // === MANUEL MÜZİK KONTROLÜ ===
     musicTrigger.addEventListener('click', () => {
       if (music.paused) {
         music.play();
@@ -324,7 +452,7 @@
       }
     });
 
-    // 3. SAYGI MODU (SEKME DEĞİŞİNCE SUS)
+    // === SAYGI MODU ===
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         music.pause();
@@ -335,13 +463,12 @@
       }
     });
     
-    // 4. FENER EFEKTİ
+    // === FENER EFEKTİ ===
     const spotlight = document.querySelector('.spotlight');
     document.addEventListener('mousemove', (e) => {
       spotlight.style.setProperty('--x', e.clientX + 'px');
       spotlight.style.setProperty('--y', e.clientY + 'px');
     });
-
   </script>
 
 </body>
