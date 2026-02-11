@@ -469,29 +469,39 @@
     const shareCopy = document.getElementById('share-copy');
     const copyMsg = document.getElementById('copy-msg');
 
-    let lastIndex = -1;
+    // === 1. DEĞİŞKEN TANIMI (Havuç Mantığı İçin) ===
+    let availableIndices = []; // Henüz gösterilmemiş cümlelerin havuzu
 
+    // === 2. TIKLAMA OLAYI (TEKRARSIZ) ===
     fateBtn.addEventListener('click', () => {
-      // 1. GİZEM: Butona basınca biraz bekletelim (Arama efekti)
+      // Buton görsel geri bildirimi (Hissediliyor...)
       fateBtn.textContent = "Hissediliyor..."; 
       fateBtn.style.pointerEvents = "none"; // Tekrar basamasın
       fateResult.classList.remove('show');  // Önce gizle
 
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * quotes.length);
-      } while (randomIndex === lastIndex);
+      // --- HAVUZ MANTIĞI BAŞLANGICI ---
+      // Eğer havuz boşsa (veya ilk kez basılıyorsa), tüm indeksleri doldur (0'dan 18'e kadar)
+      if (availableIndices.length === 0) {
+        for (let i = 0; i < quotes.length; i++) {
+          availableIndices.push(i);
+        }
+      }
 
-      lastIndex = randomIndex;
-      const selectedQuote = quotes[randomIndex];
+      // Havuzdan rastgele bir "sıra numarası" seç
+      const randomIndexInPool = Math.floor(Math.random() * availableIndices.length);
+      
+      // O sıradaki gerçek "quote" indeksini al ve havuzdan sil (Böylece tekrar çıkmaz)
+      const selectedIndex = availableIndices.splice(randomIndexInPool, 1)[0]; 
+      
+      const selectedQuote = quotes[selectedIndex];
+      // --- HAVUZ MANTIĞI BİTİŞİ ---
 
-      // 600ms gecikme (Sanki kader düşünüyormuş gibi)
+      // 600ms gecikme (Sanki kader düşünüyormuş gibi efekt)
       setTimeout(() => {
         // Metni güncelle
         quoteText.textContent = `“${selectedQuote.text}”`;
         
-        // --- 2. KÖPRÜ: Kitap ismini TIKLANABİLİR yapıyoruz ---
-        // Kitabın adı artık bir Link (<a>) olacak
+        // Kitap ismini TIKLANABİLİR yapıyoruz
         bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">${selectedQuote.book} &rarr;</a>`;
         
         // --- PAYLAŞIM LİNKLERİNİ GÜNCELLE ---
@@ -501,11 +511,20 @@
         shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
         shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
         
+        // Kopyalama butonu işlevi (tekrar tanımlanıyor ki güncel metni kopyalasın)
         shareCopy.onclick = () => {
           navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
           copyMsg.classList.add('visible');
           setTimeout(() => copyMsg.classList.remove('visible'), 2000);
         };
+
+        // Kutuyu göster ve butonu düzelt
+        fateResult.classList.add('show');
+        fateBtn.textContent = "Başka Bir His Ver";
+        fateBtn.style.pointerEvents = "auto";
+        
+      }, 600); // 0.6 saniye bekletiyoruz
+    });
 
         // Kutuyu göster ve butonu düzelt
         fateResult.classList.add('show');
