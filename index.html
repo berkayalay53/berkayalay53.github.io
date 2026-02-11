@@ -2,10 +2,10 @@
 <html lang="tr">
 <head>
   <meta name="theme-color" content="#0f1113">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<link rel="preload" href="./style.css" as="style">
-<link rel="preload" href="./profile.jpg" as="image">
+  <link rel="preload" href="./style.css" as="style">
+  <link rel="preload" href="./profile.jpg" as="image">
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Berkay Alay — Yazar</title>
@@ -26,9 +26,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
-
-</head>
-<link rel="stylesheet" href="./style.css" />
 
   <style>
     /* GİRİŞTE SCROLL KİLİDİ */
@@ -310,7 +307,6 @@
         // ------------------------------------------
       }, 900);
     });
-// ... (Üstteki kodlar aynen kalacak) ...
 
     // === SESSİZLİK SENSÖRÜ (EKLENECEK KOD) ===
     // Kullanıcı başka sekmeye geçerse veya uygulamayı alta alırsa müzik dursun.
@@ -469,7 +465,7 @@
     const shareCopy = document.getElementById('share-copy');
     const copyMsg = document.getElementById('copy-msg');
 
-    // === 1. DEĞİŞKEN TANIMI (Havuz Mantığı İçin) ===
+    // === 1. DEĞİŞKEN TANIMI (Havuç Mantığı İçin) ===
     let availableIndices = []; // Henüz gösterilmemiş cümlelerin havuzu
 
     // === 2. TIKLAMA OLAYI (TEKRARSIZ) ===
@@ -480,7 +476,7 @@
       fateResult.classList.remove('show');  // Önce gizle
 
       // --- HAVUZ MANTIĞI BAŞLANGICI ---
-      // Eğer havuz boşsa (veya ilk kez basılıyorsa), tüm indeksleri doldur
+      // Eğer havuz boşsa (veya ilk kez basılıyorsa), tüm indeksleri doldur (0'dan 18'e kadar)
       if (availableIndices.length === 0) {
         for (let i = 0; i < quotes.length; i++) {
           availableIndices.push(i);
@@ -490,6 +486,7 @@
       // Havuzdan rastgele bir "sıra numarası" seç
       const randomIndexInPool = Math.floor(Math.random() * availableIndices.length);
       
+      // O sıradaki gerçek "quote" indeksini al ve havuzdan sil (Böylece tekrar çıkmaz)
       const selectedIndex = availableIndices.splice(randomIndexInPool, 1)[0]; 
       
       const selectedQuote = quotes[selectedIndex];
@@ -510,7 +507,7 @@
         shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
         shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
         
-        // Kopyalama butonu işlevi
+        // Kopyalama butonu işlevi (tekrar tanımlanıyor ki güncel metni kopyalasın)
         shareCopy.onclick = () => {
           navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
           copyMsg.classList.add('visible');
@@ -524,6 +521,7 @@
         
       }, 600); // 0.6 saniye bekletiyoruz
     });
+
     // === GİZLİ BÖLME (HAYALET MEKTUP) MEKANİZMASI ===
     const secretTrigger = document.getElementById('secret-trigger');
     const secretModal = document.getElementById('secret-modal');
