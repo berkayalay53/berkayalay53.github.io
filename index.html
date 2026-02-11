@@ -23,7 +23,23 @@
   <link rel="stylesheet" href="./style.css" />
 
 </head>
+<link rel="stylesheet" href="./style.css" />
 
+  <style>
+    /* GİRİŞTE SCROLL KİLİDİ */
+    html, body {
+      overflow: hidden;
+      height: 100%;
+    }
+    
+    /* Sayfa yüklendiğinde JS ile bu kilit açılacak */
+    body.loaded {
+      /* Buraya özel bir durum eklemenize gerek yok, 
+         aşağıdaki JS kodu zaten overflow'u temizliyor. */
+    }
+  </style>
+
+</head>
 <body>
   <div class="cursor-dot" data-cursor-dot></div>
   <div class="cursor-outline" data-cursor-outline></div>
@@ -281,6 +297,7 @@
       setTimeout(() => {
         intro.remove();
         document.body.style.overflow = ''; // Kaydırmayı aç
+        document.documentElement.style.overflow = '';
       }, 900);
     });
 // ... (Üstteki kodlar aynen kalacak) ...
