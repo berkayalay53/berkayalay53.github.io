@@ -7,8 +7,8 @@
   <meta name="description" content="Berkay Alay'ın dijital kitaplığı ve sessizliğe karışmış eserleri.">
   
   <link rel="icon" href="./profile.jpg" type="image/jpeg">
-  <link rel=\"preconnect\" href="https://fonts.googleapis.com">
-  <link rel=\"preconnect\" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
@@ -313,6 +313,11 @@
   </audio>
 
   <script>
+    // === KRİTİK EKLEME: PERDEYİ AÇ (FADE-IN) ===
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded'); // CSS'deki opacity: 1 kuralını tetikler
+    });
+
     const musicTrigger = document.getElementById('music-trigger');
     const music = document.getElementById('bg-music');
     const disc = document.getElementById('disc');
@@ -341,6 +346,13 @@
       } else {
         document.title = "Külliyat — Berkay Alay"; 
       }
+    });
+    
+    // FENER EFEKTİ (Ekstra Güzellik)
+    const spotlight = document.querySelector('.spotlight');
+    document.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
     });
   </script>
 
