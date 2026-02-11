@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#0f1113">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preload" href="./style.css" as="style">
-  <link rel="preload" href="./yan_portre_pastel.jpg" as="image"> 
+  <link rel="preload" href="./yankaptanpotresi.jpg" as="image"> 
   
   <link rel="icon" href="./profile.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,18 +25,17 @@
       align-items: center;
       min-height: 100vh;
       text-align: center;
-      overflow: hidden; /* Kaydırmayı kapat */
+      overflow: hidden;
     }
 
     .lost-container {
       position: relative;
-      z-index: 10; /* Tozların ve fenerin üstünde */
+      z-index: 10;
       padding: 20px;
       max-width: 600px;
       width: 100%;
     }
 
-    /* LOMBOZ (PENCERE) GÖRÜNÜMÜ */
     .portrait-frame {
       width: 220px;
       height: 220px;
@@ -47,23 +46,27 @@
       overflow: hidden;
       position: relative;
       background: #0f1113;
-      transition: transform 0.1s ease-out; /* Parallax için yumuşak geçiş */
+      transition: transform 0.1s ease-out;
     }
     
-    /* GÖRSELİN KENDİSİ */
+    /* --- GÖRSELİN SİHİRLİ GEÇİŞİ (BURASI DEĞİŞTİ) --- */
     .portrait-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.85; /* Biraz sisli/soluk dursun */
-      filter: contrast(1.1) sepia(0.1); /* Pastel efekti destekle */
-      transition: opacity 0.5s ease;
+      /* Başlangıç: Siyah-beyaz, kontrastlı ve biraz soluk (Puslu hava) */
+      opacity: 0.85;
+      filter: grayscale(100%) contrast(1.1) sepia(0.1);
+      /* Geçiş: Renklenirken sis yavaşça dağılsın (0.8 saniye) */
+      transition: all 0.8s ease-in-out;
     }
 
-    /* Fener üzerine gelince görsel canlansın */
+    /* Fener üzerine gelince sis dağılsın ve renklensin */
     .portrait-frame:hover img {
       opacity: 1;
+      filter: grayscale(0%) contrast(1) sepia(0); /* Orijinal pastel renkler */
     }
+    /* -------------------------------------------------- */
 
     .lost-title {
       font-family: var(--serif);
@@ -102,7 +105,6 @@
       box-shadow: 0 5px 15px rgba(255, 255, 255, 0.15);
     }
 
-    /* TOZ ZERRELERİ EFEKTİ (Aynı Kütüphanedeki Gibi) */
     #dust-container {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1;
     }
@@ -118,7 +120,6 @@
   </style>
 </head>
 <body>
-  
   <div class="cursor-dot" data-cursor-dot></div>
   <div class="cursor-outline" data-cursor-outline></div>
   <div class="grain" aria-hidden="true"></div>
@@ -128,7 +129,7 @@
 
   <main class="lost-container">
     <div class="portrait-frame" id="captain-portrait">
-      <img src="./yan_portre_pastel.jpg" alt="Kayıp Kaptan">
+      <img src="./yankaptanpotresi.jpg" alt="Kayıp Kaptan">
     </div>
 
     <h1 class="lost-title">Haritanın Dışı</h1>
@@ -138,15 +139,10 @@
   </main>
 
   <script>
-    // --- STANDART SİSTEMLER ---
     window.addEventListener("pageshow", (e) => { if (e.persisted) { document.body.classList.add('loaded'); document.body.style.opacity = "1"; } });
     setTimeout(() => document.body.classList.add('loaded'), 3000);
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-      createDust(); // Toz efektini başlat
-    });
+    window.addEventListener('load', () => { document.body.classList.add('loaded'); createDust(); });
 
-    // --- FENER VE İMLEÇ ---
     const spotlight = document.querySelector('.spotlight');
     document.addEventListener('mousemove', (e) => {
       spotlight.style.setProperty('--x', e.clientX + 'px');
@@ -160,7 +156,6 @@
       cursorOutline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
     });
 
-    // --- TOZ EFEKTİ OLUŞTURUCU ---
     function createDust() {
       const container = document.getElementById('dust-container');
       const particleCount = 30; 
@@ -176,10 +171,9 @@
       }
     }
 
-    // --- GÖRSEL PARALLAX EFEKTİ (Hafif Oynama) ---
     const portrait = document.getElementById('captain-portrait');
     document.addEventListener('mousemove', (e) => {
-      const xAxis = (window.innerWidth / 2 - e.pageX) / 25; // Hareket hassasiyeti
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
       const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
       portrait.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
     });
