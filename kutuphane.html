@@ -14,17 +14,35 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    /* === BU SAYFAYA ÖZEL EK TASARIMLAR === */
-    
+    /* === KÜTÜPHANE ÖZEL TASARIM === */
     body {
-      /* Alt kısımdaki oynatıcı için boşluk */
-      padding-bottom: 120px; 
+      padding-bottom: 120px;
     }
     
-    /* BAŞLIK ALANI */
+    /* ÜST Geri Dön Butonu (Acil Çıkış) */
+    .top-nav {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      z-index: 100;
+    }
+    .nav-back {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: 0.3s;
+      opacity: 0.6;
+    }
+    .nav-back:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      opacity: 1;
+    }
+
     .library-header {
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 100px 20px 60px;
       animation: fadeIn 1.5s ease-out;
     }
     
@@ -47,12 +65,12 @@
       padding-top: 20px;
     }
 
-    /* KİTAP KARTLARI IZGARASI (GRID) */
+    /* IZGARA YAPISI */
     .books-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 50px;
-      max-width: 1100px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
       animation: fadeInUp 1s ease-out 0.3s backwards;
@@ -77,27 +95,46 @@
       background: rgba(255,255,255,0.04);
     }
 
-    /* KİTAP KAPAĞI */
-    .archive-cover {
+    /* RESİM ALANI */
+    .card-visual {
       width: 100%;
-      aspect-ratio: 2/3; /* Kitap oranı */
-      object-fit: cover;
+      height: 200px;
+      background: #111;
       border-radius: 12px;
-      margin-bottom: 25px;
-      filter: grayscale(100%); /* Siyah beyaz başlar */
-      transition: 0.5s ease;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
     }
 
-    .archive-card:hover .archive-cover {
-      filter: grayscale(0%); /* Üzerine gelince renklenir */
-      box-shadow: 0 10px 30px rgba(212, 163, 115, 0.2);
+    .card-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.7;
+      transition: 0.5s;
+      filter: grayscale(100%);
     }
 
-    /* KİTAP BİLGİLERİ */
+    .archive-card:hover .card-visual img {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: scale(1.05);
+    }
+    
+    /* ÖZEL KARTLAR İÇİN STİL (İzler vb.) */
+    .special-visual {
+      font-family: var(--serif);
+      font-size: 2rem;
+      color: var(--accent);
+      background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+    }
+
     .archive-info h3 {
       font-family: var(--serif);
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       margin-bottom: 8px;
       color: var(--text);
     }
@@ -107,22 +144,20 @@
       color: var(--muted);
       margin-bottom: 20px;
       line-height: 1.6;
-      flex-grow: 1; /* Butonu en alta iter */
+      flex-grow: 1; 
     }
 
-    /* BUTON */
     .archive-btn {
       display: block;
       width: 100%;
       text-align: center;
-      padding: 14px 0;
-      background: transparent;
+      padding: 12px 0;
       border: 1px solid var(--line);
       color: var(--text);
       text-decoration: none;
       border-radius: 50px;
       transition: 0.3s;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       letter-spacing: 1px;
       text-transform: uppercase;
     }
@@ -134,23 +169,6 @@
       font-weight: 600;
     }
 
-    /* ANA SAYFAYA DÖN LİNKİ */
-    .back-home {
-      display: inline-block;
-      margin-top: 80px;
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.9rem;
-      border-bottom: 1px solid transparent;
-      transition: 0.3s;
-      opacity: 0.7;
-    }
-    .back-home:hover { 
-      color: var(--accent); 
-      border-bottom-color: var(--accent);
-      opacity: 1;
-    }
-    
     /* Animasyonlar */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -162,6 +180,10 @@
   <div class="grain"></div>
   <div class="spotlight"></div>
 
+  <div class="top-nav">
+    <a href="./index.html" class="nav-back">← Ana Sayfaya Dön</a>
+  </div>
+
   <header class="library-header">
     <h1 class="library-title">Külliyat</h1>
     <p class="library-sub">"Yazılmış, yazılmakta olan ve sessizliğe karışmış tüm satırlar."</p>
@@ -170,38 +192,108 @@
   <div class="books-grid">
 
     <div class="archive-card">
-      <img src="./assets/turuncu.jpg" class="archive-cover" alt="Turuncu Saçlı Kız">
+      <div class="card-visual special-visual">
+        <span>❝❞</span>
+      </div>
+      <div class="archive-info">
+        <h3>İzler</h3>
+        <p class="archive-desc">Hikayelerden kopup gelen, tek başına yaşayan en iyi cümleler.</p>
+        <a href="https://berkayalay53.github.io/eniyialintilar.github.io/" class="archive-btn" target="_blank">İncele</a>
+      </div>
+    </div>
+
+    <div class="archive-card">
+      <div class="card-visual">
+        <img src="./turuncusaclikiz.github.io/cover.jpg" alt="Turuncu Saçlı Kız" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='T'">
+      </div>
       <div class="archive-info">
         <h3>Turuncu Saçlı Kız</h3>
-        <p class="archive-desc">Sessizliğin içindeki turuncu bir çığlık. Hiç konuşulmamış cümlelerin romanı.</p>
+        <p class="archive-desc">Bir bakışın yıllarca sürmesi.</p>
         <a href="https://berkayalay53.github.io/turuncusaclikiz.github.io/" class="archive-btn" target="_blank">Eseri Hisset</a>
       </div>
     </div>
 
     <div class="archive-card">
-      <img src="./assets/gecmis.jpg" class="archive-cover" alt="Geçmişteki Sessizlik">
+      <div class="card-visual">
+        <img src="./gecmistekisessizlik.github.io/cover.jpg" alt="Geçmişteki Sessizlik" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='G'">
+      </div>
       <div class="archive-info">
         <h3>Geçmişteki Sessizlik</h3>
-        <p class="archive-desc">Bazı sesler duyulmaz, hatırlanır. Geçmişin gölgesinde bir arayış.</p>
+        <p class="archive-desc">Hatırlamanın ağır hali.</p>
         <a href="https://berkayalay53.github.io/gecmistekisessizlik.github.io/" class="archive-btn" target="_blank">Eseri Hisset</a>
       </div>
     </div>
 
-    <div class="archive-card" style="opacity: 0.5;">
-      <div class="archive-cover" style="background: linear-gradient(45deg, #1a1a1a, #2a2a2a); display: flex; align-items: center; justify-content: center; color: #444; font-family: var(--serif); font-size: 2rem;">
-        ?
+    <div class="archive-card">
+      <div class="card-visual">
+        <img src="./beyninsessizfirtinalari.github.io/cover.jpg" alt="Beynin Sessiz Fırtınaları" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='B'">
       </div>
       <div class="archive-info">
         <h3>Beynin Sessiz Fırtınaları</h3>
-        <p class="archive-desc">Henüz gün yüzüne çıkmadı. Zihnin derinliklerinde hazırlanıyor.</p>
-        <span class="archive-btn" style="cursor: default; border-style: dashed; opacity: 0.5;">Hazırlanıyor</span>
+        <p class="archive-desc">Düşüncenin içindeki gürültü.</p>
+        <a href="https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" class="archive-btn" target="_blank">Eseri Hisset</a>
+      </div>
+    </div>
+
+    <div class="archive-card">
+      <div class="card-visual">
+        <img src="./kayipduyularatlasi.github.io/cover.jpg" alt="Kayıp Duyular Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='K'">
+      </div>
+      <div class="archive-info">
+        <h3>Kayıp Duyular Atlası</h3>
+        <p class="archive-desc">Yokluğun haritası.</p>
+        <a href="https://berkayalay53.github.io/kayipduyularatlasi.github.io/" class="archive-btn" target="_blank">Eseri Hisset</a>
+      </div>
+    </div>
+
+    <div class="archive-card">
+      <div class="card-visual">
+         <img src="./mazidekalan.github.io/cover.jpg" alt="Mazide Kalan" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='M'">
+      </div>
+      <div class="archive-info">
+        <h3>Mazide Kalan</h3>
+        <p class="archive-desc">Geri dönülmeyen zamanlar.</p>
+        <a href="https://berkayalay53.github.io/mazidekalan.github.io/" class="archive-btn" target="_blank">Eseri Hisset</a>
+      </div>
+    </div>
+
+    <div class="archive-card">
+      <div class="card-visual">
+         <img src="./kaybolansesindefteri.github.io/cover.jpg" alt="Kaybolan Sesin Defteri" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='S'">
+      </div>
+      <div class="archive-info">
+        <h3>Kaybolan Sesin Defteri</h3>
+        <p class="archive-desc">Yazıyla konuşan sessizlik.</p>
+        <a href="https://berkayalay53.github.io/kaybolansesindefteri.github.io/" class="archive-btn" target="_blank">Eseri Hisset</a>
+      </div>
+    </div>
+
+    <div class="archive-card">
+      <div class="card-visual">
+         <img src="./birdefterinicindekalanlar.github.io/cover.jpg" alt="Bir Defterin İçinde Kalanlar" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='D'">
+      </div>
+      <div class="archive-info">
+        <h3>Bir Defterin İçinde Kalanlar</h3>
+        <p class="archive-desc">Yazılmaktan vazgeçilen anlar.</p>
+        <a href="https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/" class="archive-btn" target="_blank">Eseri Hisset</a>
+      </div>
+    </div>
+
+    <div class="archive-card">
+      <div class="card-visual special-visual">
+        <span>♫</span>
+      </div>
+      <div class="archive-info">
+        <h3>Serinin Atlası</h3>
+        <p class="archive-desc">Tüm bu hikâyelerin sesi (Playlist).</p>
+        <a href="https://berkayalay53.github.io/serininatlasi.github.io/" class="archive-btn" target="_blank">Dinle</a>
       </div>
     </div>
 
   </div>
 
-  <div style="text-align: center;">
-    <a href="./index.html" class="back-home">← Ana Sayfaya Dön</a>
+  <div style="text-align: center; margin-top: 50px;">
+    <a href="./index.html" class="nav-back" style="font-size: 1rem;">← Ana Sayfaya Dön</a>
   </div>
 
   <div class="music-control" id="music-trigger">
@@ -223,10 +315,8 @@
     const disc = document.getElementById('disc');
     const hint = document.querySelector('.music-hint');
     
-    // Ses Seviyesi %50
     music.volume = 0.5; 
 
-    // Tıklayınca Çal/Durdur
     musicTrigger.addEventListener('click', () => {
       if (music.paused) {
         music.play();
@@ -240,7 +330,6 @@
       }
     });
 
-    // Sekme Değişince Sus (Saygı Modu)
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         music.pause();
