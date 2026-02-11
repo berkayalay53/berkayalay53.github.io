@@ -1,0 +1,21 @@
+{
+  "name": "Berkay Alay",
+  "short_name": "Berkay Alay",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0f1113",
+  "theme_color": "#0f1113",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "profile.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "profile.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
