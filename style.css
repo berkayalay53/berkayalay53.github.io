@@ -873,52 +873,20 @@ body.night-mode .spotlight {
 }
 
 /* === SCROLL TETİKLİ İMZA === */
-.signature-wrapper {
-  margin-top: 30px;
-  text-align: right;
-  opacity: 0;
-  /* Gecikmeyi (sondaki 1s'i) kaldırdık ki hemen görünsün */
-  transition: opacity 1.5s ease; 
-}
-
-.signature-wrapper.visible { 
-  opacity: 1; 
-}
-
-/* === SCROLL TETİKLİ İMZA (TAM KONTROL) === */
-
-/* SVG Genel Ayarı */
 .signature-svg {
   width: 250px;
   height: auto;
-  /* Parent elementte transition olmasın, çocuklara dağıttık */
-}
-
-/* 1. ÇİZGİ (Swoosh) AYARLARI */
-.signature-svg path {
   stroke: var(--accent);
   stroke-width: 2;
   fill: none;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  /* Çizgi 6 saniyede, ağır ağır çizilsin */
-  transition: stroke-dashoffset 6s ease-in-out; 
+  
+  /* Hız Ayarı: 3s yerine 6s yaptık. 
+     Sondaki 0.5s ise gecikme süresidir (kağıt belirdikten sonra yarım saniye bekler). */
+  transition: stroke-dashoffset 6s ease-in-out 0.5s;
 }
 
-/* 2. İSİM (Berkay Alay) AYARLARI */
-.signature-svg text {
-  opacity: 0; /* Başlangıçta görünmez olsun */
-  fill: var(--accent);
-  /* İsim de 5 saniye boyunca yavaşça belirsin. 
-     Sondaki '0.5s' gecikme demek; yani çizgi başladıktan yarım saniye sonra isim başlasın. */
-  transition: opacity 5s ease-in-out 0.5s;
-}
-
-/* --- Tetiklenme Anı --- */
-.signature-svg.draw path {
-  stroke-dashoffset: 0; /* Çizgiyi tamamla */
-}
-
-.signature-svg.draw text {
-  opacity: 1; /* İsmi görünür yap */
+.signature-svg.draw {
+  stroke-dashoffset: 0;
 }
