@@ -14,6 +14,15 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
+    /* HEM HTML HEM BODY KİLİTLENSİN */
+    html, body {
+      overflow: hidden !important; /* !important ile kesin emir veriyoruz */
+      height: 100%; /* Sayfa boyunu ekrana sabitler */
+    }
+
+    body {
+      padding-bottom: 120px; /* Alt boşluk ayarı */
+    }
     /* === KÜTÜPHANEYE ÖZEL STİLLER === */
     /* (Bu kısımlar style.css'te olmadığı için buraya ekliyoruz) */
     
@@ -354,14 +363,19 @@
       // 2. Intro Ekranını Söndür (Style.css animasyonu)
       intro.classList.add('hide');
 
-      // 3. Intro Yok Olunca İçeriği Göster
+     // 3. Intro Yok Olunca İçeriği Göster
       setTimeout(() => {
         intro.remove(); // DOM'dan sil
-        document.body.style.overflow = 'auto'; // Kaydırmayı aç
+        
+        // --- BURAYI GÜNCELLE ---
+        document.body.style.overflow = 'auto'; // Body kilidini aç
+        document.documentElement.style.overflow = 'auto'; // HTML kilidini aç
+        document.body.style.height = 'auto'; // Yükseklik sınırını kaldır
+        document.documentElement.style.height = 'auto'; // HTML yüksekliğini serbest bırak
+        // -----------------------
+
         content.classList.add('visible'); // Kitapları görünür yap (Fade-in)
       }, 900);
-    });
-
     // === MÜZİK KONTROLÜ (TIKLAYINCA) ===
     disc.addEventListener('click', () => {
       if (music.paused) {
