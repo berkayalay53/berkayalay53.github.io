@@ -877,10 +877,13 @@ body.night-mode .spotlight {
   margin-top: 30px;
   text-align: right;
   opacity: 0;
-  transition: opacity 1s ease;
+  /* Burayı 1s yerine 2s yapıyoruz */
+  transition: opacity 2s ease 1s; 
 }
 
-.signature-wrapper.visible { opacity: 1; }
+.signature-wrapper.visible { 
+  opacity: 1; 
+}
 
 .signature-svg {
   width: 250px;
