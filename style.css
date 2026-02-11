@@ -912,3 +912,12 @@ body.night-mode .spotlight {
 .signature-svg.draw text {
   opacity: 1; /* Yazıyı aydınlat */
 }
+.signature-svg .sig-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 3.5s ease-in-out;
+}
+
+.signature-svg.draw .sig-path {
+  stroke-dashoffset: 0;
+}
