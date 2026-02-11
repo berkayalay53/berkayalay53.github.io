@@ -17,6 +17,67 @@
     /* === KÜTÜPHANE ÖZEL TASARIM === */
     body {
       padding-bottom: 120px;
+      overflow: hidden; /* Giriş ekranı varken kaydırmayı engelle */
+    }
+    
+    /* === GİRİŞ EKRANI (INTRO) - KÜTÜPHANEYE ÖZEL === */
+    #intro-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #0f1113; /* Koyu tema */
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 1.5s ease;
+    }
+
+    .intro-content {
+      text-align: center;
+      color: var(--text);
+      padding: 20px;
+      animation: fadeIn 2s ease-out;
+    }
+
+    .intro-title {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+      color: var(--text);
+    }
+
+    .intro-sub {
+      font-family: var(--sans);
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin-bottom: 35px;
+      opacity: 0.8;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Giriş Butonu */
+    #start-btn {
+      background: transparent;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 14px 40px;
+      font-size: 0.9rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-family: var(--sans);
+    }
+
+    #start-btn:hover {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 0 25px rgba(212, 163, 115, 0.4);
+      transform: translateY(-2px);
     }
     
     /* ÜST Geri Dön Butonu */
@@ -43,7 +104,9 @@
     .library-header {
       text-align: center;
       padding: 100px 20px 60px;
-      animation: fadeIn 1.5s ease-out;
+      /* Başlangıçta gizli, intro bitince gelecek */
+      opacity: 0; 
+      transition: opacity 1.5s ease;
     }
     
     .library-title {
@@ -73,7 +136,8 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
-      animation: fadeInUp 1s ease-out 0.3s backwards;
+      opacity: 0; /* Başlangıçta gizli */
+      transition: opacity 1s ease 0.5s; /* Biraz gecikmeli gelsin */
     }
 
     /* KART TASARIMI */
@@ -98,7 +162,7 @@
     /* RESİM ALANI */
     .card-visual {
       width: 100%;
-      height: 200px; /* Standart yükseklik */
+      height: 200px;
       background: #111;
       border-radius: 12px;
       margin-bottom: 20px;
@@ -124,7 +188,6 @@
       transform: scale(1.05);
     }
     
-    /* Resim Yüklenmezse Gösterilecek Stil */
     .special-visual {
       font-family: var(--serif);
       font-size: 3rem;
@@ -172,45 +235,51 @@
       font-weight: 600;
     }
 
-    /* === PLAK İÇİN ÖZEL CSS (RESMİ DÜZELTEN KISIM) === */
+    /* === PLAK DÜZELTME KISMI === */
     .disc {
-      position: relative; /* Delik için referans */
+      position: relative;
       width: 100%;
       height: 100%;
       border-radius: 50%;
       overflow: hidden;
     }
-
-    /* Resmi Daireye Tam Oturtma */
     .disc img {
       width: 100%;
       height: 100%;
-      object-fit: cover; /* SİHİRLİ KOD: Resmi kesmeden doldurur */
+      object-fit: cover; /* Resmi yuvarlağa sığdırır */
       display: block;
     }
-
-    /* Plağın Ortasındaki Delik */
+    /* Delik */
     .disc::after {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 50%; left: 50%;
       transform: translate(-50%, -50%);
-      width: 12px;
-      height: 12px;
-      background: #0f1113; /* Arka plan rengiyle aynı */
-      border: 1px solid rgba(212, 163, 115, 0.5); /* Hafif pas rengi çerçeve */
+      width: 12px; height: 12px;
+      background: #0f1113;
+      border: 1px solid rgba(212, 163, 115, 0.5);
       border-radius: 50%;
       z-index: 2;
     }
 
-    /* Animasyonlar */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* İÇERİK GÖRÜNÜR OLUNCA ÇALIŞACAK CLASS */
+    .content-visible {
+      opacity: 1 !important;
+    }
 
   </style>
 </head>
 <body>
+
+  <div id="intro-screen">
+    <div class="intro-content">
+      <h1 class="intro-title">Külliyat</h1>
+      <p class="intro-sub">Sessizliğin arşivi.</p>
+      <button id="start-btn">Kütüphaneyi Aç</button>
+    </div>
+  </div>
 
   <div class="grain"></div>
   <div class="spotlight"></div>
@@ -219,12 +288,12 @@
     <a href="./index.html" class="nav-back">← Ana Sayfaya Dön</a>
   </div>
 
-  <header class="library-header">
+  <header class="library-header" id="lib-header">
     <h1 class="library-title">Külliyat</h1>
     <p class="library-sub">"Yazılmış, yazılmakta olan ve sessizliğe karışmış tüm satırlar."</p>
   </header>
 
-  <div class="books-grid">
+  <div class="books-grid" id="lib-grid">
 
     <div class="archive-card">
       <div class="card-visual">
@@ -345,18 +414,44 @@
   </audio>
 
   <script>
-    // === PERDEYİ AÇ (FADE-IN) ===
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded'); 
-    });
-
+    // === DEĞİŞKENLER ===
+    const introScreen = document.getElementById('intro-screen');
+    const startBtn = document.getElementById('start-btn');
+    const header = document.getElementById('lib-header');
+    const grid = document.getElementById('lib-grid');
+    
     const musicTrigger = document.getElementById('music-trigger');
     const music = document.getElementById('bg-music');
     const disc = document.getElementById('disc');
     const hint = document.querySelector('.music-hint');
-    
-    music.volume = 0.5; 
 
+    // === GİRİŞ EKRANI MANTIĞI ===
+    startBtn.addEventListener('click', () => {
+      // 1. Ekranı kaybet
+      introScreen.style.opacity = '0';
+      
+      // 2. İçeriği göster
+      document.body.style.overflow = 'auto'; // Kaydırmayı aç
+      header.classList.add('content-visible');
+      grid.classList.add('content-visible');
+
+      // 3. MÜZİĞİ BAŞLAT
+      music.volume = 0.5;
+      music.play().then(() => {
+        disc.classList.add('playing');
+        hint.textContent = "Çalıyor...";
+        hint.style.opacity = "0.7";
+      }).catch(err => {
+        console.log("Otomatik oynatma engellendi, manuel basılması gerekebilir.");
+      });
+
+      // 4. Intro elementini tamamen kaldır (tıklanmasın diye)
+      setTimeout(() => {
+        introScreen.style.display = 'none';
+      }, 1500);
+    });
+
+    // === MANUEL MÜZİK KONTROLÜ ===
     musicTrigger.addEventListener('click', () => {
       if (music.paused) {
         music.play();
@@ -370,6 +465,7 @@
       }
     });
 
+    // === SAYGI MODU ===
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         music.pause();
@@ -380,7 +476,7 @@
       }
     });
     
-    // FENER EFEKTİ
+    // === FENER EFEKTİ ===
     const spotlight = document.querySelector('.spotlight');
     document.addEventListener('mousemove', (e) => {
       spotlight.style.setProperty('--x', e.clientX + 'px');
