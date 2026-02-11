@@ -873,6 +873,18 @@ body.night-mode .spotlight {
 }
 
 /* === SCROLL TETİKLİ İMZA === */
+.signature-wrapper {
+  margin-top: 30px;
+  text-align: right;
+  opacity: 0;
+  /* Gecikmeyi (sondaki 1s'i) kaldırdık ki hemen görünsün */
+  transition: opacity 1.5s ease; 
+}
+
+.signature-wrapper.visible { 
+  opacity: 1; 
+}
+
 .signature-svg {
   width: 250px;
   height: auto;
@@ -881,10 +893,9 @@ body.night-mode .spotlight {
   fill: none;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
-  
-  /* Hız Ayarı: 3s yerine 6s yaptık. 
-     Sondaki 0.5s ise gecikme süresidir (kağıt belirdikten sonra yarım saniye bekler). */
-  transition: stroke-dashoffset 6s ease-in-out 0.5s;
+  /* Çizim işlemine 0.5 saniye gecikme ekledik.
+     Böylece önce alan belirir, sonra imza atılır. */
+  transition: stroke-dashoffset 3s ease-in-out 0.5s;
 }
 
 .signature-svg.draw {
