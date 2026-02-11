@@ -262,38 +262,6 @@
       document.body.classList.add('night-mode');
     }
 
-    // 2. KÜL PARÇACIKLARI (burnBtn.addEventListener içine, burning class'ından hemen önceye ekle)
-    function createAshes() {
-      for (let i = 0; i < 20; i++) {
-        const ash = document.createElement('div');
-        ash.className = 'ash-particle';
-        ash.style.left = (Math.random() * 80 + 10) + '%';
-        ash.style.top = (Math.random() * 50 + 40) + '%';
-        ash.style.animationDelay = (Math.random() * 0.5) + 's';
-        document.querySelector('.secret-content').appendChild(ash);
-        setTimeout(() => ash.remove(), 2500);
-      }
-    }
-
-    // burnBtn tıklama olayına ekle
-    burnBtn.addEventListener('click', () => {
-      if(secretText.value.trim() === "") return;
-      createAshes(); // Külleri savur
-      secretContent.classList.add('burning');
-      // ... (diğer mevcut kodların)
-    });
-
-    // 3. SCROLL TETİKLİ İMZA (Scriptin en sonuna ekle)
-    const sigObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          document.getElementById('sig-svg').classList.add('draw');
-          document.getElementById('sig-trigger').classList.add('visible');
-        }
-      });
-    }, { threshold: 0.8 }); // İmza %80 göründüğünde başla
- });
-    sigObserver.observe(document.getElementById('sig-trigger'));
     // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
     window.addEventListener('load', () => {
       document.body.classList.add('loaded');
@@ -620,6 +588,25 @@
            smokeMsg.classList.remove('show');
         }, 500);
       }, 2800); // 2.8 saniye sonra kapanır
+    // 2. KÜL PARÇACIKLARI (burnBtn.addEventListener içine, burning class'ından hemen önceye ekle)
+    function createAshes() {
+      for (let i = 0; i < 20; i++) {
+        const ash = document.createElement('div');
+        ash.className = 'ash-particle';
+        ash.style.left = (Math.random() * 80 + 10) + '%';
+        ash.style.top = (Math.random() * 50 + 40) + '%';
+        ash.style.animationDelay = (Math.random() * 0.5) + 's';
+        document.querySelector('.secret-content').appendChild(ash);
+        setTimeout(() => ash.remove(), 2500);
+      }
+    }
+
+    // burnBtn tıklama olayına ekle
+    burnBtn.addEventListener('click', () => {
+      if(secretText.value.trim() === "") return;
+      createAshes(); // Külleri savur
+      secretContent.classList.add('burning');
+      // ... (diğer mevcut kodların)
     });
     // === GİZLİ KONSOL MESAJI ===
     console.log(
@@ -630,6 +617,17 @@
       "%c Kodların arasında hikaye aranmaz.\nHikaye, satır aralarındaki boşluktadır.",
       "color: #bcb6aa; font-family: sans-serif; font-size: 14px; font-style: italic;"
     );
+  // 3. SCROLL TETİKLİ İMZA (Scriptin en sonuna ekle)
+    const sigObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.getElementById('sig-svg').classList.add('draw');
+          document.getElementById('sig-trigger').classList.add('visible');
+        }
+      });
+    }, { threshold: 0.8 }); // İmza %80 göründüğünde başla
+ });
+    sigObserver.observe(document.getElementById('sig-trigger'));
   </script>
 <script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
