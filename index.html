@@ -469,7 +469,7 @@
     const shareCopy = document.getElementById('share-copy');
     const copyMsg = document.getElementById('copy-msg');
 
-    // === 1. DEĞİŞKEN TANIMI (Havuç Mantığı İçin) ===
+    // === 1. DEĞİŞKEN TANIMI (Havuz Mantığı İçin) ===
     let availableIndices = []; // Henüz gösterilmemiş cümlelerin havuzu
 
     // === 2. TIKLAMA OLAYI (TEKRARSIZ) ===
@@ -480,7 +480,7 @@
       fateResult.classList.remove('show');  // Önce gizle
 
       // --- HAVUZ MANTIĞI BAŞLANGICI ---
-      // Eğer havuz boşsa (veya ilk kez basılıyorsa), tüm indeksleri doldur (0'dan 18'e kadar)
+      // Eğer havuz boşsa (veya ilk kez basılıyorsa), tüm indeksleri doldur
       if (availableIndices.length === 0) {
         for (let i = 0; i < quotes.length; i++) {
           availableIndices.push(i);
@@ -490,7 +490,6 @@
       // Havuzdan rastgele bir "sıra numarası" seç
       const randomIndexInPool = Math.floor(Math.random() * availableIndices.length);
       
-      // O sıradaki gerçek "quote" indeksini al ve havuzdan sil (Böylece tekrar çıkmaz)
       const selectedIndex = availableIndices.splice(randomIndexInPool, 1)[0]; 
       
       const selectedQuote = quotes[selectedIndex];
@@ -511,20 +510,12 @@
         shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
         shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
         
-        // Kopyalama butonu işlevi (tekrar tanımlanıyor ki güncel metni kopyalasın)
+        // Kopyalama butonu işlevi
         shareCopy.onclick = () => {
           navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
           copyMsg.classList.add('visible');
           setTimeout(() => copyMsg.classList.remove('visible'), 2000);
         };
-
-        // Kutuyu göster ve butonu düzelt
-        fateResult.classList.add('show');
-        fateBtn.textContent = "Başka Bir His Ver";
-        fateBtn.style.pointerEvents = "auto";
-        
-      }, 600); // 0.6 saniye bekletiyoruz
-    });
 
         // Kutuyu göster ve butonu düzelt
         fateResult.classList.add('show');
