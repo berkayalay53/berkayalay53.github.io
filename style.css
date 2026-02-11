@@ -877,27 +877,10 @@ body.night-mode .spotlight {
   margin-top: 30px;
   text-align: right;
   opacity: 0;
-  /* Gecikmeyi (sondaki 1s'i) kaldırdık ki hemen görünsün */
-  transition: opacity 1.5s ease; 
+  /* Burayı 1s yerine 2s yapıyoruz */
+  transition: opacity 2s ease; 
 }
 
 .signature-wrapper.visible { 
   opacity: 1; 
-}
-
-.signature-svg {
-  width: 250px;
-  height: auto;
-  stroke: var(--accent);
-  stroke-width: 2;
-  fill: none;
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  /* Çizim işlemine 0.5 saniye gecikme ekledik.
-     Böylece önce alan belirir, sonra imza atılır. */
-  transition: stroke-dashoffset 3s ease-in-out 0.5s;
-}
-
-.signature-svg.draw {
-  stroke-dashoffset: 0;
 }
