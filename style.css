@@ -820,4 +820,19 @@ a:hover {
 .secret-btn svg {
   stroke-width: 1.5; /* Daha narin dursun */
 }
+/* === KADER BÖLÜMÜNDEKİ KİTAP LİNKİ === */
+.book-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 1px dashed rgba(212, 163, 115, 0.5); /* Altına kesik çizgi */
+  padding-bottom: 2px;
+}
 
+.book-link:hover {
+  color: #fff;
+  border-bottom-color: #fff;
+  letter-spacing: 0.5px; /* Üzerine gelince harfler hafif açılsın */
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
