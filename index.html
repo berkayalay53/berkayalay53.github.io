@@ -254,267 +254,14 @@
   </audio>
 
   <script>
-    // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
-
-    // === MELANKOLİK SEKME BAŞLIĞI ===
-    let docTitle = document.title;
-    window.addEventListener("blur", () => {
-      document.title = "Sessizlik..."; /* Başka sekmeye geçince yazar */
-    });
-    window.addEventListener("focus", () => {
-      document.title = docTitle; /* Geri dönünce düzelir */
-    });
-
+    // === 1. DEĞİŞKENLER VE SEÇİCİLER (En Başta Tanımlı) ===
     const intro = document.getElementById('introScreen');
     const btn = document.getElementById('introBtn');
     const music = document.getElementById('bgMusic');
     const disc = document.getElementById('musicDisc');
-
-    // Sayfa açıldığında kaydırmayı kilitle
-    document.body.style.overflow = 'hidden';
-
-    // Müzik Durumu Fonksiyonu
-    function toggleMusic() {
-      if (music.paused) {
-        music.play();
-        disc.classList.add('playing'); // Dönmeye başla
-      } else {
-        music.pause();
-        disc.classList.remove('playing'); // Dur
-      }
-    }
-
-    // Giriş butonuna basınca
-    btn.addEventListener('click', () => {
-      // Müziği ve Plağı başlat
-      music.play().then(() => {
-        disc.classList.add('playing');
-      }).catch(e => console.log("Otomatik oynatma engellendi", e));
-      
-      music.volume = 0.4; 
-
-      // Perde Kapansın
-      intro.classList.add('hide');
-
-    setTimeout(() => {
-        intro.remove();
-        
-        // --- KİLİDİ AÇAN KODLAR (TAM BURAYA EKLE) ---
-        document.body.style.overflow = 'auto'; 
-        document.documentElement.style.overflow = 'auto';
-        document.body.style.height = 'auto';
-        document.documentElement.style.height = 'auto';
-        // ------------------------------------------
-      }, 900);
-    });
-// ... (Üstteki kodlar aynen kalacak) ...
-
-    // === SESSİZLİK SENSÖRÜ (EKLENECEK KOD) ===
-    // Kullanıcı başka sekmeye geçerse veya uygulamayı alta alırsa müzik dursun.
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) {
-        // Sayfa gizlendiğinde (Başka sekmeye/uygulamaya geçildi)
-        music.pause();
-        disc.classList.remove('playing'); // Plağı durdur
-        document.title = "Sessizlik...";  // Sekme adını değiştir
-      } else {
-        // Sayfaya geri dönüldüğünde
-        // İstersen otomatik başlatabilirsin ama sessiz kalması daha asildir.
-        // Kullanıcı isterse kendi başlatır.
-        document.title = "Berkay Alay — Yazar"; // Başlığı düzelt
-      }
-    });
-
-    // ... (Kaderin cümlesi vb. kodlar devam edebilir) ...
-    // Plağa tıklayınca müziği aç/kapat
-    disc.addEventListener('click', toggleMusic);
-
-    // FENER EFEKTİ
     const spotlight = document.querySelector('.spotlight');
-    document.addEventListener('mousemove', (e) => {
-      spotlight.style.setProperty('--x', e.clientX + 'px');
-      spotlight.style.setProperty('--y', e.clientY + 'px');
-    });
-    // === HAYALET İMLEÇ TAKİBİ ===
-    const cursorDot = document.querySelector('[data-cursor-dot]');
-    const cursorOutline = document.querySelector('[data-cursor-outline]');
-
-    window.addEventListener("mousemove", function (e) {
-      const posX = e.clientX;
-      const posY = e.clientY;
-
-      // Nokta anında gitsin
-      cursorDot.style.left = `${posX}px`;
-      cursorDot.style.top = `${posY}px`;
-
-      // Halka biraz geriden ve yumuşak gelsin
-      cursorOutline.animate({
-        left: `${posX}px`,
-        top: `${posY}px`
-      }, { duration: 500, fill: "forwards" });
-    });
     
-  // === KADERİN CÜMLESİ MEKANİZMASI (AKILLI SEÇİM) ===
-    
-   const quotes = [
-      { 
-        text: "Sana hiç dokunmadan, seni hiç durdurmadan... sadece uzaktan bir şarkı gibi sevdim seni.", 
-        book: "Turuncu Saçlı Kız",
-        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
-      },
-      { 
-        text: "Eğer bir gün yine yalnız yazarsam... seni değil, seni bekleyen hâlimi özlerim.", 
-        book: "Geçmişteki Sessizlik",
-        url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/"
-      },
-      { 
-        text: "Bazı insanlar hayatımıza dokunmaz... sadece gözlerimizin içine bakıp kim olduğumuzu hatırlatırlar.", 
-        book: "Geçmişteki Sessizlik",
-        url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/"
-      },
-      { 
-        text: "Geriye dönsem de seni değil, sadece kendi yokluğumu bulacağımı biliyorum.", 
-        book: "Mazide Kalan",
-        url: "https://berkayalay53.github.io/mazidekalan.github.io/"
-      },
-      { 
-        text: "Sarsılmadan duranlar... gürültüsüz çökenlerdir.", 
-        book: "Beynin Sessiz Fırtınaları",
-        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
-      },
-      { 
-        text: "İnsan bazı şeyleri söylemese de gözleri konuşur... Göz göze gelmek cesarettir; gözünü kaçırmamaksa, vedadır.", 
-        book: "Beynin Sessiz Fırtınaları",
-        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
-      },
-      { 
-        text: "Bazı insanlar konuşmaz. Ama gözleriyle bir ömürlük cümle kurarlar.", 
-        book: "Beynin Sessiz Fırtınaları",
-        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
-      },
-      { 
-        text: "Bazı özlemler... geçmişten değil, hiç yaşanmamış ihtimallerden doğar.", 
-        book: "Beynin Sessiz Fırtınaları",
-        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
-      },
-      { 
-        text: "İnsan bazen görünmek istemez. Ama fark edilmek ister... Ben, fark edilmekle görünmemek arasında asılı kalmış bir kelimeydim.", 
-        book: "Beynin Sessiz Fırtınaları",
-        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
-      },
-      { 
-        text: "İnsan bazen geçmişini anlatırken... olanı değil, olmasını istediğini hatırlar.", 
-        book: "Beynin Sessiz Fırtınaları",
-        url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/"
-      },
-      { 
-        text: "İnsan, hayal ettiğini severmiş; gerçeği ise sadece tolere edermiş.", 
-        book: "Kayıp Duyular Atlası",
-        url: "https://berkayalay53.github.io/kayipduyularatlasi.github.io/"
-      },
-      { 
-        text: "Konuşmazsak kalır sanıyoruz. Oysa en çok susarak kaybediyoruz her şeyi.", 
-        book: "Turuncu Saçlı Kız",
-        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
-      },
-      { 
-        text: "Bazı insanlar birini özlemiyor — bir boşluğu seviyor.", 
-        book: "Kayıp Duyular Atlası",
-        url: "https://berkayalay53.github.io/kayipduyularatlasi.github.io/"
-      },
-      { 
-        text: "Fark etmemenin içinde öylesine bir adalet vardı ki... buna bile razı oldum.", 
-        book: "Turuncu Saçlı Kız",
-        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
-      },
-      { 
-        text: "Kitap biter. Ama ses… devam eder.", 
-        book: "Kaybolan Sesin Defteri",
-        url: "https://berkayalay53.github.io/kaybolansesindefteri.github.io/"
-      },
-      { 
-        text: "Bu defter sessiz değil, sağır edici bir gürültüyle dolu.", 
-        book: "Kaybolan Sesin Defteri",
-        url: "https://berkayalay53.github.io/kaybolansesindefteri.github.io/"
-      },
-      { 
-        text: "Biliyor musun, ben seni hiç ‘sahiplenmedim’. Çünkü sahip olduklarımı hep kaybettim.", 
-        book: "Geçmişteki Sessizlik",
-        url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/"
-      },
-      { 
-        text: "Bazı insanlar, hayata bir cümle gibi girer. Sonra virgül olur. Sonra üç nokta... Ve sonra, sessizlik.", 
-        book: "Turuncu Saçlı Kız",
-        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
-      },
-      { 
-        text: "Sanki konuşmaktan çok… anlatılmayan şeyleri dinliyorduk.", 
-        book: "Bir Defterin İçinde Kalanlar",
-        url: "https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/"
-      }
-    ];
-    // ... const quotes = [...] bittikten sonra ...
-
-    const fateBtn = document.getElementById('fate-btn');
-    const fateResult = document.getElementById('fate-result');
-    const quoteText = document.getElementById('quote-text');
-    const bookName = document.getElementById('book-name');
-    
-    // YENİ: Paylaşım elemanlarını seç
-    const shareX = document.getElementById('share-x');
-    const shareWa = document.getElementById('share-wa');
-    const shareCopy = document.getElementById('share-copy');
-    const copyMsg = document.getElementById('copy-msg');
-
-    let lastIndex = -1;
-
-    fateBtn.addEventListener('click', () => {
-      // 1. GİZEM: Butona basınca biraz bekletelim (Arama efekti)
-      fateBtn.textContent = "Hissediliyor..."; 
-      fateBtn.style.pointerEvents = "none"; // Tekrar basamasın
-      fateResult.classList.remove('show');  // Önce gizle
-
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * quotes.length);
-      } while (randomIndex === lastIndex);
-
-      lastIndex = randomIndex;
-      const selectedQuote = quotes[randomIndex];
-
-      // 600ms gecikme (Sanki kader düşünüyormuş gibi)
-      setTimeout(() => {
-        // Metni güncelle
-        quoteText.textContent = `“${selectedQuote.text}”`;
-        
-        // --- 2. KÖPRÜ: Kitap ismini TIKLANABİLİR yapıyoruz ---
-        // Kitabın adı artık bir Link (<a>) olacak
-        bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">${selectedQuote.book} &rarr;</a>`;
-        
-        // --- PAYLAŞIM LİNKLERİNİ GÜNCELLE ---
-        const fullText = `"${selectedQuote.text}" — ${selectedQuote.book}\n\nBerkay Alay`;
-        const encodedText = encodeURIComponent(fullText);
-
-        shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
-        shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
-        
-        shareCopy.onclick = () => {
-          navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
-          copyMsg.classList.add('visible');
-          setTimeout(() => copyMsg.classList.remove('visible'), 2000);
-        };
-
-        // Kutuyu göster ve butonu düzelt
-        fateResult.classList.add('show');
-        fateBtn.textContent = "Başka Bir His Ver";
-        fateBtn.style.pointerEvents = "auto";
-        
-      }, 600); // 0.6 saniye bekletiyoruz
-    });
-    // === GİZLİ BÖLME (HAYALET MEKTUP) MEKANİZMASI ===
+    // Gizli Oda Elemanları
     const secretTrigger = document.getElementById('secret-trigger');
     const secretModal = document.getElementById('secret-modal');
     const closeSecret = document.querySelector('.close-secret');
@@ -523,63 +270,193 @@
     const smokeMsg = document.getElementById('smoke-msg');
     const secretText = document.getElementById('secret-text');
 
-    // Pencereyi Aç
-    secretTrigger.addEventListener('click', () => {
-      secretModal.classList.add('active');
-      // Eski animasyonları temizle
-      secretContent.classList.remove('burning');
-      smokeMsg.classList.remove('show');
-      secretText.value = ""; // İçeriği temizle
-      
-      // Hafif bir gecikmeyle odaklan (mobil klavye için)
-      setTimeout(() => secretText.focus(), 100);
+    // Kader Elemanları
+    const fateBtn = document.getElementById('fate-btn');
+    const fateResult = document.getElementById('fate-result');
+    const quoteText = document.getElementById('quote-text');
+    const bookName = document.getElementById('book-name');
+    const shareX = document.getElementById('share-x');
+    const shareWa = document.getElementById('share-wa');
+    const shareCopy = document.getElementById('share-copy');
+    const copyMsg = document.getElementById('copy-msg');
+
+    // === 2. GECE MODU KONTROLÜ (Geri Getirdik) ===
+    const currentHour = new Date().getHours();
+    if (currentHour >= 22 || currentHour < 6) {
+      document.body.classList.add('night-mode');
+    }
+
+    // === 3. SAYFA YÜKLENME YÖNETİMİ ===
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
     });
 
-    // Pencereyi Kapat (Çarpı ile)
-    closeSecret.addEventListener('click', () => {
-      secretModal.classList.remove('active');
-    });
-    
-    // Pencereyi Kapat (Arka plana tıklayarak)
-    secretModal.addEventListener('click', (e) => {
-      if (e.target === secretModal) {
-        secretModal.classList.remove('active');
+    window.addEventListener("pageshow", function(event) {
+      if (event.persisted) {
+        document.body.classList.add('loaded');
+        document.body.style.opacity = "1";
       }
     });
 
-    // YAK VE GÖNDER EFEKTİ
-    burnBtn.addEventListener('click', () => {
-      if(secretText.value.trim() === "") return; // Boşsa işlem yapma
+    // Güvenlik: 3 saniye sonra her türlü aç
+    setTimeout(() => { document.body.classList.add('loaded'); }, 3000);
 
-      // 1. Kağıdı yak (Yok olma efekti)
-      secretContent.classList.add('burning');
-
-      // 2. "Sessizliğe karıştı..." mesajını göster
+    // === 4. GİRİŞ EKRANI VE MÜZİK ===
+    btn.addEventListener('click', () => {
+      music.play().then(() => {
+        disc.classList.add('playing');
+      }).catch(e => console.log("Otomatik oynatma engellendi", e));
+      music.volume = 0.4; 
+      intro.classList.add('hide');
       setTimeout(() => {
-        smokeMsg.classList.add('show');
-      }, 400);
+        intro.remove();
+        document.body.style.overflow = 'auto'; 
+        document.documentElement.style.overflow = 'auto';
+      }, 900);
+    });
 
-      // 3. Odayı kapat ve temizle
+    disc.addEventListener('click', () => {
+      if (music.paused) { music.play(); disc.classList.add('playing'); } 
+      else { music.pause(); disc.classList.remove('playing'); }
+    });
+
+    // === 5. SESSİZLİK SENSÖRÜ (Sekme Değişince Duraklat) ===
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        music.pause();
+        disc.classList.remove('playing');
+        document.title = "Sessizlik..."; 
+      } else {
+        document.title = "Berkay Alay — Yazar"; 
+      }
+    });
+
+    // === 6. GÖRSEL EFEKTLER (Fener ve İmleç) ===
+    document.addEventListener('mousemove', (e) => {
+      spotlight.style.setProperty('--x', e.clientX + 'px');
+      spotlight.style.setProperty('--y', e.clientY + 'px');
+      
+      const cursorDot = document.querySelector('[data-cursor-dot]');
+      const cursorOutline = document.querySelector('[data-cursor-outline]');
+      if(cursorDot && cursorOutline) {
+          cursorDot.style.left = `${e.clientX}px`;
+          cursorDot.style.top = `${e.clientY}px`;
+          cursorOutline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
+      }
+    });
+
+    // === 7. KÜL PARÇACIKLARI FONKSİYONU (Geri Getirdik) ===
+    function createAshes() {
+      for (let i = 0; i < 20; i++) {
+        const ash = document.createElement('div');
+        ash.className = 'ash-particle';
+        ash.style.left = (Math.random() * 80 + 10) + '%';
+        ash.style.top = (Math.random() * 50 + 40) + '%';
+        ash.style.animationDelay = (Math.random() * 0.5) + 's';
+        document.querySelector('.secret-content').appendChild(ash);
+        setTimeout(() => ash.remove(), 2500);
+      }
+    }
+
+    // === 8. GİZLİ MEKTUP OLAYLARI ===
+    secretTrigger.addEventListener('click', () => {
+      secretModal.classList.add('active');
+      secretText.value = "";
+      setTimeout(() => secretText.focus(), 100);
+    });
+
+    closeSecret.addEventListener('click', () => secretModal.classList.remove('active'));
+
+    burnBtn.addEventListener('click', () => {
+      if(secretText.value.trim() === "") return;
+      
+      createAshes(); // KÜLLERİ ÇAĞIR
+      
+      secretContent.classList.add('burning');
+      setTimeout(() => { smokeMsg.classList.add('show'); }, 400);
       setTimeout(() => {
         secretModal.classList.remove('active');
-        
-        // Sınıfları temizle ki tekrar açılabilsin
         setTimeout(() => {
-           secretContent.classList.remove('burning');
-           smokeMsg.classList.remove('show');
+          secretContent.classList.remove('burning');
+          smokeMsg.classList.remove('show');
         }, 500);
-      }, 2800); // 2.8 saniye sonra kapanır
+      }, 2800);
     });
-    // === GİZLİ KONSOL MESAJI ===
-    console.log(
-      "%c Buralarda ne arıyorsun?",
-      "color: #d4a373; font-family: serif; font-size: 20px; font-weight: bold;"
-    );
-    console.log(
-      "%c Kodların arasında hikaye aranmaz.\nHikaye, satır aralarındaki boşluktadır.",
-      "color: #bcb6aa; font-family: sans-serif; font-size: 14px; font-style: italic;"
-    );
-  </script>
+
+    // === 9. İMZA GÖRÜNÜRLÜĞÜ (SCROLL TRIGGER) ===
+    const sigObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Mevcut imzana dokunmadık, sadece görünürlüğünü tetikleyeceğiz
+          // Eğer CSS'te animasyon varsa buradan class ekleyebiliriz.
+          // Mevcut class: .signature { animation: ... } olduğu için direkt çalışır.
+        }
+      });
+    }, { threshold: 0.8 });
+
+    const target = document.getElementById('sig-trigger');
+    if (target) sigObserver.observe(target);
+
+    // === 10. KADERİN CÜMLESİ LİSTESİ ===
+    const quotes = [
+      { text: "Sana hiç dokunmadan, seni hiç durdurmadan... sadece uzaktan bir şarkı gibi sevdim seni.", book: "Turuncu Saçlı Kız", url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/" },
+      { text: "Eğer bir gün yine yalnız yazarsam... seni değil, seni bekleyen hâlimi özlerim.", book: "Geçmişteki Sessizlik", url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/" },
+      { text: "Bazı insanlar hayatımıza dokunmaz... sadece gözlerimizin içine bakıp kim olduğumuzu hatırlatırlar.", book: "Geçmişteki Sessizlik", url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/" },
+      { text: "Geriye dönsem de seni değil, sadece kendi yokluğumu bulacağımı biliyorum.", book: "Mazide Kalan", url: "https://berkayalay53.github.io/mazidekalan.github.io/" },
+      { text: "Sarsılmadan duranlar... gürültüsüz çökenlerdir.", book: "Beynin Sessiz Fırtınaları", url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" },
+      { text: "İnsan bazı şeyleri söylemese de gözleri konuşur... Göz göze gelmek cesarettir; gözünü kaçırmamaksa, vedadır.", book: "Beynin Sessiz Fırtınaları", url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" },
+      { text: "Bazı insanlar konuşmaz. Ama gözleriyle bir ömürlük cümle kurarlar.", book: "Beynin Sessiz Fırtınaları", url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" },
+      { text: "Bazı özlemler... geçmişten değil, hiç yaşanmamış ihtimallerden doğar.", book: "Beynin Sessiz Fırtınaları", url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" },
+      { text: "İnsan bazen görünmek istemez. Ama fark edilmek ister... Ben, fark edilmekle görünmemek arasında asılı kalmış bir kelimeydim.", book: "Beynin Sessiz Fırtınaları", url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" },
+      { text: "İnsan bazen geçmişini anlatırken... olanı değil, olmasını istediğini hatırlar.", book: "Beynin Sessiz Fırtınaları", url: "https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" },
+      { text: "İnsan, hayal ettiğini severmiş; gerçeği ise sadece tolere edermiş.", book: "Kayıp Duyular Atlası", url: "https://berkayalay53.github.io/kayipduyularatlasi.github.io/" },
+      { text: "Konuşmazsak kalır sanıyoruz. Oysa en çok susarak kaybediyoruz her şeyi.", book: "Turuncu Saçlı Kız", url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/" },
+      { text: "Bazı insanlar birini özlemiyor — bir boşluğu seviyor.", book: "Kayıp Duyular Atlası", url: "https://berkayalay53.github.io/kayipduyularatlasi.github.io/" },
+      { text: "Fark etmemenin içinde öylesine bir adalet vardı ki... buna bile razı oldum.", book: "Turuncu Saçlı Kız", url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/" },
+      { text: "Kitap biter. Ama ses… devam eder.", book: "Kaybolan Sesin Defteri", url: "https://berkayalay53.github.io/kaybolansesindefteri.github.io/" },
+      { text: "Bu defter sessiz değil, sağır edici bir gürültüyle dolu.", book: "Kaybolan Sesin Defteri", url: "https://berkayalay53.github.io/kaybolansesindefteri.github.io/" },
+      { text: "Biliyor musun, ben seni hiç ‘sahiplenmedim’. Çünkü sahip olduklarımı hep kaybettim.", book: "Geçmişteki Sessizlik", url: "https://berkayalay53.github.io/gecmistekisessizlik.github.io/" },
+      { text: "Bazı insanlar, hayata bir cümle gibi girer. Sonra virgül olur. Sonra üç nokta... Ve sonra, sessizlik.", book: "Turuncu Saçlı Kız", url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/" },
+      { text: "Sanki konuşmaktan çok… anlatılmayan şeyleri dinliyorduk.", book: "Bir Defterin İçinde Kalanlar", url: "https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/" }
+  ];
+
+  // === 11. KADERİN CÜMLESİ MEKANİZMASI ===
+  let availableIndices = [];
+
+  fateBtn.addEventListener('click', () => {
+    fateBtn.textContent = "Hissediliyor..."; 
+    fateBtn.style.pointerEvents = "none"; 
+    fateResult.classList.remove('show');
+
+    if (availableIndices.length === 0) {
+      availableIndices = quotes.map((_, i) => i);
+    }
+
+    const randomIndexInPool = Math.floor(Math.random() * availableIndices.length);
+    const selectedIndex = availableIndices.splice(randomIndexInPool, 1)[0]; 
+    const selectedQuote = quotes[selectedIndex];
+
+    setTimeout(() => {
+      quoteText.textContent = `“${selectedQuote.text}”`;
+      bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">${selectedQuote.book} &rarr;</a>`;
+      
+      const fullText = `"${selectedQuote.text}" — ${selectedQuote.book}\n\nBerkay Alay`;
+      const encodedText = encodeURIComponent(fullText);
+      shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
+      shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
+      
+      shareCopy.onclick = () => {
+        navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
+        copyMsg.classList.add('visible');
+        setTimeout(() => copyMsg.classList.remove('visible'), 2000);
+      };
+
+      fateResult.classList.add('show');
+      fateBtn.textContent = "Başka Bir His Ver";
+      fateBtn.style.pointerEvents = "auto";
+    }, 600); 
+  });
+</script>
 <script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
   
