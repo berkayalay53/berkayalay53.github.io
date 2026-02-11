@@ -580,6 +580,28 @@
       "color: #bcb6aa; font-family: sans-serif; font-size: 14px; font-style: italic;"
     );
   </script>
+<script>
+  // === SAYFA YÜKLENME YÖNETİCİSİ ===
+  
+  // 1. Tarayıcı önbelleğinden (Geri butonuyla) geliniyorsa sayfayı yenileme sorunu olmasın
+  window.addEventListener("pageshow", function(event) {
+    if (event.persisted) {
+      document.body.classList.add('loaded');
+      document.body.style.opacity = "1";
+    }
+  });
 
+  // 2. Her şey yüklendiğinde (Resimler, CSS) perdeyi aç
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded'); // CSS'teki .loaded opacity:1 yapar
+    // Eğer toz efekti varsa başlat (Yoksa hata vermez, geçer)
+    if (typeof createDust === "function") createDust(); 
+  });
+  
+  // 3. Güvenlik Sübabı: Eğer 3 saniye içinde yüklenmezse zorla aç (Karanlıkta kalmasınlar)
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 3000);
+</script>
 </body>
 </html>
