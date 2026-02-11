@@ -846,3 +846,53 @@ a:hover {
   letter-spacing: 0.5px; /* Üzerine gelince harfler hafif açılsın */
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
+/* === GECE MODU AYARI === */
+body.night-mode {
+  filter: brightness(0.8) contrast(1.1);
+}
+body.night-mode .spotlight {
+  opacity: 0.4 !important; /* Gece fener daha loş */
+}
+
+/* === KÜL PARÇACIKLARI (SECRET ROOM) === */
+.ash-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #000;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10005;
+  filter: blur(1px);
+  animation: ashDrift 2.5s ease-out forwards;
+}
+
+@keyframes ashDrift {
+  0% { transform: scale(1) translateY(0) rotate(0); opacity: 1; }
+  100% { transform: scale(0.5) translateY(-150px) rotate(360deg); opacity: 0; }
+}
+
+/* === SCROLL TETİKLİ İMZA === */
+.signature-wrapper {
+  margin-top: 30px;
+  text-align: right;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.signature-wrapper.visible { opacity: 1; }
+
+.signature-svg {
+  width: 250px;
+  height: auto;
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: none;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 3s ease-in-out;
+}
+
+.signature-svg.draw {
+  stroke-dashoffset: 0;
+}
