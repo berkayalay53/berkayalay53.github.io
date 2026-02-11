@@ -7,8 +7,8 @@
   <meta name="description" content="Berkay Alay'ın dijital kitaplığı ve sessizliğe karışmış eserleri.">
   
   <link rel="icon" href="./profile.jpg" type="image/jpeg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel=\"preconnect\" href="https://fonts.googleapis.com">
+  <link rel=\"preconnect\" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style.css">
@@ -19,7 +19,7 @@
       padding-bottom: 120px;
     }
     
-    /* ÜST Geri Dön Butonu (Acil Çıkış) */
+    /* ÜST Geri Dön Butonu */
     .top-nav {
       position: absolute;
       top: 30px;
@@ -98,7 +98,7 @@
     /* RESİM ALANI */
     .card-visual {
       width: 100%;
-      height: 200px;
+      height: 200px; /* Standart yükseklik */
       background: #111;
       border-radius: 12px;
       margin-bottom: 20px;
@@ -124,12 +124,15 @@
       transform: scale(1.05);
     }
     
-    /* ÖZEL KARTLAR İÇİN STİL (İzler vb.) */
+    /* Resim Yüklenmezse Gösterilecek Stil */
     .special-visual {
       font-family: var(--serif);
-      font-size: 2rem;
+      font-size: 3rem;
       color: var(--accent);
-      background: linear-gradient(45deg, #1a1a1a, #2a2a2a);
+      background: linear-gradient(45deg, #1a1a1a, #222);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .archive-info h3 {
@@ -192,8 +195,8 @@
   <div class="books-grid">
 
     <div class="archive-card">
-      <div class="card-visual special-visual">
-        <span>❝❞</span>
+      <div class="card-visual">
+        <img src="https://berkayalay53.github.io/eniyialintilar.github.io/cover.jpg" alt="İzler" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='❝❞'">
       </div>
       <div class="archive-info">
         <h3>İzler</h3>
@@ -204,7 +207,7 @@
 
     <div class="archive-card">
       <div class="card-visual">
-        <img src="./turuncusaclikiz.github.io/cover.jpg" alt="Turuncu Saçlı Kız" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='T'">
+        <img src="https://berkayalay53.github.io/turuncusaclikiz.github.io/cover.jpg" alt="Turuncu Saçlı Kız" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='T'">
       </div>
       <div class="archive-info">
         <h3>Turuncu Saçlı Kız</h3>
@@ -215,7 +218,7 @@
 
     <div class="archive-card">
       <div class="card-visual">
-        <img src="./gecmistekisessizlik.github.io/cover.jpg" alt="Geçmişteki Sessizlik" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='G'">
+        <img src="https://berkayalay53.github.io/gecmistekisessizlik.github.io/cover.jpg" alt="Geçmişteki Sessizlik" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='G'">
       </div>
       <div class="archive-info">
         <h3>Geçmişteki Sessizlik</h3>
@@ -226,7 +229,7 @@
 
     <div class="archive-card">
       <div class="card-visual">
-        <img src="./beyninsessizfirtinalari.github.io/cover.jpg" alt="Beynin Sessiz Fırtınaları" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='B'">
+        <img src="https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/cover.jpg" alt="Beynin Sessiz Fırtınaları" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='B'">
       </div>
       <div class="archive-info">
         <h3>Beynin Sessiz Fırtınaları</h3>
@@ -237,7 +240,7 @@
 
     <div class="archive-card">
       <div class="card-visual">
-        <img src="./kayipduyularatlasi.github.io/cover.jpg" alt="Kayıp Duyular Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='K'">
+        <img src="https://berkayalay53.github.io/kayipduyularatlasi.github.io/cover.jpg" alt="Kayıp Duyular Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='K'">
       </div>
       <div class="archive-info">
         <h3>Kayıp Duyular Atlası</h3>
@@ -248,7 +251,7 @@
 
     <div class="archive-card">
       <div class="card-visual">
-         <img src="./mazidekalan.github.io/cover.jpg" alt="Mazide Kalan" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='M'">
+         <img src="https://berkayalay53.github.io/mazidekalan.github.io/cover.jpg" alt="Mazide Kalan" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='M'">
       </div>
       <div class="archive-info">
         <h3>Mazide Kalan</h3>
@@ -259,7 +262,7 @@
 
     <div class="archive-card">
       <div class="card-visual">
-         <img src="./kaybolansesindefteri.github.io/cover.jpg" alt="Kaybolan Sesin Defteri" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='S'">
+         <img src="https://berkayalay53.github.io/kaybolansesindefteri.github.io/cover.jpg" alt="Kaybolan Sesin Defteri" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='S'">
       </div>
       <div class="archive-info">
         <h3>Kaybolan Sesin Defteri</h3>
@@ -270,7 +273,7 @@
 
     <div class="archive-card">
       <div class="card-visual">
-         <img src="./birdefterinicindekalanlar.github.io/cover.jpg" alt="Bir Defterin İçinde Kalanlar" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='D'">
+         <img src="https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/cover.jpg" alt="Bir Defterin İçinde Kalanlar" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='D'">
       </div>
       <div class="archive-info">
         <h3>Bir Defterin İçinde Kalanlar</h3>
@@ -280,8 +283,8 @@
     </div>
 
     <div class="archive-card">
-      <div class="card-visual special-visual">
-        <span>♫</span>
+      <div class="card-visual">
+        <img src="https://berkayalay53.github.io/serininatlasi.github.io/cover.jpg" alt="Serinin Atlası" onerror="this.style.display='none';this.parentNode.classList.add('special-visual');this.parentNode.innerHTML='♫'">
       </div>
       <div class="archive-info">
         <h3>Serinin Atlası</h3>
