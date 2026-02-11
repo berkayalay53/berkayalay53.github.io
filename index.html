@@ -471,6 +471,51 @@
       }
     ];
     // ... const quotes = [...] bittikten sonra ...
+ // === KADERİN CÜMLESİ MEKANİZMASI (ÇALIŞTIRICI) ===
+    const fateBtn = document.getElementById('fate-btn');
+    const fateResult = document.getElementById('fate-result');
+    const quoteText = document.getElementById('quote-text');
+    const bookName = document.getElementById('book-name');
+    const shareX = document.getElementById('share-x');
+    const shareWa = document.getElementById('share-wa');
+    const shareCopy = document.getElementById('share-copy');
+    const copyMsg = document.getElementById('copy-msg');
+
+    let availableIndices = []; // Tekrarsız seçim için havuz
+
+    fateBtn.addEventListener('click', () => {
+      fateBtn.textContent = "Hissediliyor..."; 
+      fateBtn.style.pointerEvents = "none"; 
+      fateResult.classList.remove('show');
+
+      if (availableIndices.length === 0) {
+        availableIndices = quotes.map((_, i) => i);
+      }
+
+      const randomIndexInPool = Math.floor(Math.random() * availableIndices.length);
+      const selectedIndex = availableIndices.splice(randomIndexInPool, 1)[0]; 
+      const selectedQuote = quotes[selectedIndex];
+
+      setTimeout(() => {
+        quoteText.textContent = `“${selectedQuote.text}”`;
+        bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">${selectedQuote.book} &rarr;</a>`;
+        
+        const fullText = `"${selectedQuote.text}" — ${selectedQuote.book}\n\nBerkay Alay`;
+        const encodedText = encodeURIComponent(fullText);
+        shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
+        shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
+        
+        shareCopy.onclick = () => {
+          navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
+          copyMsg.classList.add('visible');
+          setTimeout(() => copyMsg.classList.remove('visible'), 2000);
+        };
+
+        fateResult.classList.add('show');
+        fateBtn.textContent = "Başka Bir His Ver";
+        fateBtn.style.pointerEvents = "auto";
+      }, 600); 
+    });
   </script>
 <script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
