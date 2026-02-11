@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Külliyat — Berkay Alay</title>
-  <meta name="description" content="Sessizliğin arşivi.">
+  <meta name="description" content="Berkay Alay'ın dijital kitaplığı ve sessizliğe karışmış eserleri.">
   
   <link rel="icon" href="./profile.jpg" type="image/jpeg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,94 +14,23 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    /* ========================================= */
-    /* === GİRİŞ EKRANI (İzler Sayfası Tipi) === */
-    /* ========================================= */
-    #intro-screen {
-      position: fixed;
-      inset: 0;
-      background-color: #0f1113;
-      z-index: 10000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 1.5s ease, visibility 1.5s;
-    }
-
-    #intro-screen.fade-out {
+    /* === KÜTÜPHANEYE ÖZEL STİLLER === */
+    /* (Bu kısımlar style.css'te olmadığı için buraya ekliyoruz) */
+    
+    /* İçerik başlangıçta gizli olacak (Opaklık 0) */
+    #main-content {
       opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      transition: opacity 1.5s ease;
+      padding-bottom: 100px;
     }
 
-    .intro-content {
-      text-align: center;
-      padding: 20px;
-      animation: introFloat 3s ease-in-out infinite alternate;
-    }
-
-    .intro-title {
-      font-family: var(--serif);
-      font-size: 4rem;
-      margin: 0 0 20px;
-      color: var(--text);
-      letter-spacing: -1px;
-    }
-
-    .intro-sub {
-      font-family: var(--sans);
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 40px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      opacity: 0.7;
-    }
-
-    /* Buton Tasarımı */
-    #start-btn {
-      background: transparent;
-      border: 1px solid rgba(212, 163, 115, 0.3);
-      color: var(--text);
-      padding: 15px 40px;
-      border-radius: 50px;
-      font-family: var(--sans);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.4s ease;
-    }
-
-    #start-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      box-shadow: 0 0 30px rgba(212, 163, 115, 0.2);
-      transform: translateY(-2px);
-    }
-
-    @keyframes introFloat {
-      from { transform: translateY(0); }
-      to { transform: translateY(-10px); }
-    }
-
-    /* ========================================= */
-    /* === ANA İÇERİK (Başlangıçta Gizli) === */
-    /* ========================================= */
-    #mainPage {
-      opacity: 0;
-      transition: opacity 2s ease;
-      padding-bottom: 120px; /* Plak için boşluk */
-    }
-
-    #mainPage.content-visible {
+    #main-content.visible {
       opacity: 1;
     }
 
-    /* Başlık Alanı */
     .library-header {
       text-align: center;
-      padding: 100px 20px 60px;
+      padding: 80px 20px 50px;
     }
     
     .library-title {
@@ -111,13 +40,18 @@
       color: var(--text);
     }
     
-    .library-desc {
+    .library-sub {
       color: var(--muted);
-      font-style: italic;
       font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      font-style: italic;
+      border-top: 1px solid var(--line);
+      display: inline-block;
+      padding-top: 20px;
     }
 
-    /* Kitap Izgarası */
+    /* KİTAP IZGARASI */
     .books-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -127,41 +61,44 @@
       padding: 20px;
     }
 
-    /* Kart Yapısı */
+    /* KART TASARIMI */
     .archive-card {
       background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      padding: 20px;
-      transition: 0.4s ease;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 25px;
+      transition: all 0.4s ease;
+      position: relative;
       display: flex;
       flex-direction: column;
     }
 
     .archive-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: var(--accent);
+      box-shadow: 0 15px 50px rgba(0,0,0,0.6);
       background: rgba(255,255,255,0.04);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
     }
 
+    /* RESİM ALANI */
     .card-visual {
       width: 100%;
-      height: 220px; /* Sabit yükseklik */
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 20px;
+      height: 200px;
       background: #111;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      overflow: hidden;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: relative;
     }
 
     .card-visual img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.8;
+      opacity: 0.7;
       transition: 0.5s;
       filter: grayscale(100%);
     }
@@ -171,28 +108,30 @@
       filter: grayscale(0%);
       transform: scale(1.05);
     }
-
-    /* Resim Yüklenmezse (Yedek Stil) */
+    
     .special-visual {
-      background: linear-gradient(45deg, #1a1a1a, #252525);
       font-family: var(--serif);
-      font-size: 2.5rem;
+      font-size: 3rem;
       color: var(--accent);
+      background: linear-gradient(45deg, #1a1a1a, #222);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .archive-info h3 {
       font-family: var(--serif);
-      font-size: 1.4rem;
-      margin-bottom: 10px;
-      color: #fff;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: var(--text);
     }
 
     .archive-desc {
-      font-size: 0.9rem;
+      font-size: 0.95rem; 
       color: var(--muted);
-      line-height: 1.6;
       margin-bottom: 20px;
-      flex-grow: 1; /* Butonu alta iter */
+      line-height: 1.6;
+      flex-grow: 1; 
     }
 
     .archive-btn {
@@ -200,14 +139,14 @@
       width: 100%;
       text-align: center;
       padding: 12px 0;
-      border: 1px solid rgba(255,255,255,0.15);
-      color: #ccc;
+      border: 1px solid var(--line);
+      color: var(--text);
       text-decoration: none;
       border-radius: 50px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
       transition: 0.3s;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
     .archive-btn:hover {
@@ -218,67 +157,60 @@
     }
 
     /* Geri Dön Butonu */
-    .back-home {
-      display: block;
-      text-align: center;
-      margin: 60px 0;
+    .top-nav {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      z-index: 100;
+    }
+    .nav-back {
       color: var(--muted);
       font-size: 0.9rem;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
       transition: 0.3s;
+      opacity: 0.6;
     }
-    .back-home:hover { color: var(--accent); }
-
-    /* ========================================= */
-    /* === PLAK OYNATICI (Düzeltilmiş) === */
-    /* ========================================= */
-    .disc {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden; /* Resmi daireye hapseder */
+    .nav-back:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      opacity: 1;
     }
     
-    .disc img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Resmi sündürmeden sığdırır */
-      display: block;
-    }
-
-    /* Plağın Ortasındaki Delik */
-    .disc::after {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 12px; height: 12px;
-      background: #0f1113;
-      border: 1px solid rgba(212, 163, 115, 0.5);
-      border-radius: 50%;
-      z-index: 2;
+    .bottom-nav {
+      text-align: center; 
+      margin-top: 50px;
     }
 
   </style>
 </head>
 <body>
 
-  <div id="intro-screen">
-    <div class="intro-content">
-      <h1 class="intro-title">Külliyat</h1>
-      <p class="intro-sub">"Sessizliğin dökümü."</p>
-      <button id="start-btn">Arşivi Aç</button>
+  <div id="introScreen">
+    <div class="introInner">
+      <p class="introText">
+        Yazılmış, yazılmakta olan ve<br>
+        <span>sessizliğe karışmış tüm satırlar.</span>
+      </p>
+
+      <button id="introBtn" aria-label="Kütüphaneyi Aç">
+        ARŞİVİ AÇ
+      </button>
     </div>
   </div>
 
   <div class="grain"></div>
   <div class="spotlight"></div>
 
-  <main id="mainPage">
+  <div id="main-content">
     
+    <div class="top-nav">
+      <a href="./index.html" class="nav-back">← Ana Sayfaya Dön</a>
+    </div>
+
     <header class="library-header">
       <h1 class="library-title">Külliyat</h1>
-      <p class="library-desc">"Yazılmış, yazılmakta olan ve sessizliğe karışmış tüm satırlar."</p>
+      <p class="library-sub">"Sessizliğin dökümü."</p>
     </header>
 
     <div class="books-grid">
@@ -384,75 +316,64 @@
 
     </div>
 
-    <a href="./index.html" class="back-home">← Ana Sayfaya Dön</a>
-
-  </main>
-
-  <div class="music-control" id="music-trigger">
-    <div class="disc-wrapper">
-      <div class="disc" id="disc">
-        <img src="./kralkaybederse.jpg" alt="Plak">
-      </div>
+    <div class="bottom-nav">
+      <a href="./index.html" class="nav-back">← Ana Sayfaya Dön</a>
     </div>
-    <span class="music-hint">Melodiyi dinle...</span>
+
   </div>
 
-  <audio id="bg-music" loop>
+  <div id="musicDisc" class="music-control" title="Müziği Durdur/Başlat"></div>
+
+  <audio id="bgMusic" loop>
     <source src="./muzik.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // === DEĞİŞKENLER ===
-    const introScreen = document.getElementById('intro-screen');
-    const startBtn = document.getElementById('start-btn');
-    const mainPage = document.getElementById('mainPage');
-    
-    const musicTrigger = document.getElementById('music-trigger');
-    const music = document.getElementById('bg-music');
-    const disc = document.getElementById('disc');
-    const hint = document.querySelector('.music-hint');
-
-    // === SAYFA YÜKLENİNCE (Perdeyi Aç) ===
+    // === 1. SAYFA YÜKLENİNCE FADE-IN (Style.css'ten) ===
     window.addEventListener('load', () => {
-      // Body'ye loaded class'ı veriyoruz ki arka planın siyahlığı gitsin
       document.body.classList.add('loaded');
     });
 
-    // === GİRİŞ BUTONUNA TIKLANINCA ===
-    startBtn.addEventListener('click', () => {
-      // 1. Giriş ekranını sönükleştir ve kaldır
-      introScreen.classList.add('fade-out');
-      
-      // 2. Ana içeriği görünür yap
-      mainPage.classList.add('content-visible');
-      document.body.style.overflow = 'auto'; // Kaydırmayı aç
+    const intro = document.getElementById('introScreen');
+    const btn = document.getElementById('introBtn');
+    const music = document.getElementById('bgMusic');
+    const disc = document.getElementById('musicDisc');
+    const content = document.getElementById('main-content');
 
-      // 3. Müziği başlat
+    // BAŞLANGIÇTA KAYDIRMAYI KİLİTLE
+    document.body.style.overflow = 'hidden';
+
+    // === GİRİŞ BUTONUNA TIKLANINCA ===
+    btn.addEventListener('click', () => {
+      // 1. Müziği Başlat
       music.volume = 0.5;
       music.play().then(() => {
         disc.classList.add('playing');
-        hint.textContent = "Çalıyor...";
-        hint.style.opacity = "0.7";
-      }).catch(err => {
-        console.log("Otomatik oynatma engellendi, manuel basılması gerekebilir.");
-      });
+      }).catch(e => console.log("Otomatik oynatma engellendi", e));
+
+      // 2. Intro Ekranını Söndür (Style.css animasyonu)
+      intro.classList.add('hide');
+
+      // 3. Intro Yok Olunca İçeriği Göster
+      setTimeout(() => {
+        intro.remove(); // DOM'dan sil
+        document.body.style.overflow = 'auto'; // Kaydırmayı aç
+        content.classList.add('visible'); // Kitapları görünür yap (Fade-in)
+      }, 900);
     });
 
-    // === MANUEL MÜZİK KONTROLÜ ===
-    musicTrigger.addEventListener('click', () => {
+    // === MÜZİK KONTROLÜ (TIKLAYINCA) ===
+    disc.addEventListener('click', () => {
       if (music.paused) {
         music.play();
         disc.classList.add('playing');
-        hint.textContent = "Çalıyor...";
-        hint.style.opacity = "0.7";
       } else {
         music.pause();
         disc.classList.remove('playing');
-        hint.textContent = "Duraklatıldı";
       }
     });
 
-    // === SAYGI MODU ===
+    // === SESSİZLİK SENSÖRÜ (SEKME DEĞİŞİNCE) ===
     document.addEventListener("visibilitychange", () => {
       if (document.hidden) {
         music.pause();
