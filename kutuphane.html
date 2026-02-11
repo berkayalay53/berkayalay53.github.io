@@ -14,19 +14,18 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    /* HEM HTML HEM BODY KİLİTLENSİN */
+    /* === KİLİT MEKANİZMASI === */
+    /* !important kaldırdık, JS ile açılabilsin diye */
     html, body {
-      overflow: hidden; /* !important ile kesin emir veriyoruz */
-      height: 100%; /* Sayfa boyunu ekrana sabitler */
+      overflow: hidden; 
+      height: 100%;
     }
 
     body {
-      padding-bottom: 120px; /* Alt boşluk ayarı */
+      padding-bottom: 120px;
     }
+
     /* === KÜTÜPHANEYE ÖZEL STİLLER === */
-    /* (Bu kısımlar style.css'te olmadığı için buraya ekliyoruz) */
-    
-    /* İçerik başlangıçta gizli olacak (Opaklık 0) */
     #main-content {
       opacity: 0;
       transition: opacity 1.5s ease;
@@ -349,9 +348,6 @@
     const disc = document.getElementById('musicDisc');
     const content = document.getElementById('main-content');
 
-    // Sayfa açıldığında kaydırmayı kilitle
-    document.body.style.overflow = 'hidden';
-
     // === GİRİŞ BUTONUNA TIKLANINCA ===
     btn.addEventListener('click', () => {
       // 1. Müziği Başlat
@@ -360,23 +356,23 @@
         disc.classList.add('playing');
       }).catch(e => console.log("Otomatik oynatma engellendi", e));
 
-      // 2. Intro Ekranını Söndür (Style.css animasyonu)
+      // 2. Intro Ekranını Söndür
       intro.classList.add('hide');
 
-     // 3. Intro Yok Olunca İçeriği Göster
+      // 3. Intro Yok Olunca İçeriği Göster ve KİLİDİ AÇ
       setTimeout(() => {
         intro.remove(); // DOM'dan sil
         
-        // --- BURAYI GÜNCELLE ---
+        // --- KİLİDİ AÇAN KODLAR ---
         document.body.style.overflow = 'auto'; // Body kilidini aç
         document.documentElement.style.overflow = 'auto'; // HTML kilidini aç
         document.body.style.height = 'auto'; // Yükseklik sınırını kaldır
         document.documentElement.style.height = 'auto'; // HTML yüksekliğini serbest bırak
         // -----------------------
 
-       content.classList.add('visible'); // Kitapları görünür yap (Fade-in)
+        content.classList.add('visible'); // Kitapları görünür yap (Fade-in)
       }, 900);
-    }); // <--- İŞTE BU EKSİKTİ! BURAYI KAPATMAZSAK KOD ÇALIŞMAZ.
+    }); // <-- İŞTE BU PARANTEZ EKSİKTİ!
 
     // === MÜZİK KONTROLÜ (TIKLAYINCA) ===
     disc.addEventListener('click', () => {
