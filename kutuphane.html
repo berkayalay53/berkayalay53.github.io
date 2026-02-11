@@ -172,6 +172,38 @@
       font-weight: 600;
     }
 
+    /* === PLAK İÇİN ÖZEL CSS (RESMİ DÜZELTEN KISIM) === */
+    .disc {
+      position: relative; /* Delik için referans */
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    /* Resmi Daireye Tam Oturtma */
+    .disc img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* SİHİRLİ KOD: Resmi kesmeden doldurur */
+      display: block;
+    }
+
+    /* Plağın Ortasındaki Delik */
+    .disc::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      background: #0f1113; /* Arka plan rengiyle aynı */
+      border: 1px solid rgba(212, 163, 115, 0.5); /* Hafif pas rengi çerçeve */
+      border-radius: 50%;
+      z-index: 2;
+    }
+
     /* Animasyonlar */
     @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
@@ -313,9 +345,9 @@
   </audio>
 
   <script>
-    // === KRİTİK EKLEME: PERDEYİ AÇ (FADE-IN) ===
+    // === PERDEYİ AÇ (FADE-IN) ===
     window.addEventListener('load', () => {
-      document.body.classList.add('loaded'); // CSS'deki opacity: 1 kuralını tetikler
+      document.body.classList.add('loaded'); 
     });
 
     const musicTrigger = document.getElementById('music-trigger');
@@ -348,7 +380,7 @@
       }
     });
     
-    // FENER EFEKTİ (Ekstra Güzellik)
+    // FENER EFEKTİ
     const spotlight = document.querySelector('.spotlight');
     document.addEventListener('mousemove', (e) => {
       spotlight.style.setProperty('--x', e.clientX + 'px');
