@@ -134,7 +134,7 @@
 
   <div id="musicDisc" class="music-control" title="Müziği Durdur/Başlat"></div>
   <audio id="bgMusic" loop>
-    <source src="./muzik.mp3" type="audio/mpeg">
+    <source src="./muzik1.mp3" type="audio/mpeg">
   </audio>
 
   <div id="main-content">
@@ -222,7 +222,7 @@
 
     // 1. GİRİŞ BUTONU
     btn.addEventListener('click', () => {
-      music.volume = 0.5;
+      music.volume = 0.3;
       music.play().then(() => { disc.classList.add('playing'); })
            .catch(e => console.log("Otomatik oynatma engellendi", e));
       
