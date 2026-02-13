@@ -910,3 +910,7 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
+html, body {
+  background-color: #0f1113 !important; /* Resim gelene kadar SİYAH kalsın */
+  /* ...diğer kodlar... */
+}
