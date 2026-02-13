@@ -12,28 +12,37 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    /* === ARKA PLAN SORUNUNU ÇÖZEN KOD === */
-    /* style.css'teki genel renkleri bu sayfada eziyoruz ki resim gözüksün */
+    /* === 1. ARKA PLAN SORUNU ÇÖZÜMÜ === */
+    /* Resmin kaybolmasını engellemek için body şeffaf yapıldı */
     html, body {
       background: transparent !important;
-      overflow: hidden; /* Girişte scroll kilitli */
+      overflow: hidden; /* Giriş perdesi kalkana kadar scroll yok */
       height: 100%;
     }
 
-    /* 1. ARKA PLAN (O TEKİNSİZ RESİM) */
+    /* === 2. ARKA PLAN RESMİ === */
     .bg-layer {
       position: fixed;
       top: 0; left: 0;
       width: 100%; height: 100%;
-      z-index: -5; /* En arkada */
-      background-image: url('./arkaplan.jpg'); /* Arka plan resmi */
+      z-index: -5;
+      background-image: url('./arkaplan.jpg'); /* ARKA PLAN */
       background-size: cover;
       background-position: center;
+      /* Resmi karartıp bulanıklaştırıyoruz */
       filter: blur(5px) brightness(0.35) grayscale(40%);
       transform: scale(1.05);
     }
 
-    /* 2. SABİT MÜZE IŞIĞI */
+    /* === 3. ÖZEL PLAK RESMİ (otopotre9.jpg) === */
+    #musicDisc {
+      background-image: url('./otopotre9.jpg'); /* PLAK RESMİ */
+      background-size: cover;
+      background-position: center;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* === 4. SABİT MÜZE IŞIĞI === */
     .spotlight {
       position: fixed;
       top: 0; left: 0;
@@ -49,7 +58,7 @@
       mix-blend-mode: multiply;
     }
 
-    /* 3. İÇERİK (BAŞLANGIÇTA GİZLİ) */
+    /* === 5. ANA İÇERİK (BAŞTA GİZLİ) === */
     #main-content {
       opacity: 0;
       transition: opacity 1.5s ease;
@@ -62,113 +71,46 @@
       opacity: 1;
     }
 
-    /* GALERİ DÜZENİ */
+    /* GALERİ AYARLARI */
     .gallery-container {
       max-width: 1300px;
       margin: 0 auto;
       padding: 100px 20px;
     }
 
-    .gallery-header {
-      text-align: center;
-      margin-bottom: 70px;
-    }
+    .gallery-header { text-align: center; margin-bottom: 70px; }
+    .gallery-title { font-family: var(--serif); font-size: 3.5rem; color: #e9e6df; margin-bottom: 10px; text-shadow: 0 0 30px rgba(0,0,0,1); }
+    .gallery-sub { font-family: var(--sans); color: var(--accent); font-size: 1rem; letter-spacing: 3px; text-transform: uppercase; opacity: 0.8; }
 
-    .gallery-title {
-      font-family: var(--serif);
-      font-size: 3.5rem;
-      color: #e9e6df;
-      margin-bottom: 10px;
-      text-shadow: 0 0 30px rgba(0,0,0,1);
-    }
-
-    .gallery-sub {
-      font-family: var(--sans);
-      color: var(--accent);
-      font-size: 1rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-
-    /* IZGARA SİSTEMİ */
     .portrait-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 50px;
-      justify-items: center;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 50px; justify-items: center;
     }
 
-    /* KART TASARIMI */
     .portrait-card {
-      position: relative;
-      width: 100%;
-      max-width: 350px;
-      aspect-ratio: 3/4;
-      border: 10px solid #161a1e;
-      box-shadow: inset 0 0 50px rgba(0,0,0,0.9), 0 30px 60px rgba(0,0,0,0.8);
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease;
+      position: relative; width: 100%; max-width: 350px; aspect-ratio: 3/4;
+      border: 10px solid #161a1e; box-shadow: inset 0 0 50px rgba(0,0,0,0.9), 0 30px 60px rgba(0,0,0,0.8);
+      overflow: hidden; cursor: pointer; transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.4s ease;
       background: #050505;
     }
+    .portrait-card.wide { aspect-ratio: 4/3; max-width: 500px; }
+    .portrait-card:hover { transform: translateY(-10px) scale(1.02); border-color: #5a4b3c; z-index: 10; }
 
-    .portrait-card.wide {
-      aspect-ratio: 4/3;
-      max-width: 500px;
-    }
-
-    .portrait-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      border-color: #5a4b3c;
-      z-index: 10;
-    }
-
-    .portrait-img {
-      width: 100%; height: 100%; object-fit: cover;
-      opacity: 0.7; filter: grayscale(80%) sepia(15%) contrast(1.1);
-      transition: all 0.7s ease;
-    }
-
-    .portrait-card:hover .portrait-img {
-      opacity: 1; filter: grayscale(0%) sepia(0%) contrast(1.05);
-      transform: scale(1.1);
-    }
+    .portrait-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; filter: grayscale(80%) sepia(15%) contrast(1.1); transition: all 0.7s ease; }
+    .portrait-card:hover .portrait-img { opacity: 1; filter: grayscale(0%) sepia(0%) contrast(1.05); transform: scale(1.1); }
 
     .portrait-info {
-      position: absolute; bottom: 0; left: 0; width: 100%;
-      padding: 40px 20px 20px;
-      background: linear-gradient(to top, #000 10%, transparent);
-      color: #fff; text-align: center;
-      opacity: 0; transform: translateY(20px);
-      transition: all 0.4s ease 0.1s;
+      position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px 20px;
+      background: linear-gradient(to top, #000 10%, transparent); color: #fff; text-align: center;
+      opacity: 0; transform: translateY(20px); transition: all 0.4s ease 0.1s;
     }
+    .portrait-card:hover .portrait-info { opacity: 1; transform: translateY(0); }
 
-    .portrait-card:hover .portrait-info {
-      opacity: 1; transform: translateY(0);
-    }
-
-    .char-name {
-      font-family: var(--serif); font-size: 1.6rem; margin: 0 0 5px 0;
-      color: var(--accent); text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-    }
-
-    .book-ref {
-      font-family: var(--sans); font-size: 0.75rem; color: #ccc;
-      text-transform: uppercase; letter-spacing: 1px; display: block;
-    }
-
+    .char-name { font-family: var(--serif); font-size: 1.6rem; margin: 0 0 5px 0; color: var(--accent); text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+    .book-ref { font-family: var(--sans); font-size: 0.75rem; color: #ccc; text-transform: uppercase; letter-spacing: 1px; display: block; }
     .card-link { display: block; width: 100%; height: 100%; text-decoration: none; }
 
-    /* GERİ DÖN BUTONU */
-    .nav-back {
-      position: absolute; top: 30px; left: 30px;
-      color: var(--muted); font-size: 0.9rem; text-decoration: none;
-      z-index: 100; opacity: 0.6; transition: 0.3s;
-      font-family: var(--sans); mix-blend-mode: difference;
-    }
+    .nav-back { position: absolute; top: 30px; left: 30px; color: var(--muted); font-size: 0.9rem; text-decoration: none; z-index: 100; opacity: 0.6; transition: 0.3s; font-family: var(--sans); mix-blend-mode: difference; }
     .nav-back:hover { opacity: 1; color: var(--accent); }
-
     .dark-vibe .portrait-img { filter: grayscale(100%) contrast(1.3) brightness(0.8); }
     .dark-vibe:hover .portrait-img { filter: grayscale(20%) contrast(1.2) brightness(1); }
   </style>
@@ -219,10 +161,10 @@
             <div class="portrait-info"><h2 class="char-name">Murphy</h2><span class="book-ref">Kayıp Duyular Atlası</span></div>
           </div>
         </a>
-        <a href="https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" class="card-link" target="_blank">
+        <a href="https://berkayalay53.github.io/gecmistekisessizlik.github.io/" class="card-link" target="_blank">
           <div class="portrait-card">
             <img src="./otopotre3.jpg" alt="Harris" class="portrait-img">
-            <div class="portrait-info"><h2 class="char-name">Harris</h2><span class="book-ref">Beynin Sessiz Fırtınaları</span></div>
+            <div class="portrait-info"><h2 class="char-name">Harris</h2><span class="book-ref">Geçmişteki Sessizlik</span></div>
           </div>
         </a>
         <a href="https://berkayalay53.github.io/beyninsessizfirtinalari.github.io/" class="card-link" target="_blank">
@@ -332,5 +274,4 @@
     }
   </script>
 </body>
-</html>
 </html>
