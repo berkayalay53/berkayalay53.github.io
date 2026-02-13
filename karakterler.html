@@ -12,11 +12,11 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    /* === 1. ARKA PLAN SORUNU ÇÖZÜMÜ === */
-    /* Resmin kaybolmasını engellemek için body şeffaf yapıldı */
+    /* === 1. BEYAZLAMA SORUNU ÇÖZÜMÜ === */
     html, body {
-      background: transparent !important;
-      overflow: hidden; /* Giriş perdesi kalkana kadar scroll yok */
+      background-color: #0f1113 !important; /* Varsayılan beyazı siyaha boyadık */
+      background-image: none; /* Çakışmayı önler */
+      overflow: hidden; 
       height: 100%;
     }
 
@@ -26,7 +26,7 @@
       top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: -5;
-      background-image: url('./arkaplan.jpg'); /* ARKA PLAN */
+      background-image: url('./arkaplan.jpg'); /* ARKA PLAN RESMİ */
       background-size: cover;
       background-position: center;
       /* Resmi karartıp bulanıklaştırıyoruz */
@@ -36,7 +36,7 @@
 
     /* === 3. ÖZEL PLAK RESMİ (otopotre9.jpg) === */
     #musicDisc {
-      background-image: url('./otopotre9.jpg'); /* PLAK RESMİ */
+      background-image: url('./otopotre9.jpg');
       background-size: cover;
       background-position: center;
       border: 2px solid rgba(255, 255, 255, 0.2);
@@ -58,7 +58,7 @@
       mix-blend-mode: multiply;
     }
 
-    /* === 5. ANA İÇERİK (BAŞTA GİZLİ) === */
+    /* === 5. ANA İÇERİK === */
     #main-content {
       opacity: 0;
       transition: opacity 1.5s ease;
@@ -133,6 +133,7 @@
   <div class="grain"></div>
 
   <div id="musicDisc" class="music-control" title="Müziği Durdur/Başlat"></div>
+  
   <audio id="bgMusic" loop>
     <source src="./muzik1.mp3" type="audio/mpeg">
   </audio>
@@ -222,7 +223,9 @@
 
     // 1. GİRİŞ BUTONU
     btn.addEventListener('click', () => {
-      music.volume = 0.3;
+      // SES AYARI BURADA: 0.3 YAPILDI
+      music.volume = 0.3; 
+      
       music.play().then(() => { disc.classList.add('playing'); })
            .catch(e => console.log("Otomatik oynatma engellendi", e));
       
@@ -230,7 +233,6 @@
 
       setTimeout(() => {
         intro.remove();
-        // Kilidi aç
         document.body.style.overflow = 'auto'; 
         document.documentElement.style.overflow = 'auto';
         content.classList.add('visible');
