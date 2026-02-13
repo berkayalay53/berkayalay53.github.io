@@ -846,3 +846,35 @@ a:hover {
   letter-spacing: 0.5px; /* Üzerine gelince harfler hafif açılsın */
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
+/* === ALT MENÜ BUTONLARI (GHOST BUTTONS) === */
+.nav-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Butonlar arası boşluk */
+  margin-bottom: 30px;
+  flex-wrap: wrap; /* Mobilde sığmazsa alt satıra geçsin */
+}
+
+.btn-ghost {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* İnce silik çerçeve */
+  border-radius: 50px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  border-color: var(--accent); /* Üzerine gelince pas rengi */
+  color: #fff;
+  background: rgba(212, 163, 115, 0.08); /* Çok hafif dolgu */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
