@@ -918,11 +918,12 @@ html, body {
   background-color: #0f1113 !important; /* Resim gelene kadar SİYAH kalsın */
   /* ...diğer kodlar... */
 }
-/* === BUTONA BASINCA PAS RENGİ DOLGU EFEKTİ (ACTIVE) === */
-.btn-ghost:active {
-  background-color: #d4a373 !important; /* Pas Rengi Dolgu */
-  color: #0f1113 !important;            /* Yazı Koyu Olsun (Okunsun diye) */
-  border-color: #d4a373 !important;     /* Çerçeve de boyansın */
-  transform: scale(0.96);               /* Hafifçe içe gömülsün (Tıklama hissi) */
-  transition: none;                     /* Beklemeden anında renk değişsin */
+/* === BUTONA TIKLANINCA OLUŞACAK EFEKT (Fate Tarzı) === */
+.btn-ghost.tiklandi {
+  background-color: var(--accent) !important; /* Pas Rengi Dolgu */
+  color: #0f1113 !important;            /* Yazı Koyu Olsun */
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 20px rgba(212, 163, 115, 0.4); /* Hafif parlama */
+  transform: scale(0.95);               /* Hafifçe içe gömülme */
+  transition: all 0.1s ease;            /* Hızlıca geçiş yap */
 }
