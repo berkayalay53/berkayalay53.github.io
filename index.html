@@ -458,42 +458,62 @@
     // ... const quotes = [...] bittikten sonra ...
 
     const fateBtn = document.getElementById('fate-btn');
+   // === YENİ SİSTEM: KADERİN CÜMLESİ (TEKRAR ETMEYEN HAVUZ) ===
+    
+    // Değişkenleri Tanımla
+    const fateBtn = document.getElementById('fate-btn');
     const fateResult = document.getElementById('fate-result');
     const quoteText = document.getElementById('quote-text');
     const bookName = document.getElementById('book-name');
     
-    // YENİ: Paylaşım elemanlarını seç
+    // Paylaşım elemanları
     const shareX = document.getElementById('share-x');
     const shareWa = document.getElementById('share-wa');
     const shareCopy = document.getElementById('share-copy');
     const copyMsg = document.getElementById('copy-msg');
 
-    let lastIndex = -1;
+    // HAVUZ SİSTEMİ: Kullanılan indeksleri takip eder
+    let availableIndices = [];
+
+    // Havuzu dolduran fonksiyon (Başlangıçta ve havuz bitince çalışır)
+    function fillPool() {
+      // 0'dan quotes.length'e kadar sayıları diziye atar [0, 1, 2, ... , 18]
+      availableIndices = Array.from({ length: quotes.length }, (_, i) => i);
+    }
+
+    // Sayfa ilk açıldığında havuzu doldur
+    fillPool();
 
     fateBtn.addEventListener('click', () => {
-      // 1. GİZEM: Butona basınca biraz bekletelim (Arama efekti)
+      // 1. GİZEM: Butona basınca bekleme efekti
       fateBtn.textContent = "Hissediliyor..."; 
-      fateBtn.style.pointerEvents = "none"; // Tekrar basamasın
-      fateResult.classList.remove('show');  // Önce gizle
+      fateBtn.style.pointerEvents = "none"; 
+      fateResult.classList.remove('show');
 
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * quotes.length);
-      } while (randomIndex === lastIndex);
+      // Eğer havuzda hiç cümle kalmadıysa (hepsi gösterildiyse), havuzu yeniden doldur
+      if (availableIndices.length === 0) {
+        fillPool();
+      }
 
-      lastIndex = randomIndex;
-      const selectedQuote = quotes[randomIndex];
+      // 2. SEÇİM: Havuzdan rastgele bir numara seç
+      const randomIndexInPool = Math.floor(Math.random() * availableIndices.length);
+      const selectedQuoteIndex = availableIndices[randomIndexInPool];
 
-      // 600ms gecikme (Sanki kader düşünüyormuş gibi)
+      // Seçilen numarayı havuzdan SİL (Böylece bir dahaki sefere gelmez)
+      availableIndices.splice(randomIndexInPool, 1);
+
+      // Asıl cümleyi al
+      const selectedQuote = quotes[selectedQuoteIndex];
+
+      // 600ms gecikme (Düşünme payı)
       setTimeout(() => {
         // Metni güncelle
         quoteText.textContent = `“${selectedQuote.text}”`;
         
-        // --- 2. KÖPRÜ: Kitap ismini TIKLANABİLİR yapıyoruz ---
-        // Kitabın adı artık bir Link (<a>) olacak
+        // Kitap ismini link yap
         bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">${selectedQuote.book} &rarr;</a>`;
         
-        // --- PAYLAŞIM LİNKLERİNİ GÜNCELLE ---
+        // Paylaşım linklerini güncelle
         const fullText = `"${selectedQuote.text}" — ${selectedQuote.book}\n\nBerkay Alay`;
         const encodedText = encodeURIComponent(fullText);
 
@@ -506,12 +526,12 @@
           setTimeout(() => copyMsg.classList.remove('visible'), 2000);
         };
 
-        // Kutuyu göster ve butonu düzelt
+        // Göster
         fateResult.classList.add('show');
         fateBtn.textContent = "Başka Bir His Ver";
         fateBtn.style.pointerEvents = "auto";
         
-      }, 600); // 0.6 saniye bekletiyoruz
+      }, 600); 
     });
     // === GİZLİ BÖLME (HAYALET MEKTUP) MEKANİZMASI ===
     const secretTrigger = document.getElementById('secret-trigger');
