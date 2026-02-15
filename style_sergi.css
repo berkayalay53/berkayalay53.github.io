@@ -1,0 +1,130 @@
+/* === İZLER ATLASI: SERGİ STİLLERİ === */
+
+:root {
+  --bg: #0f1113;
+  --accent: #d4a373; /* Pas Rengi */
+  --text: #e9e6df;
+  --serif: 'Crimson Pro', serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0; padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* 1. MÜZE IŞIĞI (SABİT) */
+.museum-light {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 100;
+  background: radial-gradient(circle at 50% 20%, transparent 10%, rgba(0,0,0,0.5) 50%, #0f1113 90%);
+  mix-blend-mode: multiply;
+}
+
+/* 2. BAŞLIK */
+.exhibit-header {
+  text-align: center;
+  padding: 80px 20px 40px;
+  position: relative; z-index: 10;
+}
+
+.title {
+  font-family: var(--serif); font-size: 3rem; 
+  color: var(--accent); margin: 0;
+  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+.subtitle {
+  font-family: var(--serif); font-style: italic; font-size: 1.2rem; 
+  opacity: 0.7; margin-top: 10px;
+}
+
+/* 3. DUVAR (MASONRY IZGARA) */
+.gallery-wall {
+  column-count: 3; /* PC'de 3 sütun */
+  column-gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative; z-index: 5;
+}
+
+/* Çerçeveler */
+.frame {
+  break-inside: avoid; /* Bölünmeyi engelle */
+  margin-bottom: 20px;
+  position: relative;
+  transition: all 0.5s ease;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.frame img {
+  width: 100%; display: block;
+  border-radius: 4px;
+  filter: grayscale(80%) brightness(0.8); /* Başlangıçta sönük */
+  transition: all 0.5s ease;
+}
+
+/* Link Yapısı */
+.art-link {
+  display: block; text-decoration: none; position: relative;
+}
+
+/* Yazı (Başta Gizli) */
+.caption {
+  position: absolute; bottom: 20px; left: 0; width: 100%;
+  text-align: center; color: #fff;
+  font-family: 'Inter', sans-serif; font-size: 0.8rem; letter-spacing: 2px;
+  opacity: 0; transform: translateY(10px);
+  transition: all 0.4s ease;
+  text-shadow: 0 2px 5px black;
+}
+
+/* === BÜYÜLÜ ODAKLANMA EFEKTİ === */
+
+/* Duvarın üzerine gelince HERKES silikleşsin */
+.gallery-wall:hover .frame img {
+  opacity: 0.3; filter: grayscale(100%) blur(2px);
+}
+
+/* Sadece MOUSE'un olduğu resim parlasın */
+.gallery-wall .frame:hover img {
+  opacity: 1 !important; 
+  filter: grayscale(0%) blur(0) !important;
+  transform: scale(1.03);
+  box-shadow: 0 10px 30px rgba(212, 163, 115, 0.2);
+}
+
+/* Yazısı görünsün */
+.gallery-wall .frame:hover .caption {
+  opacity: 1; transform: translateY(0);
+}
+
+/* 4. ALT MENÜ */
+.footer-nav {
+  text-align: center; padding: 50px 0; z-index: 20; position: relative;
+}
+.back-btn {
+  color: var(--accent); text-decoration: none; font-family: var(--serif); font-size: 1.1rem;
+  border: 1px solid rgba(212, 163, 115, 0.3); padding: 10px 30px; border-radius: 50px;
+  transition: 0.3s;
+}
+.back-btn:hover { background: var(--accent); color: #000; }
+
+/* === MOBİL AYARLARI === */
+@media (max-width: 900px) {
+  .gallery-wall { column-count: 2; } /* Tablette 2 sütun */
+}
+@media (max-width: 600px) {
+  .gallery-wall { column-count: 1; } /* Telefonda 1 sütun */
+  .title { font-size: 2.2rem; }
+  /* Mobilde blur efektini kapat (Kafa karıştırır) */
+  .gallery-wall:hover .frame img { opacity: 1; filter: grayscale(0%); }
+}
