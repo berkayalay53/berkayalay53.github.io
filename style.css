@@ -918,3 +918,11 @@ html, body {
   background-color: #0f1113 !important; /* Resim gelene kadar SİYAH kalsın */
   /* ...diğer kodlar... */
 }
+/* === BUTONA BASINCA PAS RENGİ DOLGU EFEKTİ (ACTIVE) === */
+.btn-ghost:active {
+  background-color: #d4a373 !important; /* Pas Rengi Dolgu */
+  color: #0f1113 !important;            /* Yazı Koyu Olsun (Okunsun diye) */
+  border-color: #d4a373 !important;     /* Çerçeve de boyansın */
+  transform: scale(0.96);               /* Hafifçe içe gömülsün (Tıklama hissi) */
+  transition: none;                     /* Beklemeden anında renk değişsin */
+}
