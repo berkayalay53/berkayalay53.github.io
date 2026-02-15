@@ -586,6 +586,26 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
       "%c Kodların arasında hikaye aranmaz.\nHikaye, satır aralarındaki boşluktadır.",
       "color: #bcb6aa; font-family: sans-serif; font-size: 14px; font-style: italic;"
     );
+    // === NAVİGASYON BUTONLARINA "BEKLE VE BOYA" EFEKTİ ===
+    const navButtons = document.querySelectorAll('.btn-ghost');
+
+    navButtons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        // 1. Hemen gitmeyi engelle
+        e.preventDefault();
+        
+        // 2. Gidilecek adresi al
+        const targetLink = this.getAttribute('href');
+
+        // 3. Butonu boya (Efekti ver)
+        this.classList.add('tiklandi');
+
+        // 4. Yarım saniye bekle, sonra git (Efekt görünsün diye)
+        setTimeout(() => {
+          window.location.href = targetLink;
+        }, 400); // 400 milisaniye bekleme süresi
+      });
+    });
   </script>
 <script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
