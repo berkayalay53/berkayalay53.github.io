@@ -113,6 +113,26 @@
     .nav-back:hover { opacity: 1; color: var(--accent); }
     .dark-vibe .portrait-img { filter: grayscale(100%) contrast(1.3) brightness(0.8); }
     .dark-vibe:hover .portrait-img { filter: grayscale(20%) contrast(1.2) brightness(1); }
+ /* === 7, 8 ve 9. KARELERİ DEVLEŞTİRME AYARI === */
+    
+    /* 1. Geniş Kartların Boyutunu Arttır */
+    .portrait-card.wide {
+      aspect-ratio: 16/9 !important; /* Daha yatay ve sinematik olsun */
+      max-width: 100% !important;    /* Kısıtlamayı kaldır */
+    }
+
+    /* 2. PC Ekranında 2 Sütun Yer Kaplasınlar */
+    @media (min-width: 900px) {
+      /* Son 3 kartı (7, 8, 9) yakalar */
+      .card-link:nth-last-child(1),
+      .card-link:nth-last-child(2),
+      .card-link:nth-last-child(3) {
+        grid-column: span 2; /* Yanlamasına 2 kutu yer kapla */
+        width: 90%;          /* Sayfaya yayılsın */
+        max-width: 900px;    /* Maksimum genişlik limiti (İstersen 1000px yap) */
+        justify-self: center; /* Ortala */
+      }
+    }
   </style>
 </head>
 <body>
