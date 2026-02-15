@@ -13,26 +13,28 @@
 
   <style>
     /* === 1. BEYAZLAMA SORUNU ÇÖZÜMÜ === */
-    html, body {
-      background-color: #0f1113 !important; /* Varsayılan beyazı siyaha boyadık */
-      background-image: none; /* Çakışmayı önler */
-      overflow: hidden; 
-      height: 100%;
-    }
+html {
+  background-color: #0f1113 !important; /* Ana zemin rengi burada kalsın */
+}
 
-    /* === 2. ARKA PLAN RESMİ === */
-    .bg-layer {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      z-index: -5;
-      background-image: url('./arkaplan.jpg'); /* ARKA PLAN RESMİ */
-      background-size: cover;
-      background-position: center;
-      /* Resmi karartıp bulanıklaştırıyoruz */
-      filter: blur(5px) brightness(0.35) grayscale(40%);
-      transform: scale(1.05);
-    }
+body {
+  background-color: transparent !important; /* Body şeffaf olsun ki resim görünsün */
+  overflow-x: hidden; 
+  height: 100%;
+}
+
+/* === 2. ARKA PLAN RESMİ === */
+.bg-layer {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1; /* -5 yerine -1 yapıyoruz, böylece body'nin içinde görünür olur */
+  background-image: url('./arkaplan.jpg'); 
+  background-size: cover;
+  background-position: center;
+  filter: blur(5px) brightness(0.35) grayscale(40%);
+  transform: scale(1.05);
+}
 
     /* === 3. ÖZEL PLAK RESMİ (otopotre9.jpg) === */
     #musicDisc {
