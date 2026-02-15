@@ -377,9 +377,20 @@
       }, { duration: 500, fill: "forwards" });
     });
     
-  // === KADERİN CÜMLESİ MEKANİZMASI (AKILLI SEÇİM) ===
+  // === KADERİN CÜMLESİ VE HAVUZ SİSTEMİ ===
+    const fateBtn = document.getElementById('fate-btn');
+    const fateResult = document.getElementById('fate-result');
+    const quoteText = document.getElementById('quote-text');
+    const bookName = document.getElementById('book-name');
     
-   const quotes = [
+    // Paylaşım Butonları
+    const shareX = document.getElementById('share-x');
+    const shareWa = document.getElementById('share-wa');
+    const shareCopy = document.getElementById('share-copy');
+    const copyMsg = document.getElementById('copy-msg');
+
+    // Külliyat Sözlüğü
+    const quotes = [
       { 
         text: "Sana hiç dokunmadan, seni hiç durdurmadan... sadece uzaktan bir şarkı gibi sevdim seni.", 
         book: "Turuncu Saçlı Kız",
@@ -476,63 +487,60 @@
         url: "https://berkayalay53.github.io/birdefterinicindekalanlar.github.io/"
       }
     ];
-    // ... const quotes = [...] bittikten sonra ...
 
-    const fateBtn = document.getElementById('fate-btn');
-    const fateResult = document.getElementById('fate-result');
-    const quoteText = document.getElementById('quote-text');
-    const bookName = document.getElementById('book-name');
-    
-    // YENİ: Paylaşım elemanlarını seç
-    const shareX = document.getElementById('share-x');
-    const shareWa = document.getElementById('share-wa');
-    const shareCopy = document.getElementById('share-copy');
-    const copyMsg = document.getElementById('copy-msg');
-
-    let lastIndex = -1;
+    // Havuz Sistemi (Tekrarı Önler)
+    let availableIndices = [];
 
     fateBtn.addEventListener('click', () => {
-      // 1. GİZEM: Butona basınca biraz bekletelim (Arama efekti)
+      // 1. Efekt: Butona basınca bekleme hissi
       fateBtn.textContent = "Hissediliyor..."; 
       fateBtn.style.pointerEvents = "none"; // Tekrar basamasın
       fateResult.classList.remove('show');  // Önce gizle
 
-      let randomIndex;
-      do {
-        randomIndex = Math.floor(Math.random() * quotes.length);
-      } while (randomIndex === lastIndex);
+      // Havuz boşsa doldur
+      if (availableIndices.length === 0) {
+        availableIndices = quotes.map((_, i) => i);
+      }
 
-      lastIndex = randomIndex;
-      const selectedQuote = quotes[randomIndex];
+      // Rastgele seçim ve havuzdan silme
+      const randomIndexInPool = Math.floor(Math.random() * availableIndices.length);
+      const selectedIndex = availableIndices.splice(randomIndexInPool, 1)[0];
+      const selectedQuote = quotes[selectedIndex];
 
-      // 600ms gecikme (Sanki kader düşünüyormuş gibi)
+      // 600ms gecikme (Düşünme payı)
       setTimeout(() => {
         // Metni güncelle
         quoteText.textContent = `“${selectedQuote.text}”`;
         
-        // --- 2. KÖPRÜ: Kitap ismini TIKLANABİLİR yapıyoruz ---
-        // Kitabın adı artık bir Link (<a>) olacak
-        bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">${selectedQuote.book} &rarr;</a>`;
+        // Kitap ismini linkli yapıyoruz (Varsa URL kullan, yoksa sadece isim)
+        if(selectedQuote.url) {
+            bookName.innerHTML = `<a href="${selectedQuote.url}" target="_blank" class="book-link">— ${selectedQuote.book}</a>`;
+        } else {
+            bookName.textContent = `— ${selectedQuote.book}`;
+        }
         
         // --- PAYLAŞIM LİNKLERİNİ GÜNCELLE ---
         const fullText = `"${selectedQuote.text}" — ${selectedQuote.book}\n\nBerkay Alay`;
         const encodedText = encodeURIComponent(fullText);
 
-        shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
-        shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
+        if(shareX) shareX.href = `https://twitter.com/intent/tweet?text=${encodedText}&url=https://berkayalay53.github.io`;
+        if(shareWa) shareWa.href = `https://wa.me/?text=${encodedText} https://berkayalay53.github.io`;
         
-        shareCopy.onclick = () => {
-          navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
-          copyMsg.classList.add('visible');
-          setTimeout(() => copyMsg.classList.remove('visible'), 2000);
-        };
+        // Kopyalama Butonu
+        if(shareCopy) {
+            shareCopy.onclick = () => {
+            navigator.clipboard.writeText(fullText + " https://berkayalay53.github.io");
+            copyMsg.classList.add('visible');
+            setTimeout(() => copyMsg.classList.remove('visible'), 2000);
+            };
+        }
 
         // Kutuyu göster ve butonu düzelt
         fateResult.classList.add('show');
         fateBtn.textContent = "Başka Bir His Ver";
         fateBtn.style.pointerEvents = "auto";
         
-      }, 600); // 0.6 saniye bekletiyoruz
+      }, 600); 
     });
     // === GİZLİ BÖLME (HAYALET MEKTUP) MEKANİZMASI ===
     const secretTrigger = document.getElementById('secret-trigger');
