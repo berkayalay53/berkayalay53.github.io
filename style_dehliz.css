@@ -1,0 +1,129 @@
+/* === DEHLİZ ATLASI: İÇSEL YÜZLEŞME STİLLERİ === */
+
+:root {
+  --bg: #0a0c0e;      /* Daha derin, zifiri bir siyah */
+  --accent: #b5835a;   /* Biraz daha soluk, "eski kitap" pası */
+  --text: #d1cdc4;
+  --serif: 'Crimson Pro', serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0; padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* 1. DEHLİZ IŞIĞI (DAHA KARANLIK VE DAR) */
+.museum-light {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  pointer-events: none; z-index: 100;
+  /* Odak noktasını daralttık ve karanlığı %70'e çıkardık */
+  background: radial-gradient(
+    circle at 50% 25%, 
+    transparent 5%, 
+    rgba(0,0,0,0.5) 30%, 
+    rgba(10, 12, 14, 0.95) 85%
+  );
+  mix-blend-mode: multiply;
+}
+
+/* 2. BAŞLIK BÖLÜMÜ */
+.exhibit-header {
+  text-align: center;
+  padding: 100px 20px 60px;
+  position: relative; z-index: 10;
+}
+
+.title {
+  font-family: var(--serif); font-size: 3.2rem; 
+  color: var(--accent); margin: 0;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 30px rgba(0,0,0,1);
+}
+.subtitle {
+  font-family: var(--serif); font-style: italic; font-size: 1.15rem; 
+  opacity: 0.6; margin-top: 15px;
+  max-width: 700px; margin-left: auto; margin-right: auto;
+  line-height: 1.6;
+}
+
+/* 3. SERGİ DUVARI */
+.gallery-wall {
+  column-count: 3;
+  column-gap: 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px 100px;
+  position: relative; z-index: 5;
+}
+
+.frame {
+  break-inside: avoid;
+  margin-bottom: 25px;
+  position: relative;
+  transition: all 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.frame img {
+  width: 100%; display: block;
+  /* Resimler başta çok daha sönük ve sepia tonunda */
+  filter: grayscale(100%) brightness(0.4) contrast(1.2); 
+  transition: all 0.8s ease;
+}
+
+.art-link { display: block; text-decoration: none; position: relative; }
+
+.caption {
+  position: absolute; bottom: 20px; left: 0; width: 100%;
+  text-align: center; color: var(--accent);
+  font-family: var(--serif); font-size: 0.85rem; font-style: italic; letter-spacing: 1px;
+  opacity: 0; transform: translateY(10px);
+  transition: all 0.5s ease;
+}
+
+/* === DEHLİZ ODAKLANMA EFEKTİ === */
+
+.gallery-wall:hover .frame img {
+  opacity: 0.2; filter: grayscale(100%) blur(4px);
+}
+
+.gallery-wall .frame:hover img {
+  opacity: 1 !important; 
+  filter: grayscale(20%) brightness(0.9) blur(0) !important; /* Tam renkli değil, biraz soluk kalsın */
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+}
+
+.gallery-wall .frame:hover .caption {
+  opacity: 0.8; transform: translateY(0);
+}
+
+/* 4. NAVİGASYON */
+.footer-nav {
+  text-align: center; padding: 60px 0; z-index: 20; position: relative;
+}
+.back-btn {
+  color: var(--accent); text-decoration: none; font-family: var(--serif); font-size: 1rem;
+  opacity: 0.5; transition: 0.4s;
+  letter-spacing: 2px;
+}
+.back-btn:hover { opacity: 1; text-shadow: 0 0 10px var(--accent); }
+
+/* MOBİL AYARLARI */
+@media (max-width: 900px) { .gallery-wall { column-count: 2; } }
+@media (max-width: 600px) {
+  .gallery-wall { column-count: 1; }
+  .title { font-size: 2.5rem; }
+  .gallery-wall:hover .frame img { opacity: 1; filter: grayscale(100%) brightness(0.5); }
+}
