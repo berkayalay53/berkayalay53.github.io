@@ -36,9 +36,13 @@ body {
 }
 
 .title {
-  font-family: var(--serif); font-size: 3rem; 
-  color: var(--accent); margin: 0;
-  text-shadow: 0 0 20px rgba(0,0,0,0.8);
+  font-family: var(--serif);
+  font-size: 3.2rem; 
+  color: var(--accent);
+  margin: 0;
+  text-transform: uppercase; /* Hepsini büyük harf yapar */
+  letter-spacing: 4px;       /* Harf aralarını açarak asalet katar */
+  text-shadow: 0 0 30px rgba(0,0,0,1);
 }
 .subtitle {
   font-family: var(--serif); font-style: italic; font-size: 1.2rem; 
