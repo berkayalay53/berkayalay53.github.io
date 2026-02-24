@@ -61,19 +61,20 @@ body {
 
 /* Çerçeveler */
 .frame {
-  break-inside: avoid; /* Bölünmeyi engelle */
-  margin-bottom: 20px;
+  break-inside: avoid;
+  margin-bottom: 25px; /* Boşluğu biraz artırdık ki yukarı kalkınca diğerine değmesin */
   position: relative;
-  transition: all 0.5s ease;
+  transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* Daha akışkan bir geçiş */
   border-radius: 4px;
-  overflow: hidden;
+  overflow: visible; /* Kesilmeyi önlemek için visible yaptık */
 }
 
 .frame img {
   width: 100%; display: block;
   border-radius: 4px;
-  filter: grayscale(80%) brightness(0.8); /* Başlangıçta sönük */
-  transition: all 0.5s ease;
+  filter: grayscale(80%) brightness(0.7);
+  transition: all 0.6s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3); /* Başlangıçta hafif gölge */
 }
 
 /* Link Yapısı */
@@ -99,18 +100,23 @@ body {
 }
 
 /* Sadece MOUSE'un olduğu resim parlasın */
+.gallery-wall:hover .frame img {
+  opacity: 0.25; 
+  filter: grayscale(100%) blur(3px); /* Blur miktarını biraz artırdık, odak daha net olsun */
+}
+
+.gallery-wall .frame:hover {
+  transform: translateY(-10px); /* Resim zum yapmak yerine 10px yukarı kalkar */
+  z-index: 20; /* Üstte görünmesini sağlar */
+}
+
 .gallery-wall .frame:hover img {
   opacity: 1 !important; 
-  filter: grayscale(0%) blur(0) !important;
-  transform: scale(1.03);
-  box-shadow: 0 10px 30px rgba(212, 163, 115, 0.2);
+  filter: grayscale(0%) brightness(1) blur(0) !important;
+  transform: scale(1.01); /* Zum miktarını çok azalttık, sadece nefes alır gibi */
+  /* Altındaki gölgeyi derinleştirerek havada durma hissi verdik */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(212, 163, 115, 0.15); 
 }
-
-/* Yazısı görünsün */
-.gallery-wall .frame:hover .caption {
-  opacity: 1; transform: translateY(0);
-}
-
 /* 4. ALT MENÜ */
 .footer-nav {
   text-align: center; padding: 50px 0; z-index: 20; position: relative;
