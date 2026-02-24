@@ -158,11 +158,6 @@ a:hover {
   line-height: 1.75;
 }
 
-.footer {
-  border-top: 1px solid var(--line);
-  padding-top: 18px;
-}
-
 .sig__meta {
   color: var(--muted);
   font-size: 13px;
@@ -956,5 +951,67 @@ html, body {
 @media (max-width: 600px) {
   .exhibit-buttons {
     gap: 10px;
+  }
+}
+/* === FOOTER YENİDEN YAPILANDIRMA === */
+.footer {
+  border-top: none; /* Üstteki sert çizgiyi kaldırdık */
+  padding-top: 40px;
+}
+
+/* Orta Ayraç */
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 40px 0 25px;
+  opacity: 0.4;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--line);
+}
+
+.divider span {
+  padding: 0 20px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+/* Ana Butonlar */
+.main-nav .btn-ghost {
+  font-weight: 600;
+  border-width: 1.5px;
+}
+
+/* Atlas Butonları (Daha Zarif ve Hafif) */
+.atlas-btn {
+  font-size: 0.75rem !important;
+  padding: 10px 25px !important;
+  opacity: 0.7;
+  border-style: dashed; /* Atlaslara özel "iz" efekti */
+  transition: all 0.4s ease;
+}
+
+.atlas-btn:hover {
+  opacity: 1;
+  border-style: solid;
+  letter-spacing: 2px;
+}
+
+/* Mobil Düzenleme */
+@media (max-width: 600px) {
+  .nav-row {
+    gap: 12px;
+  }
+  .btn-ghost {
+    width: 100%; /* Mobilde butonlar tam genişlik olsun, daha düzenli durur */
+    max-width: 280px;
   }
 }
