@@ -594,28 +594,23 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
     );
     // ... mevcut console.log kodlarının altı ...
 
-    // === İZEL PARAMETRESİ (EASTER EGG) ===
-    let izelClickCount = 0;
-    // Sadece "Kaderin Bir Cümlesi" yazan butonu bulalım
-    const fateBtn = Array.from(document.querySelectorAll('.btn-ghost')).find(btn => btn.innerText.includes('Kaderin Bir Cümlesi'));
+   // === İZEL PARAMETRESİ (EASTER EGG) ===
+    let izelCount = 0;
+    const targetBtn = document.getElementById('fate-btn');
 
-    if (fateBtn) {
-      fateBtn.addEventListener('click', () => {
-        izelClickCount++;
-        if (izelClickCount === 5) {
+    if (targetBtn) {
+      targetBtn.addEventListener('click', () => {
+        izelCount++;
+        if (izelCount === 5) {
           document.body.classList.add('izel-mode');
-          
-          // 10 saniye sonra turuncu rüya biter
           setTimeout(() => {
             document.body.classList.remove('izel-mode');
-            izelClickCount = 0;
+            izelCount = 0;
           }, 10000);
-          
           console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
         }
       });
     }
-
   </script>
 <script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
