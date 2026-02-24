@@ -1029,3 +1029,31 @@ body.izel-mode .btn-ghost:hover {
 body.izel-mode .divider span {
   color: #ff7b00;
 }
+/* === İSİMDEKİ GİZLİ İZ === */
+.name-trace {
+  position: relative;
+  display: inline-block;
+}
+
+.name-trace::after {
+  content: attr(data-trace);
+  position: absolute;
+  top: -15px;      /* Başlangıçta isme çok yakın */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--serif);
+  font-size: 0.65rem;
+  font-style: italic;
+  color: var(--accent);
+  opacity: 0;
+  white-space: nowrap;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: all 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+  pointer-events: none;
+}
+
+.name-trace:hover::after {
+  opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
+  top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
+}
