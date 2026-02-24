@@ -592,6 +592,30 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
       "%c Kodların arasında hikaye aranmaz.\nHikaye, satır aralarındaki boşluktadır.",
       "color: #bcb6aa; font-family: sans-serif; font-size: 14px; font-style: italic;"
     );
+    // ... mevcut console.log kodlarının altı ...
+
+    // === İZEL PARAMETRESİ (EASTER EGG) ===
+    let izelClickCount = 0;
+    // Sadece "Kaderin Bir Cümlesi" yazan butonu bulalım
+    const fateBtn = Array.from(document.querySelectorAll('.btn-ghost')).find(btn => btn.innerText.includes('Kaderin Bir Cümlesi'));
+
+    if (fateBtn) {
+      fateBtn.addEventListener('click', () => {
+        izelClickCount++;
+        if (izelClickCount === 5) {
+          document.body.classList.add('izel-mode');
+          
+          // 10 saniye sonra turuncu rüya biter
+          setTimeout(() => {
+            document.body.classList.remove('izel-mode');
+            izelClickCount = 0;
+          }, 10000);
+          
+          console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
+        }
+      });
+    }
+
   </script>
 <script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
