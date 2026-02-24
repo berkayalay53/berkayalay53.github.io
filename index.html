@@ -592,28 +592,6 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
       "%c Kodların arasında hikaye aranmaz.\nHikaye, satır aralarındaki boşluktadır.",
       "color: #bcb6aa; font-family: sans-serif; font-size: 14px; font-style: italic;"
     );
-    // === İZEL PARAMETRESİ (EASTER EGG) ===
-let izelClickCount = 0;
-// "Kaderin Bir Cümlesi" butonunu seçiyoruz
-const fateBtn = document.querySelector('.btn-ghost'); // Eğer başka bir buton ise sınıfını buraya yazabiliriz
-
-fateBtn.addEventListener('click', () => {
-  izelClickCount++;
-  
-  if (izelClickCount === 5) {
-    // 5. tıklamada İzel Modu başlar
-    document.body.classList.add('izel-mode');
-    
-    // 10 saniye sonra her şey normale (sessizliğe) döner
-    setTimeout(() => {
-      document.body.classList.remove('izel-mode');
-      izelClickCount = 0; // Sayacı sıfırla
-    }, 10000); 
-    
-    // Konsola küçük bir selam bırakalım
-    console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
-  }
-});
   </script>
 <script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
@@ -637,6 +615,29 @@ fateBtn.addEventListener('click', () => {
   setTimeout(() => {
     document.body.classList.add('loaded');
   }, 3000);
+  });
+  // === İZEL PARAMETRESİ (EASTER EGG) ===
+let izelClickCount = 0;
+// "Kaderin Bir Cümlesi" butonunu seçiyoruz
+const fateBtn = document.querySelector('.btn-ghost'); // Eğer başka bir buton ise sınıfını buraya yazabiliriz
+
+fateBtn.addEventListener('click', () => {
+  izelClickCount++;
+  
+  if (izelClickCount === 5) {
+    // 5. tıklamada İzel Modu başlar
+    document.body.classList.add('izel-mode');
+    
+    // 10 saniye sonra her şey normale (sessizliğe) döner
+    setTimeout(() => {
+      document.body.classList.remove('izel-mode');
+      izelClickCount = 0; // Sayacı sıfırla
+    }, 10000); 
+    
+    // Konsola küçük bir selam bırakalım
+    console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
+  }
+);
 </script>
 </body>
 </html>
