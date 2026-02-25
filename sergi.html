@@ -112,6 +112,28 @@
   <div class="footer-nav">
     <a href="./index.html" class="back-btn">← Ana Limana Dön</a>
   </div>
+<script>
+  // === MOBİL İÇİN BAKIŞ TAKİBİ (INTERSECTION OBSERVER) ===
+  const observerOptions = {
+    root: null,
+    rootMargin: '-20% 0px -20% 0px', // Ekranın üst ve alt %20'lik kısmını görmezden gel, tam merkeze odaklan
+    threshold: 0.6 // Resmin %60'ı merkeze girince tetikle
+  };
 
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-focused');
+      } else {
+        entry.target.classList.remove('is-focused');
+      }
+    });
+  }, observerOptions);
+
+  // Tüm çerçeveleri gözlemle
+  document.querySelectorAll('.frame').forEach(frame => {
+    observer.observe(frame);
+  });
+</script>
 </body>
 </html>
