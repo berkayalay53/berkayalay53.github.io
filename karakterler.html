@@ -19,7 +19,7 @@
       overflow-x: hidden; 
       height: 100%;
     }
-
+/* === 2. ARKA PLAN RESMİ === */
     .bg-layer {
       position: fixed;
       top: 0; left: 0;
@@ -28,7 +28,8 @@
       background-image: url('./arkaplan.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(4px) brightness(0.40) grayscale(30%); /* Arka planın o asil loşluğu */
+      /* Işık artırıldı, bulanıklık hafifçe azaltıldı */
+      filter: blur(4px) brightness(0.55) grayscale(30%); 
       transform: scale(1.05);
     }
 
@@ -39,8 +40,7 @@
       background-position: center;
       border: 2px solid rgba(255, 255, 255, 0.2);
     }
-
-    /* === 4. SABİT MÜZE IŞIĞI === */
+/* === 4. SABİT MÜZE IŞIĞI === */
     .spotlight {
       position: fixed;
       top: 0; left: 0;
@@ -50,8 +50,8 @@
       background: radial-gradient(
         circle at 50% 30%,
         transparent 15%,
-        rgba(0, 0, 0, 0.4) 45%,
-        rgba(10, 12, 14, 0.98) 95%
+        rgba(0, 0, 0, 0.3) 45%,
+        rgba(10, 12, 14, 0.75) 95% /* Perde inceltildi, arkası artık görünür */
       );
       mix-blend-mode: multiply;
     }
