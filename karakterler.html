@@ -12,15 +12,14 @@
   <link rel="stylesheet" href="./style.css">
 
   <style>
-    /* === 1. BEYAZLAMA SORUNU ÇÖZÜMÜ === */
+   /* === ARKA PLAN VE BEYAZLAMA ÇÖZÜMÜ === */
     html, body {
-      background-color: #0f1113 !important;
-      background-image: none;
-      overflow: hidden; 
+      background-color: #0f1113 !important; 
+      background-image: none; 
+      overflow-x: hidden; 
       height: 100%;
     }
 
-    /* === 2. ARKA PLAN RESMİ === */
     .bg-layer {
       position: fixed;
       top: 0; left: 0;
@@ -29,7 +28,7 @@
       background-image: url('./arkaplan.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(5px) brightness(0.35) grayscale(40%);
+      filter: blur(4px) brightness(0.40) grayscale(30%); /* Arka planın o asil loşluğu */
       transform: scale(1.05);
     }
 
