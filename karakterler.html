@@ -296,6 +296,57 @@ body {
       style.innerHTML = `@keyframes floatDust { 0% { transform: translateY(0) translateX(0); opacity: 0; } 50% { opacity: 0.4; } 100% { transform: translateY(-100px) translateX(20px); opacity: 0; } }`;
       document.head.appendChild(style);
     }
+    /* === 1. PERFORMANS OPTİMİZASYONU === */
+.portrait-img {
+  /* 'all' yerine sadece gerekenleri yazarak GPU yükünü azaltıyoruz */
+  transition: opacity 0.6s ease, filter 0.6s ease, transform 0.6s ease;
+  will-change: transform, opacity; /* Tarayıcıya önceden haber veriyoruz */
+}
+
+/* === 2. MOBİL DÜZEN VE NEFES ALAN BOŞLUKLAR === */
+@media (max-width: 600px) {
+  .gallery-container {
+    padding: 60px 15px; /* Kenar boşluklarını daraltalım */
+  }
+  
+  .portrait-grid {
+    display: flex; /* Grid yerine Flex ile daha rahat kontrol ederiz */
+    flex-direction: column;
+    gap: 80px; /* Her karakter arasında ciddi bir mesafe (nefes payı) */
+    align-items: center;
+  }
+
+  .portrait-card {
+    max-width: 100%; /* Kartlar ekranı tam kaplasın */
+    border-width: 6px; /* Mobilde kalın çerçeveyi biraz inceltelim */
+  }
+
+  .portrait-card.wide {
+    aspect-ratio: 1/1 !important; /* Mobilde geniş kartları kare yaparak karmaşayı önleyelim */
+  }
+
+  /* MOBİL ODAKLANMA (FOCUSED) DURUMU */
+  .portrait-card img {
+    opacity: 0.3;
+    filter: grayscale(100%) brightness(0.5);
+  }
+
+  .portrait-card.is-focused {
+    transform: scale(1.05);
+    border-color: var(--accent);
+    z-index: 10;
+  }
+
+  .portrait-card.is-focused img {
+    opacity: 1;
+    filter: grayscale(0%) brightness(1);
+  }
+
+  .portrait-card.is-focused .portrait-info {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
   </script>
 </body>
 </html>
