@@ -347,6 +347,30 @@ body {
     transform: translateY(0);
   }
 }
+    // === 1. AKILLI TOZ EFEKTİ (CİHAZ DOSTU) ===
+function createDust() {
+  const isMobile = window.innerWidth < 600;
+  const particleCount = isMobile ? 12 : 30; // Mobilde parça sayısını yarıya düşür
+  
+  // ... mevcut createDust kodun devam eder ...
+}
+
+// === 2. MOBİL ODAKLANMA SİSTEMİ (SCROLL FOCUS) ===
+const charObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    // Kartın %70'i ekrana girince parla
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-focused');
+    } else {
+      entry.target.classList.remove('is-focused');
+    }
+  });
+}, { threshold: 0.7 });
+
+// Tüm kartları izlemeye al
+document.querySelectorAll('.portrait-card').forEach(card => {
+  charObserver.observe(card);
+});
   </script>
 </body>
 </html>
