@@ -128,9 +128,30 @@ body {
 @media (max-width: 900px) {
   .gallery-wall { column-count: 2; } /* Tablette 2 sütun */
 }
+/* === MOBİL ODAKLANMA DÜZENLEMESİ === */
 @media (max-width: 600px) {
-  .gallery-wall { column-count: 1; } /* Telefonda 1 sütun */
+  .gallery-wall { column-count: 1; }
   .title { font-size: 2.2rem; }
-  /* Mobilde blur efektini kapat (Kafa karıştırır) */
-  .gallery-wall:hover .frame img { opacity: 1; filter: grayscale(0%); }
+
+  /* Mobilde genel resimler daha sönük başlar */
+  .frame img {
+    opacity: 0.35;
+    filter: grayscale(100%) blur(1px);
+    transform: scale(0.98);
+    transition: all 0.5s ease;
+  }
+
+  /* EKRANIN ORTASINA GELEN (FOCUSED) RESİM PARLAR */
+  .frame.is-focused img {
+    opacity: 1 !important;
+    filter: grayscale(0%) brightness(1) blur(0) !important;
+    transform: scale(1.02) !important;
+    box-shadow: 0 10px 30px rgba(212, 163, 115, 0.2);
+  }
+
+  /* Yazısı da otomatik belirir */
+  .frame.is-focused .caption {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
