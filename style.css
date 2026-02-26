@@ -1057,49 +1057,39 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-/* ======================================================= */
-/* === TURUNCU SAÇLI KIZ & ÖN PLAN NİZAMİ DÜZENLEME === */
-/* ======================================================= */
-
-/* 1. Arka Plan: Turuncu Saçlı Kız (Renkli ve Sabit) */
+/* === ANA SAYFA GİZLİ SİLUET (RENKLİ VE CANLI DÜZEN) === */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -5 !important;           /* Her şeyin en arkasına atar */
+  z-index: -1 !important;           /* Yazıların ve profilin ARKASINA aldık */
   pointer-events: none;             /* Tıklamaları engellemez */
   
   /* Resim Ayarları */
-  background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important; /* Resim adını kontrol et */
+  background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important;
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
   background-attachment: fixed !important; /* Sayfa kaysa da resim ÇAKILI kalır */
   
-  /* Görünürlük: Renkli ama loş */
-  opacity: 1 !important;
-  mix-blend-mode: normal !important; 
-  filter: brightness(0.4) contrast(1.1) !important; /* Sırıtmaz, asil durur */
+  /* RENKLENDİRME AYARI */
+  opacity: 0.5 !important;           /* Görünürlüğü artırdık (%50) */
+  mix-blend-mode: normal !important; /* Hayalet etkisini kaldırdık, renkler geldi */
+  filter: brightness(0.5) contrast(1.2) !important; /* Grayscale silindi, loş ve asil renkler */
 }
 
-/* 2. Orta Katman: Yazılar ve İçerik */
+/* Katmanların birbirini ezmemesi için ek dokunuşlar */
+body {
+  background-color: transparent !important; /* Resmin görünmesi için body şeffaf olmalı */
+}
+
+html {
+  background-color: #0f1113; /* Ana siyah zemin en altta kalmalı */
+}
+
 #main-content {
   position: relative !important;
-  z-index: 10 !important; /* Yazıları resmin üzerine çıkarır */
-}
-
-/* 3. En Üst Katman: Profil Fotoğrafı (Mühür) */
-.authorPhoto, .profile-img {
-  position: relative !important;
-  z-index: 20 !important; /* Fotoğrafı her şeyin, resmin bile üstüne koyar */
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Arkadaki resimden ayrılsın diye gölge */
-}
-
-/* Mobilde figürün doğru durması için */
-@media (max-width: 768px) {
-  .bg-silhouette {
-    background-position: center 30% !important; 
-  }
+  z-index: 10 !important; /* Yazıları ve profil resmini en öne çeker */
 }
