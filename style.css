@@ -1057,27 +1057,55 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-/* === ANA SAYFA GİZLİ SİLUET (HAYALET KATMAN) === */
+/* ======================================================= */
+/* === TURUNCU SAÇLI KIZ: CANLI VE SABİT ARKA PLAN === */
+/* ======================================================= */
+
+/* 1. Gövdeyi şeffaf yapıyoruz ki resim arkadan görünebilsin */
+body {
+  background-color: transparent !important;
+}
+
+/* 2. Ana siyah zemini HTML katmanına taşıyoruz */
+html {
+  background-color: #0f1113;
+}
+
+/* 3. Resmi renklendirip arkaya çiviliyoruz */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 999; /* Artık arkada değil, her şeyin EN ÖNÜNDE! */
-  pointer-events: none; /* Tıklamaları engellemez, bir cam gibidir, içinden geçilir */
-  background-image: url('./wturuncusaçlıkız.jpg');
+  z-index: -1; /* Yazıların ve profilin arkasına geçer */
+  pointer-events: none;
+  
+  background-image: url('./wturuncusaçlıkızhammerhoi.jpg');
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
+  background-attachment: fixed; /* Kaydırınca resim sabit kalır, yazı akar */
   
-  /* İŞTE SİHİR BURADA: */
-  opacity: 0.15; /* Sadece %15 görünürlük, rüya gibi bir iz */
-  mix-blend-mode: screen; /* Siyahlıkları yok eder, sadece figürün aydınlık hatları kalır */
-  filter: grayscale(100%) contrast(1.5); /* Resmi siyah-beyaz ve keskin yapar */
+  /* RENKLENDİRME AYARLARI */
+  opacity: 0.6;           /* Görünürlüğü %60 yaptık (Daha canlı) */
+  mix-blend-mode: normal; /* Hayalet etkisini sildik, renkler geldi */
+  filter: brightness(0.5) contrast(1.1); /* Grayscale (siyah-beyaz) SİLİNDİ */
 }
 
-/* Mobilde figürün ekranda kalması için */
+/* 4. Ön plandaki içeriği ve profil resmini sağlama alalım */
+#main-content {
+  position: relative;
+  z-index: 10;
+}
+
+.profile-img, .authorPhoto {
+  position: relative;
+  z-index: 20;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8); /* Arkadaki resimden ayrılsın diye gölge */
+}
+
+/* Mobilde figürün doğru konumlanması için */
 @media (max-width: 768px) {
   .bg-silhouette {
     background-position: center 30%; 
