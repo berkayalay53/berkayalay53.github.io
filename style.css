@@ -1064,19 +1064,13 @@ body.izel-mode .divider span {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -10; /* Her şeyin en altında durmasını sağlar */
-  background-image: url('./wturuncusaçlıkız.jpg');
+  z-index: 0; /* -10 yerine 0 yaptık ki siyah perdenin önüne, ama yazıların arkasına geçsin */
+  pointer-events: none; /* Resim tıklamaları engellemesin diye bunu ekledik */
+  background-image: url('./wturuncusaçlıkızhammerhoi.jpg');
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
   
   /* Karanlığın içine gömülme efekti */
   filter: grayscale(100%) brightness(0.25) contrast(1.2) blur(1px);
-}
-
-/* Mobilde resim hizalaması (Figür ekranda kalsın diye) */
-@media (max-width: 768px) {
-  .bg-silhouette {
-    background-position: center 30%; 
-  }
 }
