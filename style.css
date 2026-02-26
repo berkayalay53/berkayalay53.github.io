@@ -1064,43 +1064,42 @@ body.izel-mode .divider span {
 }
 
 /* ======================================================= */
-/* === KAPTANIN TEMİZ SAYFASI: TURUNCU SAÇLI KIZ DÜZENİ === */
+/* === KESİN ÇÖZÜM: RENKLİ VE SABİT DEHLİZ YILDIZI === */
 /* ======================================================= */
 
-/* 1. Gövdeyi tamamen şeffaf yapıyoruz (Cam etkisi) */
-body {
-  background-color: transparent !important;
-}
-
-/* 2. Siyah zemini HTML'e (En alt katman) çekiyoruz */
+/* 1. HTML katmanını siyaha boyayalım (Zemin burası) */
 html {
   background-color: #0f1113 !important;
 }
 
-/* 3. Resmi renklendirip en arkaya çiviliyoruz */
+/* 2. Body'yi şeffaf yapalım (Cam etkisi, resim arkadan sızsın) */
+body {
+  background-color: transparent !important;
+}
+
+/* 3. Resmi renklendirip arkaya çivileyelim */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1 !important; /* Camın hemen arkasında durur */
+  z-index: -1 !important; /* Yazıların arkasında, siyahın önünde */
   pointer-events: none;
   
-  /* Resim Ayarları */
   background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important;
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
-  background-attachment: fixed !important; /* Sayfa aksa da resim ÇAKILI kalır */
+  background-attachment: fixed !important; /* Sayfa aksa da o durur */
   
-  /* RENKLENDİRME: Hayalet etkisini sildik, renkler geldi */
+  /* RENKLENDİRME: Hayalet etkisini sildik, renkler seninle */
   opacity: 0.5 !important;           /* %50 görünürlük */
   mix-blend-mode: normal !important; /* Normal görünüm */
-  filter: brightness(0.5) contrast(1.2) !important; /* Grayscale/Siyah-Beyaz SİLİNDİ */
+  filter: brightness(0.6) contrast(1.1) !important; /* Siyah-beyazlığı sildik */
 }
 
-/* 4. İçeriği ve Profil Fotoğrafını öne çıkarıyoruz */
+/* 4. İçeriği ve Profil Resmini öne alalım */
 #main-content {
   position: relative !important;
   z-index: 10 !important;
