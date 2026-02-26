@@ -77,6 +77,16 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+/* Grain Efekti */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+}
 /* === ANA SAYFA GİZLİ SİLUET === */
 .bg-silhouette {
   position: fixed;
@@ -100,16 +110,6 @@ a:hover {
     background-position: center 30%; 
   }
 }
-/* Grain Efekti */
-.grain {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: .16;
-  mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-}
-
 .wrap {
   width: min(1000px, calc(100% - 36px));
   margin-inline: auto;
