@@ -1071,18 +1071,51 @@ html {
   background-color: #0f1113; /* En dipteki karanlık baki kalır */
 }
 
-/* Turuncu Saçlı Kızı kendi renkleriyle, sessizliğin en arkasına asıyoruz */
+/* ======================================================= */
+/* === TURUNCU SAÇLI KIZ: RENKLİ VE SABİT DEHLİZ YILDIZI === */
+/* ======================================================= */
+
+/* 1. Gövdeyi şeffaf yapalım, siyah perdeyi kaldıralım */
+body {
+  background-color: transparent !important;
+}
+
+/* 2. Siyah zemini en alt katmana (HTML) çivileyelim */
+html {
+  background-color: #0f1113 !important;
+}
+
+/* 3. Resmi renklendirip en arkaya sabitleyelim */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Her şeyin arkasında, sarsılmaz bir iz */
+  z-index: -1 !important; /* Yazıların ve profilin ARKASINA alır */
   pointer-events: none;
-  background-image: url('./wturuncusaçlıkız.jpg');
+  
+  /* Resim Ayarları - RENKLİ */
+  background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important;
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
-  opacity: 0.4; /* Kelimelerin gölgede kalmaması için ince bir sis */
+  background-attachment: fixed !important; /* Sayfa aksa da resim ÇAKILI kalır */
+
+  /* GÖRÜNÜRLÜK: Hayalet etkisini sildik, renkler geri geldi */
+  opacity: 0.5 !important;           /* %50 görünürlük (Daha canlı) */
+  mix-blend-mode: normal !important; /* Normal mod: Renkleri netleştirir */
+  filter: brightness(0.5) contrast(1.1) !important; /* Grayscale/Siyah-Beyaz SİLİNDİ */
+}
+
+/* 4. Profil Fotoğrafını ve Yazıları Öne Çıkaralım */
+.hero, .main, .hero__inner {
+  position: relative !important;
+  z-index: 10 !important; /* İçeriği resmin önüne çeker */
+}
+
+.authorPhoto {
+  position: relative !important;
+  z-index: 20 !important; /* Profil resmini her şeyin en üstüne koyar */
+  box-shadow: 0 0 40px rgba(0,0,0,0.9) !important; /* Resimden ayrılması için güçlü gölge */
 }
