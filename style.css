@@ -915,9 +915,8 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
-html, body {
-  background-color: #0f1113 !important; /* Resim gelene kadar SİYAH kalsın */
-  /* ...diğer kodlar... */
+html {
+  background-color: #0f1113 !important;
 }
 /* === BUTONA TIKLANINCA OLUŞACAK EFEKT (Fate Tarzı) === */
 .btn-ghost.tiklandi {
@@ -1064,20 +1063,50 @@ body.izel-mode .divider span {
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
 
+/* ======================================================= */
+/* === KAPTANIN TEMİZ SAYFASI: TURUNCU SAÇLI KIZ DÜZENİ === */
+/* ======================================================= */
+
+/* 1. Gövdeyi tamamen şeffaf yapıyoruz (Cam etkisi) */
+body {
+  background-color: transparent !important;
+}
+
+/* 2. Siyah zemini HTML'e (En alt katman) çekiyoruz */
+html {
+  background-color: #0f1113 !important;
+}
+
+/* 3. Resmi renklendirip en arkaya çiviliyoruz */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Artık yazının ve profilin önünde değil, kalbinde ama bir adım arkada */
+  z-index: -1 !important; /* Camın hemen arkasında durur */
   pointer-events: none;
-  background-image: url('./wturuncusaçlıkız.jpg');
+  
+  /* Resim Ayarları */
+  background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important;
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
+  background-attachment: fixed !important; /* Sayfa aksa da resim ÇAKILI kalır */
   
-  opacity: 0.25; /* Biraz daha görünür kıldık, karanlığı boğmayacak kadar */
-  mix-blend-mode: lighten; /* Metinlerin okunurluğunu bozmaması için yumuşak bir karışım */
-  filter: grayscale(40%) contrast(1.2); /* Tamamen siyah-beyaz değil, saçlarındaki o hafif sıcaklık kalsın */
+  /* RENKLENDİRME: Hayalet etkisini sildik, renkler geldi */
+  opacity: 0.5 !important;           /* %50 görünürlük */
+  mix-blend-mode: normal !important; /* Normal görünüm */
+  filter: brightness(0.5) contrast(1.2) !important; /* Grayscale/Siyah-Beyaz SİLİNDİ */
+}
+
+/* 4. İçeriği ve Profil Fotoğrafını öne çıkarıyoruz */
+#main-content {
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+.profile-img, .authorPhoto {
+  position: relative !important;
+  z-index: 20 !important;
 }
