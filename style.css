@@ -583,6 +583,9 @@ a:hover {
   
   /* --- Geçiş Efekti --- */
   transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Çok yumuşak geçiş */
+  position: relative;
+  z-index: 10; /* Kesinlikle silüetin üstünde durması için */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.85); /* Arkasındaki derin karanlık gölge, seni silüetten netçe ayıracak */
 }
 
 /* Üzerine gelince (Hover) ne olacak? */
@@ -599,6 +602,9 @@ a:hover {
     width: 140px;
     height: 140px;
     margin-bottom: 1rem;
+    position: relative;
+  z-index: 10; /* Kesinlikle silüetin üstünde durması için */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.85); /* Arkasındaki derin karanlık gölge, seni silüetten netçe ayıracak */
   }
 }
 /* === PAYLAŞIM BUTONLARI === */
@@ -1057,50 +1063,21 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-/* ======================================================= */
-/* === TURUNCU SAÇLI KIZ: RENKLİ VE GÖRÜNÜR ARKA PLAN === */
-/* ======================================================= */
 
-/* 1. Gövdeyi şeffaf yapıyoruz ki resim arkadan sızabilsin */
-body {
-  background-color: transparent !important;
-}
-
-/* 2. Ana siyah zemini en alt katmana (HTML) çekiyoruz */
-html {
-  background-color: #0f1113;
-}
-
-/* 3. Resmi renklendirip arkaya sabitliyoruz */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Yazıların arkasında kalması için */
+  z-index: -1; /* Artık yazının ve profilin önünde değil, kalbinde ama bir adım arkada */
   pointer-events: none;
-  
-  /* Resim Ayarları */
-  background-image: url('./wturuncusaçlıkızhammerhoi.jpg');
+  background-image: url('./wturuncusaçlıkız.jpg');
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Sayfa kaydıkça resim çakılı kalır */
   
-  /* RENKLENDİRME VE CANLANDIRMA */
-  opacity: 0.45;           /* %45 görünürlük (Daha belirgin) */
-  mix-blend-mode: normal;  /* Hayalet (screen) modunu kapattık, renkler geldi */
-  filter: brightness(0.6) contrast(1.2); /* Siyah-beyazlık (grayscale) SİLİNDİ */
-}
-
-/* 4. Profil fotoğrafını ve yazıları öne çıkarıyoruz */
-#main-content {
-  position: relative;
-  z-index: 10;
-}
-
-.profile-img, .authorPhoto {
-  position: relative;
-  z-index: 20; /* Profil resmi en üstte, mühür gibi dursun */
+  opacity: 0.25; /* Biraz daha görünür kıldık, karanlığı boğmayacak kadar */
+  mix-blend-mode: lighten; /* Metinlerin okunurluğunu bozmaması için yumuşak bir karışım */
+  filter: grayscale(40%) contrast(1.2); /* Tamamen siyah-beyaz değil, saçlarındaki o hafif sıcaklık kalsın */
 }
