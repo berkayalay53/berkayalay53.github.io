@@ -1062,53 +1062,27 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-
-/* ======================================================= */
-/* === KAPTANIN RENKLİ VE CANLI DEHLİZ YILDIZI === */
-/* ======================================================= */
-
-/* 1. Gövdeyi tamamen şeffaf yapalım, siyah perdeyi kaldıralım */
+/* Siyah perdeyi aralıyoruz, gövde şeffaflaşıyor */
 body {
   background-color: transparent !important;
-  opacity: 1 !important; /* Görünmeme sorununu kökten çözer */
 }
 
-/* 2. Siyah zemini en alt katmana çivileyelim */
 html {
-  background-color: #0f1113 !important;
+  background-color: #0f1113; /* En dipteki karanlık baki kalır */
 }
 
-/* 3. Resmi renklendirelim ve sabitleyelim */
+/* Turuncu Saçlı Kızı kendi renkleriyle, sessizliğin en arkasına asıyoruz */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1 !important; /* İçeriğin hemen arkasında, siyahın önünde */
+  z-index: -1; /* Her şeyin arkasında, sarsılmaz bir iz */
   pointer-events: none;
-  
-  /* Resim Ayarları - RENKLİ HALİ */
-  background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important;
+  background-image: url('./wturuncusaçlıkız.jpg');
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
-  background-attachment: fixed !important; 
-
-  /* RENKLENDİRME: Buradaki değerlerle oynayabilirsin */
-  opacity: 0.6 !important;           /* %60 görünürlük (Daha canlı) */
-  mix-blend-mode: normal !important; /* Hayalet etkisini sildik, renkler geldi */
-  filter: brightness(0.6) contrast(1.2) !important; /* Grayscale (Siyah-Beyaz) YOK */
-}
-
-/* 4. Profil ve yazılar resmin üstünde parlasın */
-#main-content, .hero, .main {
-  position: relative !important;
-  z-index: 10 !important;
-}
-
-.authorPhoto, .profile-img {
-  position: relative !important;
-  z-index: 20 !important;
-  box-shadow: 0 0 40px rgba(0,0,0,0.9) !important; /* Resimden ayrılması için güçlü gölge */
+  opacity: 0.4; /* Kelimelerin gölgede kalmaması için ince bir sis */
 }
