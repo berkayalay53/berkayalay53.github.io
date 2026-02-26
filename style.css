@@ -1057,29 +1057,49 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-/* === ANA SAYFA GİZLİ SİLUET (HAYALET KATMAN) === */
+/* ======================================================= */
+/* === TURUNCU SAÇLI KIZ & ÖN PLAN NİZAMİ DÜZENLEME === */
+/* ======================================================= */
+
+/* 1. Arka Plan: Turuncu Saçlı Kız (Renkli ve Sabit) */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 999; /* Artık arkada değil, her şeyin EN ÖNÜNDE! */
-  pointer-events: none; /* Tıklamaları engellemez, bir cam gibidir, içinden geçilir */
-  background-image: url('./wturuncusaçlıkız.jpg');
+  z-index: -5 !important;           /* Her şeyin en arkasına atar */
+  pointer-events: none;             /* Tıklamaları engellemez */
+  
+  /* Resim Ayarları */
+  background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important; /* Resim adını kontrol et */
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
+  background-attachment: fixed !important; /* Sayfa kaysa da resim ÇAKILI kalır */
   
-  /* İŞTE SİHİR BURADA: */
-  opacity: 0.15; /* Sadece %15 görünürlük, rüya gibi bir iz */
-  mix-blend-mode: screen; /* Siyahlıkları yok eder, sadece figürün aydınlık hatları kalır */
-  filter: grayscale(100%) contrast(1.5); /* Resmi siyah-beyaz ve keskin yapar */
+  /* Görünürlük: Renkli ama loş */
+  opacity: 1 !important;
+  mix-blend-mode: normal !important; 
+  filter: brightness(0.4) contrast(1.1) !important; /* Sırıtmaz, asil durur */
 }
 
-/* Mobilde figürün ekranda kalması için */
+/* 2. Orta Katman: Yazılar ve İçerik */
+#main-content {
+  position: relative !important;
+  z-index: 10 !important; /* Yazıları resmin üzerine çıkarır */
+}
+
+/* 3. En Üst Katman: Profil Fotoğrafı (Mühür) */
+.authorPhoto, .profile-img {
+  position: relative !important;
+  z-index: 20 !important; /* Fotoğrafı her şeyin, resmin bile üstüne koyar */
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7); /* Arkadaki resimden ayrılsın diye gölge */
+}
+
+/* Mobilde figürün doğru durması için */
 @media (max-width: 768px) {
   .bg-silhouette {
-    background-position: center 30%; 
+    background-position: center 30% !important; 
   }
 }
