@@ -583,9 +583,6 @@ a:hover {
   
   /* --- Geçiş Efekti --- */
   transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); /* Çok yumuşak geçiş */
-  position: relative;
-  z-index: 10; /* Kesinlikle silüetin üstünde durması için */
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.85); /* Arkasındaki derin karanlık gölge, seni silüetten netçe ayıracak */
 }
 
 /* Üzerine gelince (Hover) ne olacak? */
@@ -602,9 +599,6 @@ a:hover {
     width: 140px;
     height: 140px;
     margin-bottom: 1rem;
-    position: relative;
-  z-index: 10; /* Kesinlikle silüetin üstünde durması için */
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.85); /* Arkasındaki derin karanlık gölge, seni silüetten netçe ayıracak */
   }
 }
 /* === PAYLAŞIM BUTONLARI === */
@@ -915,8 +909,9 @@ a:hover {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
-html {
-  background-color: #0f1113 !important;
+html, body {
+  background-color: #0f1113 !important; /* Resim gelene kadar SİYAH kalsın */
+  /* ...diğer kodlar... */
 }
 /* === BUTONA TIKLANINCA OLUŞACAK EFEKT (Fate Tarzı) === */
 .btn-ghost.tiklandi {
@@ -1062,60 +1057,29 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-/* Siyah perdeyi aralıyoruz, gövde şeffaflaşıyor */
-body {
-  background-color: transparent !important;
-}
-
-html {
-  background-color: #0f1113; /* En dipteki karanlık baki kalır */
-}
-
-/* ======================================================= */
-/* === TURUNCU SAÇLI KIZ: RENKLİ VE SABİT DEHLİZ YILDIZI === */
-/* ======================================================= */
-
-/* 1. Gövdeyi şeffaf yapalım, siyah perdeyi kaldıralım */
-body {
-  background-color: transparent !important;
-}
-
-/* 2. Siyah zemini en alt katmana (HTML) çivileyelim */
-html {
-  background-color: #0f1113 !important;
-}
-
-/* 3. Resmi renklendirip en arkaya sabitleyelim */
+/* === ANA SAYFA GİZLİ SİLUET (HAYALET KATMAN) === */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1 !important; /* Yazıların ve profilin ARKASINA alır */
-  pointer-events: none;
-  
-  /* Resim Ayarları - RENKLİ */
-  background-image: url('./wturuncusaçlıkızhammerhoi.jpg') !important;
+  z-index: 999; /* Artık arkada değil, her şeyin EN ÖNÜNDE! */
+  pointer-events: none; /* Tıklamaları engellemez, bir cam gibidir, içinden geçilir */
+  background-image: url('./wturuncusaçlıkız.jpg');
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
-  background-attachment: fixed !important; /* Sayfa aksa da resim ÇAKILI kalır */
-
-  /* GÖRÜNÜRLÜK: Hayalet etkisini sildik, renkler geri geldi */
-  opacity: 0.5 !important;           /* %50 görünürlük (Daha canlı) */
-  mix-blend-mode: normal !important; /* Normal mod: Renkleri netleştirir */
-  filter: brightness(0.5) contrast(1.1) !important; /* Grayscale/Siyah-Beyaz SİLİNDİ */
+  
+  /* İŞTE SİHİR BURADA: */
+  opacity: 0.15; /* Sadece %15 görünürlük, rüya gibi bir iz */
+  mix-blend-mode: screen; /* Siyahlıkları yok eder, sadece figürün aydınlık hatları kalır */
+  filter: grayscale(100%) contrast(1.5); /* Resmi siyah-beyaz ve keskin yapar */
 }
 
-/* 4. Profil Fotoğrafını ve Yazıları Öne Çıkaralım */
-.hero, .main, .hero__inner {
-  position: relative !important;
-  z-index: 10 !important; /* İçeriği resmin önüne çeker */
-}
-
-.authorPhoto {
-  position: relative !important;
-  z-index: 20 !important; /* Profil resmini her şeyin en üstüne koyar */
-  box-shadow: 0 0 40px rgba(0,0,0,0.9) !important; /* Resimden ayrılması için güçlü gölge */
+/* Mobilde figürün ekranda kalması için */
+@media (max-width: 768px) {
+  .bg-silhouette {
+    background-position: center 30%; 
+  }
 }
