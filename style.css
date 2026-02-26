@@ -1057,32 +1057,26 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-/* === ANA SAYFA GİZLİ SİLUET (SABİT VE RENKLİ TABLO) === */
+/* === SON DOKUNUŞ: TURUNCU SAÇLI KIZ VE ÖN PLAN DENGESİ === */
+
+/* 1. Arka planı canlandır ve sabitle */
 .bg-silhouette {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Z-INDEX DEĞİŞTİ: En arkaya, diğer her şeyin altına */
-  z-index: -5;
-  pointer-events: none;
-  
-  /* Resim artık renkli ve sabit */
-  background-image: url('./wturuncusaçlıkızhammerhoi.jpg');
-  background-size: cover;       
-  background-position: center;  
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Sayfa kaysa da resim çakılı kalır */
-  
-  /* "CANLI AMA SIRITMAYAN" EFEKT */
-  /* grayscale'i kaldırdık, renkler geri geldi */
-  /* brightness ve contrast ile loş bir tablo hissi verdik */
-  filter: brightness(0.5) contrast(1.2) blur(0px);
+  z-index: -5 !important;           /* Resmi en arkaya, her şeyin altına atar */
+  opacity: 1 !important;             /* Görünürlüğü tam yapar */
+  mix-blend-mode: normal !important; /* Hayalet etkisini kaldırır, renkleri canlandırır */
+  background-attachment: fixed !important; /* Sayfa kaysa da resim yerinde çakılı kalır */
+  filter: brightness(0.4) contrast(1.1) !important; /* Loş, asil ve sırıtmayan renkler */
+  background-image: url('./wturuncusaçlıkız.jpg') !important;
 }
 
-@media (max-width: 768px) {
-  .bg-silhouette {
-    background-position: center 30%; 
-  }
+/* 2. Ana içeriği ve yazıları öne çıkar */
+#main-content {
+  position: relative !important;
+  z-index: 10 !important; /* Yazıları resmin önüne çeker */
 }
+
+/* 3. Profil fotoğrafını en üste, mühür gibi yerleştir */
+.profile-img, .authorPhoto {
+  position: relative !important;
+  z-index: 20 !important; /* Profil resmini her şeyin en üstüne koyar */
+  }
