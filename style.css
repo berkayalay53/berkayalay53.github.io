@@ -1057,20 +1057,29 @@ body.izel-mode .divider span {
   opacity: 0.35;   /* Çok hafif, bir hayalet gibi belirir */
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
-/* === ANA SAYFA GİZLİ SİLUET === */
+/* === ANA SAYFA GİZLİ SİLUET (HAYALET KATMAN) === */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* -10 yerine 0 yaptık ki siyah perdenin önüne, ama yazıların arkasına geçsin */
-  pointer-events: none; /* Resim tıklamaları engellemesin diye bunu ekledik */
-  background-image: url('./wturuncusaçlıkızhammerhoi.jpg');
+  z-index: 999; /* Artık arkada değil, her şeyin EN ÖNÜNDE! */
+  pointer-events: none; /* Tıklamaları engellemez, bir cam gibidir, içinden geçilir */
+  background-image: url('./wturuncusaçlıkız.jpg');
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
   
-  /* Karanlığın içine gömülme efekti */
-  filter: grayscale(100%) brightness(0.25) contrast(1.2) blur(1px);
+  /* İŞTE SİHİR BURADA: */
+  opacity: 0.15; /* Sadece %15 görünürlük, rüya gibi bir iz */
+  mix-blend-mode: screen; /* Siyahlıkları yok eder, sadece figürün aydınlık hatları kalır */
+  filter: grayscale(100%) contrast(1.5); /* Resmi siyah-beyaz ve keskin yapar */
+}
+
+/* Mobilde figürün ekranda kalması için */
+@media (max-width: 768px) {
+  .bg-silhouette {
+    background-position: center 30%; 
+  }
 }
