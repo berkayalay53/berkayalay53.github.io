@@ -1058,42 +1058,43 @@ body.izel-mode .divider span {
   top: -35px;      /* Hover anında ismin üzerinden yavaşça yükselir */
 }
 /* ======================================================= */
-/* === TURUNCU SAÇLI KIZ: CANLI VE SABİT ARKA PLAN === */
+/* === TURUNCU SAÇLI KIZ: RENKLİ VE GÖRÜNÜR ARKA PLAN === */
 /* ======================================================= */
 
-/* 1. Gövdeyi şeffaf yapıyoruz ki resim arkadan görünebilsin */
+/* 1. Gövdeyi şeffaf yapıyoruz ki resim arkadan sızabilsin */
 body {
   background-color: transparent !important;
 }
 
-/* 2. Ana siyah zemini HTML katmanına taşıyoruz */
+/* 2. Ana siyah zemini en alt katmana (HTML) çekiyoruz */
 html {
   background-color: #0f1113;
 }
 
-/* 3. Resmi renklendirip arkaya çiviliyoruz */
+/* 3. Resmi renklendirip arkaya sabitliyoruz */
 .bg-silhouette {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1; /* Yazıların ve profilin arkasına geçer */
+  z-index: -1; /* Yazıların arkasında kalması için */
   pointer-events: none;
   
+  /* Resim Ayarları */
   background-image: url('./wturuncusaçlıkızhammerhoi.jpg');
   background-size: cover;       
   background-position: center;  
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Kaydırınca resim sabit kalır, yazı akar */
+  background-attachment: fixed; /* Sayfa kaydıkça resim çakılı kalır */
   
-  /* RENKLENDİRME AYARLARI */
-  opacity: 0.6;           /* Görünürlüğü %60 yaptık (Daha canlı) */
-  mix-blend-mode: normal; /* Hayalet etkisini sildik, renkler geldi */
-  filter: brightness(0.5) contrast(1.1); /* Grayscale (siyah-beyaz) SİLİNDİ */
+  /* RENKLENDİRME VE CANLANDIRMA */
+  opacity: 0.45;           /* %45 görünürlük (Daha belirgin) */
+  mix-blend-mode: normal;  /* Hayalet (screen) modunu kapattık, renkler geldi */
+  filter: brightness(0.6) contrast(1.2); /* Siyah-beyazlık (grayscale) SİLİNDİ */
 }
 
-/* 4. Ön plandaki içeriği ve profil resmini sağlama alalım */
+/* 4. Profil fotoğrafını ve yazıları öne çıkarıyoruz */
 #main-content {
   position: relative;
   z-index: 10;
@@ -1101,13 +1102,5 @@ html {
 
 .profile-img, .authorPhoto {
   position: relative;
-  z-index: 20;
-  box-shadow: 0 0 30px rgba(0,0,0,0.8); /* Arkadaki resimden ayrılsın diye gölge */
-}
-
-/* Mobilde figürün doğru konumlanması için */
-@media (max-width: 768px) {
-  .bg-silhouette {
-    background-position: center 30%; 
-  }
+  z-index: 20; /* Profil resmi en üstte, mühür gibi dursun */
 }
