@@ -77,7 +77,29 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
+/* === ANA SAYFA GİZLİ SİLUET === */
+.bg-silhouette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10; /* En arkaya atalım, her şeyin altında kalsın */
+  
+  /* Resmi buraya tanımlıyoruz */
+  background-image: url('./wturuncusaçlıkız.jpg');
+  background-size: cover;       /* Ekranı kaplasın */
+  background-position: center;  /* Merkeze odaklansın */
+  background-repeat: no-repeat;
+  
+  /* İŞTE SİHİR BURADA: Resmi karanlığa gömüyoruz */
+  filter: grayscale(100%) brightness(0.25) contrast(1.2) blur(1px);
+  
+  /* Mobilde biraz daha yukarı baksın ki figür daha net hissedilsin */
+  @media (max-width: 768px) {
+    background-position: center 30%; 
+  }
+}
 /* Grain Efekti */
 .grain {
   position: fixed;
