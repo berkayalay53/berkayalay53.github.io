@@ -1087,3 +1087,46 @@ body.izel-mode .divider span {
   mix-blend-mode: screen; 
   filter: grayscale(100%) contrast(1.5); 
 }
+/* =========================================
+         GİZLİ İZEL MODU (EASTER EGG)
+   ========================================= */
+
+/* 1. Tüm sayfanın ruhunu (renk paletini) turuncuya çevirir */
+body.izel-mode {
+  --accent: #ff7b00 !important;  /* Pas rengi yerine gerçek, canlı bir turuncu */
+  --muted: #e69c5c !important;   /* Soluk yazılar da turuncuya çalsın */
+  --text: #fff5eb !important;    /* Ana metinler soğuk beyazdan sıcak beyaza geçsin */
+}
+
+/* 2. Hayalet Siluet (Kızın Resmi) Renklenir ve Canlanır */
+body.izel-mode .bg-silhouette {
+  /* Siyah beyazı (grayscale) sıfırla, renkleri patlat (saturate) */
+  filter: grayscale(0%) contrast(1.2) saturate(1.5) !important;
+  opacity: 0.4 !important; /* Duman biraz dağılsın, kız daha net görünsün */
+  transition: filter 2s ease-in-out, opacity 2s ease-in-out !important; /* Renkler yavaşça gelsin */
+}
+
+/* Normal zamanda resmin yavaşça griye dönmesi için bg-silhouette ana sınıfına geçiş ekliyoruz */
+.bg-silhouette {
+  transition: filter 2s ease-in-out, opacity 2s ease-in-out; 
+}
+
+/* 3. El Feneri Işığı Turuncuya Döner */
+body.izel-mode .spotlight {
+  /* Fenerin o soluk sarı/beyaz ışığı, sıcak bir turuncuya dönüşür */
+  background: radial-gradient(circle at var(--x) var(--y), rgba(255, 123, 0, 0.15) 0%, transparent 40%) !important;
+  transition: background 1.5s ease;
+}
+
+/* 4. Film Tozu (Grain) Bile Sıcaklaşır */
+body.izel-mode .grain {
+  background-color: rgba(255, 123, 0, 0.05) !important; /* Havadaki toz zerrecikleri turuncu parlar */
+}
+
+/* 5. İmleç Noktası Turuncu Olur */
+body.izel-mode .cursor-dot,
+body.izel-mode .cursor-outline {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
+}
