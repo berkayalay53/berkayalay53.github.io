@@ -1130,3 +1130,48 @@ body.izel-mode .cursor-outline {
   border-color: var(--accent) !important;
   box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
 }
+/* 6. Profil Fotoğrafı Uyanır (İzel Modu) */
+body.izel-mode .profile-ring,
+body.izel-mode .authorPhoto,
+body.izel-mode .profile-img {
+  border-color: var(--accent) !important;
+  /* Kocaeli'ye selam olsun: 41px'lik turuncu bir parlama */
+  box-shadow: 0 0 41px rgba(255, 123, 0, 0.7) !important; 
+  filter: grayscale(0%) saturate(1.2) !important;
+  transform: scale(1.05); /* Çok hafif büyür, sana yaklaşır */
+  transition: all 2s ease-in-out !important;
+}
+
+/* 7. 41 Saniyelik Havada Asılı Kalan Söz */
+#izel-quote {
+  position: fixed;
+  bottom: 15%; /* Ekranın alt kısımlarında, karanlıkta asılı durur */
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  color: #ff7b00;
+  text-shadow: 0 0 20px rgba(255, 123, 0, 0.9);
+  opacity: 0;
+  visibility: hidden;
+  z-index: 10000;
+  pointer-events: none;
+  letter-spacing: 2px;
+  text-align: center;
+  transition: opacity 3s ease-in-out; /* Duman gibi yavaşça belirir */
+}
+
+/* Düğmeye 5 kez basıldığında söz görünür olur */
+body.izel-mode #izel-quote {
+  opacity: 1;
+  visibility: visible;
+}
+/* 8. Fransızca Söz 41 Saniyeliğine Parlayarak Uyanır (İzel Modu) */
+body.izel-mode .name-trace::after {
+  opacity: 1 !important; /* Üzerine gelmeyi beklemeden direkt görünür */
+  top: -45px !important; /* İsmin biraz daha yukarısında, havada asılı kalır */
+  color: #ff7b00 !important; /* O sıcak turuncu renge bürünür */
+  text-shadow: 0 0 15px rgba(255, 123, 0, 0.8) !important; /* Hafifçe etrafa ışık saçar */
+  font-size: 0.8rem !important; /* Okunması için bir tık büyür */
+}
