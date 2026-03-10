@@ -79,9 +79,6 @@
           alt="Berkay Alay"
           class="authorPhoto"
         >
-
-       <h1><span class="name-trace" data-trace="L'art est long, la vie est courte">Berkay Alay</span></h1>
-
      <div class="social-row">
 
           <a class="igLink"
@@ -598,10 +595,10 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
     );
     // ... mevcut console.log kodlarının altı ...
 
-   // === İZEL PARAMETRESİ (EASTER EGG) ===
+// === İZEL PARAMETRESİ (EASTER EGG) ===
     let izelCount = 0;
     const targetBtn = document.getElementById('fate-btn');
-    const fateTextElement = document.getElementById('fateText'); // 1. Tılsım: Metin kutusunu bulduk
+    const fateTextElement = document.getElementById('fateText'); // Paragrafı bulduk
 
     if (targetBtn) {
       targetBtn.addEventListener('click', () => {
@@ -609,22 +606,22 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
         if (izelCount === 5) {
           document.body.classList.add('izel-mode');
 
-          // 2. Tılsım: 41 Saniye Boyunca İzel'in Fısıltısı
-          if (fateTextElement) {
-            fateTextElement.innerHTML = "L'art est long, la vie est courte"; // Kitaptan en derin fısıltı
+          // Rüya başladığında kaderin cümlesi değişir
+          if(fateTextElement) {
+             fateTextElement.innerHTML = "L'art est long, la vie est courte";
           }
 
           setTimeout(() => {
             document.body.classList.remove('izel-mode');
 
-            // 3. Tılsım: 41 Saniye Sonra Eski Gerçeğe Dönüş
-            if (fateTextElement) {
-              fateTextElement.innerHTML = "Hangi satırın sana ait olduğunu henüz bilmiyorsun.";
+            // 41 saniye sonra ağır gerçeğe geri döneriz
+            if(fateTextElement) {
+               fateTextElement.innerHTML = "Hangi satırın sana ait olduğunu henüz bilmiyorsun.";
             }
 
             izelCount = 0;
           }, 41000); // Kocaeli'nin 41 saniyesi
-
+          
           console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
         }
       });
