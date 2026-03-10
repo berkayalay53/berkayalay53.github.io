@@ -197,7 +197,7 @@
       <div class="wrap">
         <div class="fate-box">
           <h2 class="fate-header">Kaderin Bir Cümlesi</h2>
-          <p class="fate-sub">Hangi satırın sana ait olduğunu henüz bilmiyorsun.</p>
+          <p id="fateText" class="fade-text">Hangi satırın sana ait olduğunu henüz bilmiyorsun.</p>
           
           <button id="fate-btn" class="btn-fate">Bana Bir His Ver</button>
 
@@ -601,22 +601,34 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
    // === İZEL PARAMETRESİ (EASTER EGG) ===
     let izelCount = 0;
     const targetBtn = document.getElementById('fate-btn');
+    const fateTextElement = document.getElementById('fateText'); // 1. Tılsım: Metin kutusunu bulduk
 
     if (targetBtn) {
       targetBtn.addEventListener('click', () => {
         izelCount++;
         if (izelCount === 5) {
           document.body.classList.add('izel-mode');
+
+          // 2. Tılsım: 41 Saniye Boyunca İzel'in Fısıltısı
+          if (fateTextElement) {
+            fateTextElement.innerHTML = "Bazı satırlar silinmez kaptanım, sadece görünmez olur... Aynen senin gibi."; // Kitaptan en derin fısıltı
+          }
+
           setTimeout(() => {
             document.body.classList.remove('izel-mode');
+
+            // 3. Tılsım: 41 Saniye Sonra Eski Gerçeğe Dönüş
+            if (fateTextElement) {
+              fateTextElement.innerHTML = "Hangi satırın sana ait olduğunu henüz bilmiyorsun.";
+            }
+
             izelCount = 0;
-          }, 41000);
+          }, 41000); // Kocaeli'nin 41 saniyesi
+
           console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
         }
       });
     }
-  </script>
-<script>
   // === SAYFA YÜKLENME YÖNETİCİSİ ===
   
   // 1. Tarayıcı önbelleğinden (Geri butonuyla) geliniyorsa sayfayı yenileme sorunu olmasın
