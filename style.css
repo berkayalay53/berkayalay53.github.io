@@ -133,22 +133,22 @@ a:hover {
   gap: 14px;
 }
 
-/* KART TASARIMLARI */
+/* KART TASARIMLARI (Buzlu Cam ve Hayalet Işık Etkisi) */
 .quote {
   border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, .02);
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Daha silik, zarif çerçeve */
+  background: rgba(22, 26, 30, 0.4); /* Yarı saydam koyu zemin */
+  backdrop-filter: blur(12px); /* Buzlu cam efekti */
+  -webkit-backdrop-filter: blur(12px); /* Safari uyumluluğu */
   padding: 18px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease, background 0.4s ease;
 }
 
 .quote:hover {
-  transform: translateY(-5px);
-  /* 5 piksel yukarı kalkar */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-  border-color: var(--accent);
-  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-3px); /* 5 piksel yerine daha hafif, asil bir kalkış */
+  box-shadow: 0 0 25px rgba(212, 163, 115, 0.15); /* Ağır siyah gölge yerine pas rengi sızıntı */
+  border-color: rgba(212, 163, 115, 0.4); /* Vurgu rengiyle parlayan çerçeve */
+  background: rgba(22, 26, 30, 0.5); /* Üzerine gelince bir tık koyulaşır */
 }
 
 .quote p {
@@ -504,7 +504,20 @@ a:hover {
   margin-bottom: 2rem;
   font-style: italic;
 }
-
+/* Alıntı Sonuç Alanı */
+.fate-result {
+  margin-top: 3rem;
+  opacity: 0; 
+  transform: translateY(20px);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: rgba(22, 26, 30, 0.4); /* Şeffaf zemin */
+  backdrop-filter: blur(12px); /* Buzlu cam efekti */
+  -webkit-backdrop-filter: blur(12px);
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sadece derinlik vermek için çok hafif bir gölge */
+}
 /* Özel Buton Tasarımı */
 .btn-fate {
   background: transparent;
@@ -1100,12 +1113,20 @@ body.izel-mode {
 
 /* 2. Hayalet Siluet (Kızın Resmi) Renklenir ve Canlanır */
 body.izel-mode .bg-silhouette {
-  /* Siyah beyazı (grayscale) sıfırla, renkleri patlat (saturate) */
   filter: grayscale(0%) contrast(1.2) saturate(1.5) !important;
-  opacity: 0.4 !important; /* Duman biraz dağılsın, kız daha net görünsün */
-  transition: filter 2s ease-in-out, opacity 2s ease-in-out !important; /* Renkler yavaşça gelsin */
+  opacity: 0.7 !important; /* 0.4'ten 0.7'ye çıkardık, duman dağıldı, yüz netleşti */
+  transition: filter 2s ease-in-out, opacity 2s ease-in-out !important; 
 }
-
+/* YENİ: İzel Modu Vinyeti (Sayfayı saran turuncu rüya karartması) */
+body.izel-mode::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998; /* En üst katmanlardan biri, tıklamaları engellemez */
+  box-shadow: inset 0 0 180px rgba(255, 123, 0, 0.25); /* Kenarlardan sızan turuncu ışık */
+  transition: box-shadow 2.5s ease-in-out;
+}
 /* Normal zamanda resmin yavaşça griye dönmesi için bg-silhouette ana sınıfına geçiş ekliyoruz */
 .bg-silhouette {
   transition: filter 2s ease-in-out, opacity 2s ease-in-out; 
