@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://berkayalay53.github.io/sitemap.xml
+Sitemap: https://berkayalay53.github.io/harita.xml
