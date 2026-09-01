@@ -1109,24 +1109,24 @@ body.eylul-mode .divider span {
   }
 }
 /* =========================================
-         GİZLİ İZEL MODU (EASTER EGG)
+         GİZLİ EYLÜL MODU (EASTER EGG)
    ========================================= */
 
 /* 1. Tüm sayfanın ruhunu (renk paletini) turuncuya çevirir */
-body.eylül-mode {
+body.eylul-mode {
   --accent: #ff7b00 !important;  /* Pas rengi yerine gerçek, canlı bir turuncu */
   --muted: #e69c5c !important;   /* Soluk yazılar da turuncuya çalsın */
   --text: #fff5eb !important;    /* Ana metinler soğuk beyazdan sıcak beyaza geçsin */
 }
 
 /* 2. Hayalet Siluet (Kızın Resmi) Renklenir ve Canlanır */
-body.eylül-mode .bg-silhouette {
+body.eylul-mode .bg-silhouette {
   filter: grayscale(0%) contrast(1.2) saturate(1.5) !important;
   opacity: 0.7 !important; /* 0.4'ten 0.7'ye çıkardık, duman dağıldı, yüz netleşti */
   transition: filter 2s ease-in-out, opacity 2s ease-in-out !important; 
 }
 /* YENİ: Eylül Modu Vinyeti (Sayfayı saran turuncu rüya karartması) */
-body.eylül-mode::after {
+body.eylul-mode::after {
   content: '';
   position: fixed;
   inset: 0;
@@ -1141,28 +1141,28 @@ body.eylül-mode::after {
 }
 
 /* 3. El Feneri Işığı Turuncuya Döner */
-body.eylül-mode .spotlight {
+body.eylul-mode .spotlight {
   /* Fenerin o soluk sarı/beyaz ışığı, sıcak bir turuncuya dönüşür */
   background: radial-gradient(circle at var(--x) var(--y), rgba(255, 123, 0, 0.15) 0%, transparent 40%) !important;
   transition: background 1.5s ease;
 }
 
 /* 4. Film Tozu (Grain) Bile Sıcaklaşır */
-body.eylül-mode .grain {
+body.eylul-mode .grain {
   background-color: rgba(255, 123, 0, 0.05) !important; /* Havadaki toz zerrecikleri turuncu parlar */
 }
 
 /* 5. İmleç Noktası Turuncu Olur */
-body.eylül-mode .cursor-dot,
-body.eylül-mode .cursor-outline {
+body.eylul-mode .cursor-dot,
+body.eylul-mode .cursor-outline {
   background-color: var(--accent) !important;
   border-color: var(--accent) !important;
   box-shadow: 0 0 10px rgba(255, 123, 0, 0.5);
 }
-/* 6. Profil Fotoğrafı Uyanır (İzel Modu) */
-body.eylül-mode .profile-ring,
-body.eylül-mode .authorPhoto,
-body.eylül-mode .profile-img {
+/* 6. Profil Fotoğrafı Uyanır (Eylül Modu) */
+body.eylul-mode .profile-ring,
+body.eylul-mode .authorPhoto,
+body.eylul-mode .profile-img {
   border-color: var(--accent) !important;
   /* Kocaeli'ye selam olsun: 41px'lik turuncu bir parlama */
   box-shadow: 0 0 41px rgba(255, 123, 0, 0.7) !important; 
@@ -1172,7 +1172,7 @@ body.eylül-mode .profile-img {
 }
 
 /* 7. 41 Saniyelik Havada Asılı Kalan Söz */
-#eylül-quote {
+#eylul-quote {
   position: fixed;
   bottom: 15%; /* Ekranın alt kısımlarında, karanlıkta asılı durur */
   left: 50%;
@@ -1191,13 +1191,13 @@ body.eylül-mode .profile-img {
   transition: opacity 3s ease-in-out; /* Duman gibi yavaşça belirir */
 }
 
-/* Düğmeye 5 kez basıldığında söz görünür olur */
-body.eylül-mode #eylül-quote {
+/* Düğmeye 3 kez basıldığında söz görünür olur */
+body.eylul-mode #eylul-quote {
   opacity: 1;
   visibility: visible;
 }
-/* 8. Fransızca Söz 41 Saniyeliğine Parlayarak Uyanır (İzel Modu) */
-body.eylül-mode .name-trace::after {
+/* 8. Fransızca Söz 41 Saniyeliğine Parlayarak Uyanır (Eylül Modu) */
+body.eylul-mode .name-trace::after {
   opacity: 1 !important; /* Üzerine gelmeyi beklemeden direkt görünür */
   top: -45px !important; /* İsmin biraz daha yukarısında, havada asılı kalır */
   color: #ff7b00 !important; /* O sıcak turuncu renge bürünür */
