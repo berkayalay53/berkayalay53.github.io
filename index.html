@@ -26,7 +26,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@300;400;600&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
-
+  <link rel="preload" href="./wturuncusaçlıkız.jpg" as="image">
+  <link rel="preload" href="./kralkaybederse.jpg" as="image">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 </head>
 <link rel="stylesheet" href="./style.css" />
 
@@ -633,16 +635,16 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
     );
     // ... mevcut console.log kodlarının altı ...
 
-// === İZEL PARAMETRESİ (EASTER EGG) ===
-    let izelCount = 0;
+// === EYLÜL PARAMETRESİ (EASTER EGG) ===
+    let eylulCount = 0;
     const targetBtn = document.getElementById('fate-btn');
     const fateTextElement = document.getElementById('fateText'); // Paragrafı bulduk
 
     if (targetBtn) {
       targetBtn.addEventListener('click', () => {
-        izelCount++;
-        if (izelCount === 3) {
-          document.body.classList.add('izel-mode');
+        eylulCount++;
+        if (eylulCount === 3) {
+          document.body.classList.add('eylul-mode');
 
           // Rüya başladığında kaderin cümlesi değişir
           if(fateTextElement) {
@@ -650,14 +652,14 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
           }
 
           setTimeout(() => {
-            document.body.classList.remove('izel-mode');
+            document.body.classList.remove('eylul-mode');
 
             // 41 saniye sonra ağır gerçeğe geri döneriz
             if(fateTextElement) {
                fateTextElement.innerHTML = "Hangi satırın sana ait olduğunu henüz bilmiyorsun.";
             }
 
-            izelCount = 0;
+            eylulCount = 0;
           }, 41000); // Kocaeli'nin 41 saniyesi
           
           console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
