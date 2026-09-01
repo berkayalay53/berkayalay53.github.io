@@ -469,7 +469,7 @@
        url: "https://berkayalay53.github.io/turuncusaclikiz.github.io/"
       }, 
       { 
-        text: "Dünya çok gürültülü Eylül. Ve sen, bu gürültünün ortasındaki en güzel suskunluksun.", 
+        text: "Dünya çok gürültülü İzel. Ve sen, bu gürültünün ortasındaki en güzel suskunluksun.", 
        book: "Kaybolan Sesin Defteri",
         url: "https://berkayalay53.github.io/kaybolansesindefteri.github.io/"
       },
@@ -633,31 +633,31 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
     );
     // ... mevcut console.log kodlarının altı ...
 
-// === Eylül PARAMETRESİ (EASTER EGG) ===
-    let eylülCount = 0;
+// === İZEL PARAMETRESİ (EASTER EGG) ===
+    let izelCount = 0;
     const targetBtn = document.getElementById('fate-btn');
     const fateTextElement = document.getElementById('fateText'); // Paragrafı bulduk
 
     if (targetBtn) {
       targetBtn.addEventListener('click', () => {
-        eylülCount++;
-        if (eylülCount === 3) {
-          document.body.classList.add('eylül-mode');
+        izelCount++;
+        if (izelCount === 3) {
+          document.body.classList.add('izel-mode');
 
           // Rüya başladığında kaderin cümlesi değişir
           if(fateTextElement) {
-             fateTextElement.innerHTML = "...";
+             fateTextElement.innerHTML = "L'art est long, la vie est courte";
           }
 
           setTimeout(() => {
-            document.body.classList.remove('eylül-mode');
+            document.body.classList.remove('izel-mode');
 
             // 41 saniye sonra ağır gerçeğe geri döneriz
             if(fateTextElement) {
                fateTextElement.innerHTML = "Hangi satırın sana ait olduğunu henüz bilmiyorsun.";
             }
 
-            eylülCount = 0;
+            izelCount = 0;
           }, 41000); // Kocaeli'nin 41 saniyesi
           
           console.log("%c Turuncu saçları rüzgarda savruldu...", "color: #ff7b00; font-style: italic;");
