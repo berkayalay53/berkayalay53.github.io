@@ -1247,3 +1247,33 @@ body.eylul-mode .name-trace::after {
     max-width: 320px;
   }
 }
+/* === DİPNOT İZLERİ (SESSİZ BAĞLANTILAR) === */
+.footer-traces {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 25px auto 18px;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
+}
+
+.footer-traces a {
+  color: var(--muted);
+  opacity: 0.35;
+  text-decoration: none;
+  transition: opacity 0.4s ease, color 0.4s ease;
+}
+
+.footer-traces a:hover {
+  opacity: 0.85;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer-traces .sep {
+  color: var(--muted);
+  opacity: 0.2;
+}
