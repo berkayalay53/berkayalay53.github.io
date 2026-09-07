@@ -30,23 +30,7 @@
   <link rel="preload" href="./kralkaybederse.jpg" as="image">
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
 </head>
-<link rel="stylesheet" href="./style.css" />
-
-  <style>
-    /* GİRİŞTE SCROLL KİLİDİ */
-    html, body {
-      overflow: hidden;
-      height: 100%;
-    }
-    
-    /* Sayfa yüklendiğinde JS ile bu kilit açılacak */
-    body.loaded {
-      /* Buraya özel bir durum eklemenize gerek yok, 
-         aşağıdaki JS kodu zaten overflow'u temizliyor. */
-    }
-  </style>
-
-</head>
+  </head>
 <body>
 
 <div class="bg-silhouette"></div>
@@ -261,16 +245,12 @@
     </div>
     <div id="smoke-msg" class="smoke-msg">Sessizliğe karıştı...</div>
   </div>
-  <audio id="bgMusic" loop>
-    <source src="./muzik.mp3" type="audio/mpeg">
-  </audio>
+ <audio id="bgMusic" loop preload="auto">
+  <source src="./muzik.mp3" type="audio/mpeg">
+</audio>
 
   <script>
-    // === 1. SAYFA YÜKLENİNCE FADE-IN EFEKTİ ===
-    window.addEventListener('load', () => {
-      document.body.classList.add('loaded');
-    });
-
+  
     // === MELANKOLİK SEKME BAŞLIĞI ===
     let docTitle = document.title;
     window.addEventListener("blur", () => {
@@ -668,27 +648,24 @@ let lastIndex = -1;        // En son gösterilen (liste sıfırlandığında üs
         }
       });
     }
-  // === SAYFA YÜKLENME YÖNETİCİSİ ===
-  
-  // 1. Tarayıcı önbelleğinden (Geri butonuyla) geliniyorsa sayfayı yenileme sorunu olmasın
-  window.addEventListener("pageshow", function(event) {
-    if (event.persisted) {
+ // === SAYFA YÜKLENME VE PERDE YÖNETİCİSİ ===
+  function completePageLoad() {
+    if (!document.body.classList.contains('loaded')) {
       document.body.classList.add('loaded');
-      document.body.style.opacity = "1";
+      if (typeof createDust === "function") createDust();
     }
+  }
+
+  // 1. Tüm görseller ve CSS indiğinde perdeyi açar
+  window.addEventListener('load', completePageLoad);
+
+  // 2. Tarayıcı önbelleğinden (Geri butonuyla) gelindiğinde kilitlenmeyi çözer
+  window.addEventListener("pageshow", function(event) {
+    completePageLoad();
   });
 
-  // 2. Her şey yüklendiğinde (Resimler, CSS) perdeyi aç
-  window.addEventListener('load', () => {
-    document.body.classList.add('loaded'); // CSS'teki .loaded opacity:1 yapar
-    // Eğer toz efekti varsa başlat (Yoksa hata vermez, geçer)
-    if (typeof createDust === "function") createDust(); 
-  });
-  
-  // 3. Güvenlik Sübabı: Eğer 3 saniye içinde yüklenmezse zorla aç (Karanlıkta kalmasınlar)
-  setTimeout(() => {
-    document.body.classList.add('loaded');
-  }, 3000);
+  // 3. Güvenlik Sübabı: Ağ takılırsa en geç 4 saniyede sayfayı zorla aç
+  setTimeout(completePageLoad, 4000);
 </script>
 </body>
 </html>
